@@ -1,0 +1,223 @@
+/*HEADER*/
+.navbar{
+	margin-bottom: 0;
+}
+.headerFindIt{
+	padding: 1em;
+}
+/*FILTRADOR*/
+.filtrador{
+	background: #000;
+	color: #fff;
+	padding-top: 0.6em;
+}
+#shaLogin{
+	width: 30%;
+}
+.logo{
+	text-align: center;
+}
+.piePagina{
+	height: 5em;
+	text-align: center;
+}
+#mySelect{
+	color: #000;
+	width: 100%;
+}
+/*RELOJ DIGITAL*/
+/*Pantalla reloj*/
+#reloj .Pantalla{
+	text-align:center;
+	padding: 40px 20px 20px;
+	border-radius:10px;
+	height: 100%;
+}
+/*Contenedor pantalla reloj*/
+#reloj.light{
+	background-color:#504F4F;
+	color:#FFF;
+	padding: 0.1em;
+}
+/*Digitos*/
+#reloj.light .digits div span{
+	background-color:#FFF;
+}
+/*Separador de digitos : */
+#reloj.light .digits div.dots:before,
+#reloj.light .digits div.dots:after{
+	background-color:#fff;
+}
+/*fondo de la pantalla*/
+#reloj.light .Pantalla{
+	background-color:#000;
+}
+/*Formato a los digitos*/
+#reloj .digits div{
+	text-align:left;
+	position:relative;
+	width: 28px;
+	height:50px;
+	display:inline-block;
+	margin:0 4px;
+}
+/*visualiza cambio de digitos*/
+#reloj .digits div span{
+	opacity:0;
+	position:absolute;
+	-webkit-transition:0.25s;
+	-moz-transition:0.25s;
+	transition:0.25s;
+}
+/*construyo los componenetes del numero digital (7 componetes)*/
+#reloj .digits .d1{			height:5px;width:16px;top:0;left:6px;}
+#reloj .digits .d1:before{	border-width:0 5px 5px 0;border-right-color:inherit;left:-5px;}
+#reloj .digits .d1:after{	border-width:0 0 5px 5px;border-left-color:inherit;right:-5px;}
+
+#reloj .digits .d2{			height:5px;width:16px;top:24px;left:6px;}
+#reloj .digits .d2:before{	border-width:3px 4px 2px;border-right-color:inherit;left:-8px;}
+#reloj .digits .d2:after{	border-width:3px 4px 2px;border-left-color:inherit;right:-8px;}
+
+#reloj .digits .d3{			height:5px;width:16px;top:48px;left:6px;}
+#reloj .digits .d3:before{	border-width:5px 5px 0 0;border-right-color:inherit;left:-5px;}
+#reloj .digits .d3:after{	border-width:5px 0 0 5px;border-left-color:inherit;right:-5px;}
+
+#reloj .digits .d4{			width:5px;height:14px;top:7px;left:0;}
+#reloj .digits .d4:before{	border-width:0 5px 5px 0;border-bottom-color:inherit;top:-5px;}
+#reloj .digits .d4:after{	border-width:0 0 5px 5px;border-left-color:inherit;bottom:-5px;}
+
+#reloj .digits .d5{			width:5px;height:14px;top:7px;right:0;}
+#reloj .digits .d5:before{	border-width:0 0 5px 5px;border-bottom-color:inherit;top:-5px;}
+#reloj .digits .d5:after{	border-width:5px 0 0 5px;border-top-color:inherit;bottom:-5px;}
+
+#reloj .digits .d6{			width:5px;height:14px;top:32px;left:0;}
+#reloj .digits .d6:before{	border-width:0 5px 5px 0;border-bottom-color:inherit;top:-5px;}
+#reloj .digits .d6:after{	border-width:0 0 5px 5px;border-left-color:inherit;bottom:-5px;}
+
+#reloj .digits .d7{			width:5px;height:14px;top:32px;right:0;}
+#reloj .digits .d7:before{	border-width:0 0 5px 5px;border-bottom-color:inherit;top:-5px;}
+#reloj .digits .d7:after{	border-width:5px 0 0 5px;border-top-color:inherit;bottom:-5px;}
+/* 1 */
+#reloj .digits div.one .d5,
+#reloj .digits div.one .d7{
+	opacity:1;
+}
+/* 2 */
+#reloj .digits div.two .d1,
+#reloj .digits div.two .d5,
+#reloj .digits div.two .d2,
+#reloj .digits div.two .d6,
+#reloj .digits div.two .d3{
+	opacity:1;
+}
+/* 3 */
+#reloj .digits div.three .d1,
+#reloj .digits div.three .d5,
+#reloj .digits div.three .d2,
+#reloj .digits div.three .d7,
+#reloj .digits div.three .d3{
+	opacity:1;
+}
+/* 4 */
+#reloj .digits div.four .d5,
+#reloj .digits div.four .d2,
+#reloj .digits div.four .d4,
+#reloj .digits div.four .d7{
+	opacity:1;
+}
+/* 5 */
+#reloj .digits div.five .d1,
+#reloj .digits div.five .d2,
+#reloj .digits div.five .d4,
+#reloj .digits div.five .d3,
+#reloj .digits div.five .d7{
+	opacity:1;
+}
+/* 6 */
+#reloj .digits div.six .d1,
+#reloj .digits div.six .d2,
+#reloj .digits div.six .d4,
+#reloj .digits div.six .d3,
+#reloj .digits div.six .d6,
+#reloj .digits div.six .d7{
+	opacity:1;
+}
+/* 7 */
+#reloj .digits div.seven .d1,
+#reloj .digits div.seven .d5,
+#reloj .digits div.seven .d7{
+	opacity:1;
+}
+/* 8 */
+#reloj .digits div.eight .d1,
+#reloj .digits div.eight .d2,
+#reloj .digits div.eight .d3,
+#reloj .digits div.eight .d4,
+#reloj .digits div.eight .d5,
+#reloj .digits div.eight .d6,
+#reloj .digits div.eight .d7{
+	opacity:1;
+}
+/* 9 */
+#reloj .digits div.nine .d1,
+#reloj .digits div.nine .d2,
+#reloj .digits div.nine .d3,
+#reloj .digits div.nine .d4,
+#reloj .digits div.nine .d5,
+#reloj .digits div.nine .d7{
+	opacity:1;
+}
+/* 0 */
+#reloj .digits div.zero .d1,
+#reloj .digits div.zero .d3,
+#reloj .digits div.zero .d4,
+#reloj .digits div.zero .d5,
+#reloj .digits div.zero .d6,
+#reloj .digits div.zero .d7{
+	opacity:1;
+}
+/* puntos */
+#reloj .digits div.dots{
+	width:5px;
+}
+#reloj .digits div.dots:before,
+#reloj .digits div.dots:after{
+	width:5px;
+	height:5px;
+	content:'';
+	position:absolute;
+	left:0;
+	top:14px;
+}
+
+#reloj .digits div.dots:after{
+	top:34px;
+}
+/*Dias de la semana*/
+#reloj .DiasSemana{
+	font-size:12px;
+	position:absolute;
+	width:100%;
+	top:10px;
+	left:0;
+	text-align:center;
+}
+#reloj .DiasSemana span{
+	opacity:0.2;
+	padding:0 10px;
+}
+#reloj .DiasSemana span.active{
+	opacity:1;
+}
+/*AM/PM*/
+#reloj .ampm{
+	position:relative;
+	left:8em;
+	font-size:15px;
+}
+/*PIE DE PAGINA*/
+.piePagina{
+	margin-top: 0.5em;
+	background: #000;
+	color: #fff;
+}
