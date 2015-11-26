@@ -91,7 +91,7 @@ $('#local_id').change(function () {
     };
     mapa = new google.maps.Map(document.getElementById("mapa_content"), mapOptions);
     $('#mySelect').find('option').remove();
-    if (local_tipo!='Seleccionar--') {
+    if (local_tipo!=='-1') {
         $.ajax({
             type: "POST",
             url: url, 
@@ -107,35 +107,7 @@ $('#local_id').change(function () {
     }
 });
 
-/*function localGrupal(){
-    $('#tipo_local').val($(this).val());
-    var local_tipo = $('#local_id').val();
-    var url = 'portal/get_locales_by_tipe/' + local_tipo;
-    var mapOptions = {
-        center: new google.maps.LatLng(-3.996083, -79.205675),
-        zoom: 13,
-        mapTypeId: google.maps.MapTypeId.ROADMAP,
-        mapTypeControl: false,
-        zoomControl: true
-    };
-    mapa = new google.maps.Map(document.getElementById("mapa_content"), mapOptions);
-    $('#mySelect').find('option').remove();
-    if (local_tipo!='Seleccionar--') {
-        $.ajax({
-            type: "POST",
-            url: url, 
-            dataType: 'json',
-            success: function (locales) {
-                $.each(locales, function (id, local) {
-                    addMarca(local);
-                });
-            }
-        });
-    }else{
-        alert('Hola mundo');
-        inicializar();
-    }
-}*/
+
 //jquery de local seleccionado
 function localIndividual(){
     var local_seleccionado = $('#mySelect').val();
@@ -178,12 +150,3 @@ function localIndividual(){
         }
     });
 }
-
-
-
-
-
-
-
-
-

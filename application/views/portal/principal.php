@@ -63,7 +63,9 @@
                     <?php
                     //Lista de tipos
                         $combo_tipos = combobox(
-                            $tipos_empresa, array('label' => 'nombre', 'value' => 'id', 'nombre' => 'tipo_local'), array('name' => 'local_id', 'id' => 'local_id', 'class' => 'form-control'), true);
+                            $tipos_empresa, 
+                            array('label' => 'nombre', 'value' => 'id', 'nombre' => 'tipo_local'), 
+                            array('name' => 'local_id', 'id' => 'local_id', 'class' => 'form-control'), true);
                         echo get_combo_group('Categoria', $combo_tipos, 'col-md-12 form-group');
                     ?>
                 </div>
