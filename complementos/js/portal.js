@@ -13,7 +13,7 @@ function inicializar() {
         position: latlng,
         map:mapa,
         title: 'Tu ubicación',
-        icon: '<?php echo base_url(); ?>/complementos/img/chart.png'
+        icon: "http://google-maps-utility-library-v3.googlecode.com/svn/trunk/markerclusterer/images/people35.png"
     });
     $.ajax({
         url: 'portal/getLocalesCercanos/',
