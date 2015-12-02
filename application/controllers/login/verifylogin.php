@@ -50,7 +50,7 @@ class Verifylogin extends CI_Controller {
             $USER = array();
             foreach ($result as $row) {
                 $USER = array(
-                    'id' => $row->id,
+                    'id' => $row->usuario_id,
                     'userid' => $row->cedula_ruc,
                     'username' => $row->usuario,
                     'nombres' => $row->nombres,
