@@ -17,11 +17,12 @@ class Index extends CI_Controller {
         $infoPage['titulo'] = 'Administrador';
         $this->load->model('usuario_model');
 
-        $infoPage['data_user'] = $this->usuario_model->get_data($this->user->id);
+        $data['data_user'] = $this->usuario_model->get_data($this->user->email);
+//        print_r($data['data_user']);
         //Estructura del dashboard
         $infoPage['header'] = $this->load->view('login/header_login', '', TRUE);
         $infoPage['sidebar'] = $this->load->view('admin/sidebar', '', TRUE);
-        $infoPage['content'] = $this->load->view('usuarios/datos_registro', $infoPage, TRUE);
+        $infoPage['content'] = $this->load->view('usuarios/datos_registro', $data, TRUE);
         $infoPage['footer'] = $this->load->view('portal/static/footer', '', TRUE);
 
         //Cargamos el dashboard
