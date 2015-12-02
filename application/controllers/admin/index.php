@@ -28,7 +28,7 @@ class Index extends CI_Controller {
         $this->load->view('portal/static/dashboard', $infoPage);
         
         //cargamos el foterr
-        $this->load->view('portal/static/footer');
+        //$this->load->view('portal/static/footer');
 
     }
 
@@ -44,7 +44,7 @@ class Index extends CI_Controller {
         //Extraemos todos los uausrios
         $data['usuarios_list'] = $this->usuario_model->get_all();
         $infoPage['content'] = $this->load->view('usuarios/datos_registro', $infoPage, TRUE);
-        //$infoPage['footer'] = $this->load->view('portal/static/footer', '', TRUE);
+        $infoPage['footer'] = $this->load->view('portal/static/footer', '', TRUE);
 
         //Cargamos el dashboard
         $this->load->view('portal/static/dashboard', $infoPage);
@@ -67,7 +67,7 @@ class Index extends CI_Controller {
 
         //Cargamos el dashboard
         $this->load->view('portal/static/dashboard', $infoPage);
-        $this->load->view('portal/static/footer');
+       // $this->load->view('portal/static/footer');
 
     }
 
@@ -90,7 +90,7 @@ class Index extends CI_Controller {
 
 
 
-        $this->load->view('portal/static/footer');
+        //$this->load->view('portal/static/footer');
     }
 
     function save_local() {
