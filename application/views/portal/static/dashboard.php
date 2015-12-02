@@ -48,13 +48,10 @@ echo jsload($js);
             </div>
         </div>
     </body>
-    <footer class="container-fluid well piePagina">
         <div class="row">
             <?php
             echo $footer;
             ?>
-        </div>
-    </footer>
     <script src="<?php echo base_url(); ?>complementos/frameworks/jquery.min.js"></script>
     <script src="<?php echo base_url(); ?>complementos/frameworks/bootstrap3.3.5/js/bootstrap.min.js"></script>
 </body>
