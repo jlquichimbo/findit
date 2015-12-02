@@ -17,7 +17,8 @@ class Index extends CI_Controller {
         $infoPage['titulo'] = 'Administrador';
         $this->load->model('usuario_model');
 
-        $infoPage['data_user'] = $this->usuario_model->get_data($this->user->id);
+        $infoPage['data_user'] = $this->usuario_model->get_data($this->user->email);
+        //echo $this->user->email;
         //Estructura del dashboard
         $infoPage['header'] = $this->load->view('login/header_login', '', TRUE);
         $infoPage['sidebar'] = $this->load->view('admin/sidebar', '', TRUE);
@@ -78,9 +79,10 @@ class Index extends CI_Controller {
         $infoPage['header'] = $this->load->view('login/header_login', '', TRUE);
         $infoPage['sidebar'] = $this->load->view('admin/sidebar', '', TRUE);
 
-        // Crear cabezera personalizada
+        // Cargamos el modelo 
         $this->load->model('empresa_model');
-        $data['locales'] = $this->empresa_model->get_data($this->user->id);
+        //Guardamos en el arreglo las empresas:
+        $data['locales'] = $this->empresa_model->presentaEmpresa($this->user->email);
         
         $infoPage['content'] = $this->load->view('admin/locales', $data, TRUE);
         $infoPage['footer'] = $this->load->view('portal/static/footer', '', TRUE);

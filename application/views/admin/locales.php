@@ -1,8 +1,5 @@
 <html>
-<head>
-<title>Mis Locales</title>
 
-</head>
 <div class="table-responsive">
     <table class="table table-hover">
         <thead>

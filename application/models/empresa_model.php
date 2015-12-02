@@ -43,6 +43,29 @@ Class Empresa_model extends CI_Model {
         $query = $this->db->get();
         return $query->result();
     }
+    function presentaEmpresa($username) {
+        $this->db->select('empresa.id, '
+                . 'empresa.nombre, '
+                . 'direccion, '
+                . 'latitud, '
+                . 'longitud, '
+                . 'disponible, '
+                . 'hora_apertura, '
+                . 'hora_cierre, '
+                . 'empresa_tipo.nombre tipo, '
+                . 'usuario.cedula_ruc ci_admin, '
+                . 'usuario.id id_admin, '
+                . 'CONCAT_WS(" ", usuario.nombres, usuario.apellidos) nombre_admin'
+        );
+        $this->db->from('empresa');
+        $this->db->join('empresa_tipo', 'tipo_id = empresa_tipo.id');
+        $this->db->join('usuario', 'admin_id = usuario.id');
+        $this->db->where('usuario.email', $username);
+
+        
+        $query = $this->db->get();
+        return $query->result();
+    }
 
     /* Extrae todas las empresas registradas en la base de datos */
 
