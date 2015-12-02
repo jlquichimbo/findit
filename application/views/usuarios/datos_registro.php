@@ -4,7 +4,7 @@
 echo "<div class='well'><h1>Datos Personales:</h1><hr>";
 echo "<b>Nombre:</b>".$data_user[0]->nombres . "<br><hr>";
 echo "<b>Apellidos:</b>" . $data_user[0]->apellidos . "<br><hr>";
-echo "<b>Email:</b>" . $data_user[0]->email."<br></hr>";
+echo "<b>Email:</b>" . $data_user[0]->email."<br>";
 ?>
     </center>
 </div>
