@@ -81,8 +81,9 @@ class Index extends CI_Controller {
 
         // Crear cabezera personalizada
         $this->load->model('empresa_model');
-        $data['locales'] = $this->empresa_model->get_data($this->user->id);
-        
+        $data['locales'] = $this->empresa_model->presentaEmpresa($this->user->email);
+//        echo $this->user->id;
+//        print_r($data['locales']);
         $infoPage['content'] = $this->load->view('admin/locales', $data, TRUE);
         $infoPage['footer'] = $this->load->view('portal/static/footer', '', TRUE);
 
