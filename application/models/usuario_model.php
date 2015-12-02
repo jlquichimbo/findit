@@ -40,7 +40,6 @@ Class Usuario_model extends CI_Model {
         
     }
 
-
     /* Extrae los roles */
 
     function get_roles() {
@@ -48,6 +47,30 @@ Class Usuario_model extends CI_Model {
 
         $query = $this->db->get();
         return $query->result();
+    }
+
+    function save_new($cedula, $nombres, $apellidos, $usuario, $password, $email, $telefono) {
+        $form_data = array(
+            'cedula_ruc' => $cedula,
+            'nombres' => $nombres,
+            'apellidos' => $apellidos,
+            'usuario' => $usuario,
+            'password' => $password,
+            'email' => $email,
+            'telefono' => $telefono,
+        );
+        $table_name = 'usuario';
+        $this->db->insert($table_name, $form_data);
+        $usuario_id = $this->db->insert_id();
+
+        //Guardar rol 2
+        $rol_data = array(
+            'usuario_id' => $usuario_id,
+            'rol_id' => 2
+        );
+        
+        $this->db->insert('usuario_rol', $rol_data);
+        return $usuario_id;
     }
 
 }

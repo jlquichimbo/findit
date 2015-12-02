@@ -26,9 +26,21 @@ class Portal extends CI_Controller {
 
     public function vistaRegistrarUsuario() {
         $infoPage['titulo'] = 'Registrar Usuario';
-        $this->load->view('portal/static/header', $infoPage);
-        $this->load->view('portal/registro');
-        $this->load->view('portal/static/footer');
+//        $this->load->view('portal/static/header', $infoPage);
+//        $this->load->view('portal/registro');
+//        $this->load->view('portal/static/footer');
+        
+        $this->load->model('usuario_model');
+
+        $infoPage['data_user'] = $this->usuario_model->get_data($this->user->id);
+        //Estructura del dashboard
+        $infoPage['header'] = $this->load->view('portal/static/header', '', TRUE);
+        $infoPage['sidebar'] = '';
+        $infoPage['content'] = $this->load->view('portal/registro', '', TRUE);
+        $infoPage['footer'] = $this->load->view('portal/static/footer', '', TRUE);
+
+        //Cargamos el dashboard
+        $this->load->view('portal/static/dashboard', $infoPage);
     }
 
     public function vistaloguearUsuario() {

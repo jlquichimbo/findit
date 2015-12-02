@@ -66,6 +66,7 @@ Class Empresa_model extends CI_Model {
         $query = $this->db->get();
         return $query->result();
     }
+
     function empresaUsuario($usuarios) {
         $this->db->select('empresa.id, '
                 . 'empresa.nombre, '
@@ -82,7 +83,7 @@ Class Empresa_model extends CI_Model {
         );
         $this->db->from('empresa');
         $this->db->join('empresa_tipo', 'tipo_id = empresa_tipo.id');
-        $this->db->join("usuario', '".$usuarios." = usuario.id");
+        $this->db->join("usuario', '" . $usuarios . " = usuario.id");
         $query = $this->db->get();
         return $query->result();
     }
@@ -121,11 +122,10 @@ Class Empresa_model extends CI_Model {
         return $query->result();
     }
 
-
     //obtener los 5 locales mas cercanos de la ubicacion del usuario
 
-    function getMasCercanos(){
-        $rango=20;
+    function getMasCercanos() {
+        $rango = 20;
 
         $this->db->select('id AS identificador, '
                 . 'nombre, '
@@ -135,7 +135,7 @@ Class Empresa_model extends CI_Model {
                 . 'disponible, '
                 . 'hora_apertura, '
                 . 'hora_cierre, '
-                .'(6371 * ACOS(SIN(RADIANS(latitud)) * SIN(RADIANS(-3.996083))+ COS(RADIANS(longitud - -79.205675)) * COS(RADIANS(latitud)) * COS(RADIANS(-3.996083)))) AS distancia'
+                . '(6371 * ACOS(SIN(RADIANS(latitud)) * SIN(RADIANS(-3.996083))+ COS(RADIANS(longitud - -79.205675)) * COS(RADIANS(latitud)) * COS(RADIANS(-3.996083)))) AS distancia'
         );
         $this->db->from('empresa');
         $this->db->where('disponible', 1);
@@ -145,7 +145,8 @@ Class Empresa_model extends CI_Model {
         $query = $this->db->get();
         return $query->result();
     }
-    function getLocSeleccionado($localSeleccionado){
+
+    function getLocSeleccionado($localSeleccionado) {
         $this->db->select('id, '
                 . 'nombre, '
                 . 'direccion, '
@@ -153,12 +154,29 @@ Class Empresa_model extends CI_Model {
                 . 'longitud, '
                 . 'disponible, '
                 . 'hora_apertura, '
-                . 'hora_cierre' 
+                . 'hora_cierre'
         );
         $this->db->from('empresa');
         $this->db->where('id', $localSeleccionado);
         $query = $this->db->get();
         return $query->result();
+    }
+
+    function edit_empresa($id, $nombre, $direccion, $tipo_id, $admin_id, $lat, $lng, $open_hour = '0:00', $close_hour = '0:00') {
+        $data_set = array(
+            'nombre' => $nombre,
+            'direccion' => $direccion,
+            'tipo_id' => $tipo_id,
+            'admin_id' => $admin_id,
+            'latitud' => $lat,
+            'longitud' => $lng,
+            'hora_apertura' => $open_hour,
+            'hora_cierre' => $close_hour,
+        );
+        $table_name = 'empresa';
+        $where_data = array('id'=>$id);
+        $this->db->update($table_name, $data_set, $where_data);
+        return $this->db->affected_rows();
     }
 
 }

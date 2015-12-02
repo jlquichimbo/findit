@@ -1,26 +1,20 @@
 <h2 class="page-header">Crear Local:</h2>
 
 <div class="row">  
-    <form id="form_empresa_register" class="form-horizontal" action="<?php echo base_url('admin/index/save_local') ?>" method="post">
+    <form id="form_empresa_register" class="form-horizontal" action="<?php echo base_url('empresa/crear_local') ?>" method="post">
         <div class="form-group">
             <label for="formGroup" class="col-sm-4 control-label">Nombre local:</label>
             <div class="col-sm-8">
-                <input type="text" id="emp_name" name="emp_name" class="form-control" placeholder="Ingrese el nombre de su local" required autofocus>
+                <input type="text" id="emp_name" name="emp_name" class="form-control campos" placeholder="Ingrese el nombre de su local" required autofocus>
             </div>
         </div>
         <div class="form-group">
             <label for="formGroup" class="col-sm-4 control-label">Direccion:</label>
             <div class="col-sm-8">
-                <input type="text" id="emp_address" name="emp_address" class="form-control" placeholder="Ingrese un sector que referencie su local" required>
+                <input type="text" id="emp_address" name="emp_address" class="form-control campos" placeholder="Ingrese un sector que referencie su local" required>
             </div>
         </div>
         <?php
-        //Helper para combobox usando el array de consulta de tipos
-//        $combo_tipos = combobox(
-//                $tipos_empresa, array('label' => 'nombre', 'value' => 'id'), 
-//                array('name' => 'transporte', 'class' => 'form-control', 'id' => 'emp_tipo'), 
-//                true);
-//        echo get_combo_group('Tipo:', $combo_tipos, 'col-sm-4 form-group');
         ?>
         <div class="form-group">
             <label for="formGroup" class="col-sm-4 control-label">Categoria:</label>
@@ -43,8 +37,8 @@
                 <div id="googleMap" style="width:100%;height:20em;"></div>
                 <br>
                 <label id="txtLatitud"></label>
-                <input type="hidden" id="emp_lat" name="emp_lat">
-                <input type="hidden" id="emp_lng" name="emp_lng">
+                <input type="hidden" id="emp_lat" name="emp_lat" class="campos">
+                <input type="hidden" id="emp_lng" name="emp_lng" class="campos">
                 <!--<div class="row">
                   <div class="col-sm-2">
                     <b>Longitud:</b>
@@ -75,7 +69,7 @@
     var BASE_URL = "<?php echo base_url(); ?>";
     $("#form_empresa_register").submit(function (event) {
         event.preventDefault(); //Evitamos que el evento submit siga en ejecución, evitando que se recargue toda la página
-        $.post(BASE_URL + 'admin/index/save_local', //La variable url ha de contener la base_url() de nuestra aplicacion
+        $.post(BASE_URL + 'empresa/crear_local', //La variable url ha de contener la base_url() de nuestra aplicacion
                 $("#form_empresa_register").serialize(), //Codificamos todo el formulario en formato de URL por medio de la receta
                 function (data) {
 
