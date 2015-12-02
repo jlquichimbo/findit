@@ -8,10 +8,10 @@ Class Usuario_model extends CI_Model {
 
     /* Extrae los datos de un solo usuario */
 
-    function get_data($user_id) {
+    function get_data($email) {
         $this->db->select('nombres, apellidos, cedula_ruc, email');
         $this->db->from('usuario');
-        $this->db->where('id', $user_id);
+        $this->db->where('email', $email);
 
         $this->db->limit(1);
 

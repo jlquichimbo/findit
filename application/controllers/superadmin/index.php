@@ -15,7 +15,7 @@ class Index extends CI_Controller {
         $infoPage['titulo'] = 'Super Administrador';
         $this->load->model('usuario_model');
 
-        $infoPage['data_user'] = $this->usuario_model->get_data($this->user->id);
+        $infoPage['data_user'] = $this->usuario_model->get_data($this->user->email);
 
         //Estructura del dashboard
         $infoPage['header'] = $this->load->view('login/header_login', '', TRUE);
