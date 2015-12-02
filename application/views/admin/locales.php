@@ -37,7 +37,15 @@
                 echo tagcontent('td', $empresa->nombre_admin);
                 echo tagcontent('td', $empresa->latitud);
                 echo tagcontent('td', $empresa->longitud);
-                echo tagcontent('td', $empresa->disponible);
+                $boton="<div class='switch'><input id='cmn-toggle-1' class='cmn-toggle cmn-toggle-round' type='checkbox'><label for='cmn-toggle-1'></label></div>";
+                if($empresa->disponible==1){
+                    //echo tagcontent('td', $empresa->disponible);
+                    echo tagcontent('td', $boton);
+                     
+                }
+                else{
+                    echo tagcontent('td', "desavilitada");
+                }
                 echo tagcontent('td', $empresa->hora_apertura);
                 echo tagcontent('td', $empresa->hora_cierre);
                 echo tagcontent('td', $editar);
