@@ -11,7 +11,17 @@ class Login extends CI_Controller {
 
     function index() {
         $this->load->helper(array('form'));
-        $this->load->view('login_view');
+        $infoPage['titulo'] = 'Ingresar';
+        $infoPage['header'] = $this->load->view('portal/static/header', '', TRUE);
+        $infoPage['sidebar'] = '';
+        $infoPage['content'] = $this->load->view('login/login_view');
+        $infoPage['footer'] = $this->load->view('portal/static/footer', '', TRUE);
+
+        //Cargamos el dashboard
+        $this->load->view('portal/static/dashboard', $infoPage);
+//        $this->load->view('portal/static/header', $infoPage);
+//        $this->load->view('login/login_view');
+//        $this->load->view('portal/static/footer');
     }
 
     function logout() {
