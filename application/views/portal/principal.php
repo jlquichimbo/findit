@@ -55,18 +55,18 @@
     <div class="row">
         <aside class="col-md-4 filtrador">
             <div class="row">
-<!--                <div class="col-md-3">
-                    <h4><b>Categor&iacute;as:</b></h4>
-                </div>                -->              
+                <!--                <div class="col-md-3">
+                                    <h4><b>Categor&iacute;as:</b></h4>
+                                </div>                -->              
                 <div class="col-md-9">
                     <!--<select id="selectCategoria" name="selectCategoria" class="form-control">-->
                     <?php
                     //Lista de tipos
-                        $combo_tipos = combobox(
+                    $combo_tipos = combobox(
                             $tipos_empresa, 
                             array('label' => 'nombre', 'value' => 'id', 'nombre' => 'tipo_local'), 
                             array('name' => 'local_id', 'id' => 'local_id', 'class' => 'form-control'), true);
-                        echo get_combo_group('Categoria', $combo_tipos, 'col-md-12 form-group');
+                    echo get_combo_group('Categoria', $combo_tipos, 'col-md-12 form-group');
                     ?>
                 </div>
             </div>

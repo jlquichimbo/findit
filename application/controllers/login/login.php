@@ -14,7 +14,7 @@ class Login extends CI_Controller {
         $infoPage['titulo'] = 'Ingresar';
         $infoPage['header'] = $this->load->view('portal/static/header', '', TRUE);
         $infoPage['sidebar'] = '';
-        $infoPage['content'] = $this->load->view('login/login_view');
+        $infoPage['content'] = $this->load->view('login/login_view', '', TRUE);
         $infoPage['footer'] = $this->load->view('portal/static/footer', '', TRUE);
 
         //Cargamos el dashboard
