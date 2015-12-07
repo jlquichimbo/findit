@@ -1,4 +1,3 @@
-<html>
 
 <div class="table-responsive">
     <table class="table table-hover">
@@ -22,6 +21,7 @@
             <?php
 
             //print_r($locales);
+            $contBtn=0;
             foreach ($locales as $empresa) {
                 //Iconos para editar / eliminar
                 $editar = '<a href="' . base_url("#") . '/' . $empresa->id
@@ -37,11 +37,10 @@
                 echo tagcontent('td', $empresa->nombre_admin);
                 echo tagcontent('td', $empresa->latitud);
                 echo tagcontent('td', $empresa->longitud);
-                $boton="<div class='switch'><input id='cmn-toggle-1' class='cmn-toggle cmn-toggle-round' type='checkbox'><label for='cmn-toggle-1'></label></div>";
                 if($empresa->disponible==1){
                     //echo tagcontent('td', $empresa->disponible);
-                    echo tagcontent('td', $boton);
-                     
+                    echo tagcontent('td', "<div id='btn".$contBtn."'></div>");
+                    $contBtn=$contBtn+1;
                 }
                 else{
                     echo tagcontent('td', "desavilitada");
@@ -56,6 +55,9 @@
         </tbody>
     </table>
 </div>
-    
-</body>
-</html>
+<!--<div class='onoffswitch'><input type='checkbox' name='onoffswitch12345' class='onoffswitch-checkbox' id='myonoffswitch12345'><label class='onoffswitch-label' for='myonoffswitch12345'><span class='onoffswitch-inner'></span><span class='onoffswitch-switch'></span></label></div>-->
+<script src='<?php echo base_url(); ?>complementos/js/admin.js'></script>
+<script>
+    var total=<?php echo $contBtn ?>;
+    crearBoton(total);
+</script>

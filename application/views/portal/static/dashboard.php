@@ -17,6 +17,7 @@ echo jsload($js);
         <link rel="stylesheet" href="<?php echo base_url(); ?>complementos/css/estilosportal.css">
         <link href="<?php echo base_url(); ?>complementos/css/estiloswitch.css" rel="stylesheet">
         
+
         <!--GOOGLE MAPS-->
         <script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js?ver=3.1.2'></script>
         <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?&sensor=true"></script>
@@ -59,5 +60,6 @@ echo jsload($js);
             ?>
     <script src="<?php echo base_url(); ?>complementos/frameworks/jquery.min.js"></script>
     <script src="<?php echo base_url(); ?>complementos/frameworks/bootstrap3.3.5/js/bootstrap.min.js"></script>
+    
 </body>
 </html>

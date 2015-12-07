@@ -1,68 +1,64 @@
-/* ============================================================
-  COMMON
-============================================================ */
-.cmn-toggle {
-  position: absolute;
-  visibility: hidden;
+/*https://proto.io/freebies/onoff/*/
+.onoffswitch {
+    position: relative; 
+    width: 100%;
 }
-.cmn-toggle + label {
-  display: block;
-  position: relative;
-  cursor: pointer;
+.onoffswitch-checkbox {
+    display: none;
 }
-
-/* ============================================================
-  CONTENEDOR DEL SWITCH
-============================================================ */
-input.cmn-toggle-round + label {
-  padding: 2px;
-  width: 100%;
-  height: 2.5em;
-  background-color: #dddddd;
-  -webkit-border-radius: 30em;
-  -moz-border-radius: 30em;
-  -ms-border-radius: 30em;
-  -o-border-radius: 30em;
-  border-radius: 30em;
+.onoffswitch-label {
+    display: block; 
+    overflow: hidden; 
+    cursor: pointer;
+    border: 2px solid #000; 
+    border-radius: 20px;
 }
-input.cmn-toggle-round + label:before, input.cmn-toggle-round + label:after {
-  display: block;
-  position: absolute;
-  top: 3px;
-  left: 3px;
-  bottom: 4px;
-  content: "";
+.onoffswitch-inner {
+    display: block; 
+    width: 200%; 
+    margin-left: -100%;
+    transition: margin 0.3s ease-in 0s;
 }
-input.cmn-toggle-round + label:before {
-  right: 1px;
-  background-color: #f1f1f1;
-  -webkit-border-radius: 30em;
-  -moz-border-radius: 30em;
-  -ms-border-radius: 30em;
-  -o-border-radius: 30em;
-  border-radius: 30em;
-  -webkit-transition: background 0.4s;
-  -moz-transition: background 0.4s;
-  -o-transition: background 0.4s;
-  transition: background 0.4s;
+.onoffswitch-inner:before, .onoffswitch-inner:after {
+    display: block; 
+    float: left; 
+    width: 50%; 
+    height: 30px; 
+    padding: 0; 
+    line-height: 30px;
+    font-size: 18px; 
+    font-family: Trebuchet, Arial, sans-serif; 
+    font-weight: bold;
 }
-input.cmn-toggle-round + label:after {
-  width: 35%;
-  background-color: #fff;
-  border: 2px solid #000;
-  -webkit-border-radius: 48%;
-  -moz-border-radius: 48%;
-  -ms-border-radius: 48%;
-  -o-border-radius: 48%;
-  border-radius: 48%;
-  -webkit-transition: margin 0.4s;
-  -moz-transition: margin 0.4s;
-  -o-transition: margin 0.4s;
-  transition: margin 0.4s;
+.onoffswitch-inner:before {
+    content: "ON";
+    padding-left: 10px;
+    background-color: #C23C34; 
+    color: #fff;
 }
-input.cmn-toggle-round:checked + label:before {
-  background-color: #048035;
+.onoffswitch-inner:after {
+    content: "OFF";
+    padding-right: 10px;
+    background-color: #EEEEEE; 
+    color: #999999;
+    text-align: right;
 }
-input.cmn-toggle-round:checked + label:after {
-  margin-left: 63%;
+.onoffswitch-switch {
+    display: block; 
+    width: 20px; 
+    margin: 5px;
+    background: #FFFFFF;
+    position: absolute; 
+    top: 0; 
+    bottom: 0;
+    right: 81px;
+    border: 2px solid #000; 
+    border-radius: 20px;
+    transition: all 0.3s ease-in 0s; 
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner {
+    margin-left: 0;
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
+    right: 0px;
 }
