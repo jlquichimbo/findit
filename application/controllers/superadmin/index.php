@@ -103,5 +103,36 @@ class Index extends CI_Controller {
         //Cargamos el dashboard
         $this->load->view('portal/static/dashboard', $infoPage);
     }
+    
+    function editar_local_view($id_emp) {
+        $data['id_emp'] = $id_emp;
+        $this->load->model('empresa_model');
+
+        $data['tipos_empresa'] = $this->empresa_model->get_tipos();
+        $view = $this->load->view('empresa/edit_local', $data, TRUE);
+        echo $view;
+        
+    }
+    
+    function crear_local() {
+        $this->load->model('usuario_model');
+        $this->load->model('empresa_model');
+
+        $infoPage['titulo'] = 'Administrador';
+
+        //Consultamos los tipos de empresas para enviar al combobox
+        $data['tipos_empresa'] = $this->empresa_model->get_tipos();
+
+        //Estructura del dashboard
+        $infoPage['header'] = $this->load->view('login/header_login', '', TRUE);
+        $infoPage['sidebar'] = $this->load->view('superadmin/sidebar', '', TRUE);
+        $infoPage['content'] = $this->load->view('empresa/crear_local', $data, TRUE);
+        $infoPage['footer'] = $this->load->view('portal/static/footer', '', TRUE);
+
+        //Cargamos el dashboard
+        $this->load->view('portal/static/dashboard', $infoPage);
+       // $this->load->view('portal/static/footer');
+
+    }
 
 }

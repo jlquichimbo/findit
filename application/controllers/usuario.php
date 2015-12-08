@@ -59,6 +59,15 @@ class Usuario extends CI_Controller {
             $this->db->trans_commit(); // finaliza la transaccion de begin
         }
     }
+    
+    public function editar_view($id_user){
+        
+    }
+    
+    public function editar($id_user) {
+        
+        
+    }
 
 }
 

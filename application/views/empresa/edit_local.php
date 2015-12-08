@@ -1,7 +1,14 @@
+
+<!--<script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js?ver=3.1.2'></script>-->
+<script async="" type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDjSP5qZdefYhf1lI6iuBh0gT5BUgYQUWw&amp;sensor=true&callback=initialize"></script>
+<!--<script type="text/javascript" src='https://www.google.com/jsapi'></script>-->
+<!--<script src="<?php echo base_url(); ?>complementos/js/portal.js"></script>-->
+
+
 <h2 class="page-header">Editar Local:</h2>
 
 <div class="row">  
-    <form id="form_empresa_edit" class="form-horizontal" action="<?php echo base_url('empresa/editar_local') ?>" method="post">
+    <form id="form_empresa_register" class="form-horizontal" action="<?php echo base_url('empresa/crear_local') ?>" method="post">
         <div class="form-group">
             <label for="formGroup" class="col-sm-4 control-label">Nombre local:</label>
             <div class="col-sm-8">
@@ -37,9 +44,9 @@
                 <div id="googleMap" style="width:100%;height:20em;"></div>
                 <br>
                 <label id="txtLatitud"></label>
-                <input type="hidden" id="emp_lat" name="emp_lat" class="campos" value="">
+                <input type="hidden" id="emp_lat" name="emp_lat" class="campos">
                 <input type="hidden" id="emp_lng" name="emp_lng" class="campos">
-                <input type="hidden" id="emp_id" name="emp_id" class="campos">
+                <input type="hidden" id="emp_id" name="emp_id" class="campos" value="<?php echo $id_emp ?>">
                 <!--<div class="row">
                   <div class="col-sm-2">
                     <b>Longitud:</b>
@@ -59,7 +66,7 @@
             <div class="col-sm-4">
                 <button type="submit" class="btn btn-success btn-lg" id="ajaxformbtn" data-target="messages_div">
                     <span class="glyphicon glyphicon-ok"></span>
-                    Crear
+                    Editar
                 </button>
             </div>
         </div>
@@ -68,10 +75,10 @@
 <script>
     /*Envio del formulario por ajax*/
     var BASE_URL = "<?php echo base_url(); ?>";
-    $("#form_empresa_edit").submit(function (event) {
+    $("#form_empresa_register").submit(function (event) {
         event.preventDefault(); //Evitamos que el evento submit siga en ejecución, evitando que se recargue toda la página
-        $.post(BASE_URL + 'empresa/editar_local', //La variable url ha de contener la base_url() de nuestra aplicacion
-                $("#form_empresa_edit").serialize(), //Codificamos todo el formulario en formato de URL por medio de la receta
+        $.post(BASE_URL + 'empresa/crear_local', //La variable url ha de contener la base_url() de nuestra aplicacion
+                $("#form_empresa_register").serialize(), //Codificamos todo el formulario en formato de URL por medio de la receta
                 function (data) {
 
 //            alert('Resgistro Guardada Exitosamente');

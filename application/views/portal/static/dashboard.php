@@ -2,8 +2,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-$js = array(base_url('complementos/js/maps.js'));
-echo jsload($js);
 ?>
 <html lang="en">
     <head>
@@ -16,11 +14,13 @@ echo jsload($js);
         <link rel="stylesheet" href="<?php echo base_url(); ?>complementos/frameworks/bootstrap3.3.5/css/bootstrap.min.css">
         <link rel="stylesheet" href="<?php echo base_url(); ?>complementos/css/estilosportal.css">
         <link href="<?php echo base_url(); ?>complementos/css/estiloswitch.css" rel="stylesheet">
-        
+
 
         <!--GOOGLE MAPS-->
         <script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js?ver=3.1.2'></script>
-        <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?&sensor=true"></script>
+<!--        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDjSP5qZdefYhf1lI6iuBh0gT5BUgYQUWw&amp;sensor=true"></script>
+        <script type="text/javascript" src='https://www.google.com/jsapi'></script>-->
+
         <style type="text/css">
             #mapa_content {
                 height: 20em;
@@ -39,8 +39,8 @@ echo jsload($js);
         <div class="container-fluid">
             <div class="row">
                 <div class="col-sm-3 col-md-2 sidebar">
-                     <?php
-                    if (!$sidebar){
+                    <?php
+                    if (!$sidebar) {
                         $sidebar = '';
                     }
                     echo $sidebar;
@@ -54,12 +54,12 @@ echo jsload($js);
             </div>
         </div>
     </body>
-        <div class="row">
-            <?php
-            echo $footer;
-            ?>
-    <script src="<?php echo base_url(); ?>complementos/frameworks/jquery.min.js"></script>
-    <script src="<?php echo base_url(); ?>complementos/frameworks/bootstrap3.3.5/js/bootstrap.min.js"></script>
-    
-</body>
+    <div class="row">
+        <?php
+        echo $footer;
+        ?>
+        <script src="<?php echo base_url(); ?>complementos/frameworks/jquery.min.js"></script>
+        <script src="<?php echo base_url(); ?>complementos/frameworks/bootstrap3.3.5/js/bootstrap.min.js"></script>
+
+    </body>
 </html>

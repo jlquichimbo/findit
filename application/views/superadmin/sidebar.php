@@ -12,6 +12,7 @@
     <li><a href="<?= base_url('superadmin/index/load_empresas') ?>"><i class="glyphicon glyphicon-tasks"></i> Empresas</a></li>
     <li><a href="<?= base_url('superadmin/index/load_tipo_empresas') ?>"><i class="glyphicon glyphicon-tasks"></i> Tipo servicios</a></li>
     <li><a href="<?= base_url('superadmin/index/load_roles') ?>"><i class="glyphicon glyphicon-tasks"></i> Roles</a></li>
+    <li><a href="<?= base_url('superadmin/index/crear_local') ?>"><i class="glyphicon glyphicon-tasks"></i> Crear Local</a></li>
 </ul>
 <!-- /.row -->
 <!--<div class="user-panel">

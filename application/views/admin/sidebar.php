@@ -7,16 +7,6 @@
     </div>
     <!-- Blog Categories Well -->
     
-    
-      <!--  <ul class="nav nav-sidebar">
-            <li><a href="<?= base_url('admin/index') ?>">Inicio</a>
-            </li>
-            <li><a href="<?= base_url('admin/index/cargarCrearLocal') ?>">Crear Local</a>
-            </li>
-            <li><a href="<?= base_url('admin/index/cargarMisLocales') ?>">Mis Locales</a>
-            </li>
-        </ul> -->
-        
         <ul class="nav nav-sidebar">
             <li><a href="<?= base_url('admin/index') ?>"><i class="glyphicon glyphicon-plus"></i> Inicio</a></li>
             <li><a href="<?= base_url('admin/index/cargarCrearLocal') ?>"><i class="glyphicon glyphicon-tasks"></i> Crear Local</a></li>

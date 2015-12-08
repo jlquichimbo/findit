@@ -1,3 +1,8 @@
+<script src="<?php echo base_url(); ?>complementos/js/portal.js"></script>
+
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDjSP5qZdefYhf1lI6iuBh0gT5BUgYQUWw&amp;sensor=true"></script>
+<script type="text/javascript" src='https://www.google.com/jsapi'></script>
+
 <h2 class="page-header">Crear Local:</h2>
 
 <div class="row">  
