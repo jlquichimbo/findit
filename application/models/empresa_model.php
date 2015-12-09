@@ -185,14 +185,15 @@ Class Empresa_model extends CI_Model {
         return $query->result();
     }
 
-    function edit_empresa($id, $nombre, $direccion, $tipo_id, $admin_id, $lat, $lng, $open_hour = '0:00', $close_hour = '0:00') {
+    function update($id, $nombre, $direccion, $tipo_id, $admin_id, $lat, $lng, $open_hour = '0:00', $close_hour = '0:00') {
+        //Se deja comentado latitud y longitud para que no se actualizen esos campos
         $data_set = array(
             'nombre' => $nombre,
             'direccion' => $direccion,
             'tipo_id' => $tipo_id,
             'admin_id' => $admin_id,
-            'latitud' => $lat,
-            'longitud' => $lng,
+//            'latitud' => $lat,
+//            'longitud' => $lng,
             'hora_apertura' => $open_hour,
             'hora_cierre' => $close_hour,
         );

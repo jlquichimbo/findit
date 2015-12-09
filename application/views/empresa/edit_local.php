@@ -7,22 +7,20 @@
 
 <h2 class="page-header">Editar Local:</h2>
 
-<div class="row">  
-    <form id="form_empresa_register" class="form-horizontal" action="<?php echo base_url('empresa/crear_local') ?>" method="post">
+<div class="row" id="form_registro">  
+    <form id="form_empresa_edit" class="form-horizontal" action="<?php echo base_url('empresa/crear_local') ?>" method="post">
         <div class="form-group">
             <label for="formGroup" class="col-sm-4 control-label">Nombre local:</label>
             <div class="col-sm-8">
-                <input type="text" id="emp_name" name="emp_name" class="form-control campos" placeholder="Ingrese el nombre de su local" required autofocus>
+                <input value="<?php echo $empresa[0]->nombre ?>" type="text" id="emp_name" name="emp_name" class="form-control campos" placeholder="Ingrese el nombre de su local" required autofocus>
             </div>
         </div>
         <div class="form-group">
             <label for="formGroup" class="col-sm-4 control-label">Direccion:</label>
             <div class="col-sm-8">
-                <input type="text" id="emp_address" name="emp_address" class="form-control campos" placeholder="Ingrese un sector que referencie su local" required>
+                <input value="<?php echo $empresa[0]->direccion ?>" type="text" id="emp_address" name="emp_address" class="form-control campos" placeholder="Ingrese un sector que referencie su local" required>
             </div>
         </div>
-        <?php
-        ?>
         <div class="form-group">
             <label for="formGroup" class="col-sm-4 control-label">Categoria:</label>
             <div class="col-sm-8">
@@ -32,32 +30,28 @@
                         echo '<option value="' . $tipo->id . '">' . $tipo->nombre . '</option>';
                     }
                     ?>
-                    <!--                    <option value="normal">Local 1</option>
-                                        <option value="ingeniero">Local 2</option>
-                                        <option value="php">Local 3</option>-->
+                    <option value="normal">Local 1</option>
+                    <option value="ingeniero">Local 2</option>
+                    <option value="php">Local 3</option>
                 </select>
             </div>  
         </div>
-        <div class="form-group">
-            <label for="formGroup" class="col-sm-4 control-label">Seleccione ubicaci&oacute;n:</label>
-            <div class="col-sm-8">
-                <div id="googleMap" style="width:100%;height:20em;"></div>
+        <!--Se desabilita el mapa por ahora-->
+        <!--        <div class="form-group">
+                    <label for="formGroup" class="col-sm-4 control-label">Seleccione ubicaci&oacute;n:</label>
+                    <div class="col-sm-8">
+                        <div id="googleMap" style="width:100%;height:20em;"></div>
+                        <br>
+                        <label id="txtLatitud"></label>
+                    </div>
+                </div>
                 <br>
-                <label id="txtLatitud"></label>
-                <input type="hidden" id="emp_lat" name="emp_lat" class="campos">
-                <input type="hidden" id="emp_lng" name="emp_lng" class="campos">
-                <input type="hidden" id="emp_id" name="emp_id" class="campos" value="<?php echo $id_emp ?>">
-                <!--<div class="row">
-                  <div class="col-sm-2">
-                    <b>Longitud:</b>
-                  </div>
-                  <div class="col-sm-8">
-                    <label id="txtLatitud"></label>
-                  </div>
-                </div>-->
-            </div>
-        </div>
-        <br>
+        -->           
+        <input value="<?php echo $empresa[0]->latitud ?>"  type="hidden" id="emp_lat" name="emp_lat" class="campos">
+        <input value="<?php echo $empresa[0]->longitud ?>"  type="hidden" id="emp_lng" name="emp_lng" class="campos">
+        <input value="<?php echo $id_emp ?>" type="hidden" id="id_emp" name="id_emp" class="campos" >
+        <input value="<?php echo $empresa[0]->id_admin ?>"  type="hidden" id="admin_id" name="id_admin" class="campos">
+
         <div id="messages_div">
 
         </div>
@@ -75,24 +69,12 @@
 <script>
     /*Envio del formulario por ajax*/
     var BASE_URL = "<?php echo base_url(); ?>";
-    $("#form_empresa_register").submit(function (event) {
+    $("#form_empresa_edit").submit(function (event) {
         event.preventDefault(); //Evitamos que el evento submit siga en ejecución, evitando que se recargue toda la página
-        $.post(BASE_URL + 'empresa/crear_local', //La variable url ha de contener la base_url() de nuestra aplicacion
-                $("#form_empresa_register").serialize(), //Codificamos todo el formulario en formato de URL por medio de la receta
+        $.post(BASE_URL + 'empresa/editar', //La variable url ha de contener la base_url() de nuestra aplicacion
+                $("#form_empresa_edit").serialize(), //Codificamos todo el formulario en formato de URL por medio de la receta
                 function (data) {
-
-//            alert('Resgistro Guardada Exitosamente');
-                    $("#messages_div").html(data);
-//             alert(data);
-                    if (data == '<div style="font-size:16px;font-weight: bold" class="text-success"><span class="glyphicon glyphicon-ok-sign"></span> El proceso se ha completado correctamente. Empresa registrada</div>') {
-                        setTimeout(function () {
-//                   alert('entro alevento de tiempo');
-//                   $("#cedula_usuario").removeAttr('value');
-                            $(".campos").val('');
-                        }, 200);
-                    }
-                    // c.close();
-//                    $('div#sending_form').prepend(data); //Añadimos la respuesta AJAX a nuestro div de notificación de respuesta
+                    $("#form_registro").html(data);
                 });
     });
 
