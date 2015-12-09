@@ -60,12 +60,56 @@ class Usuario extends CI_Controller {
         }
     }
     
-    public function editar_view($id_user){
-        
+    public function editar_view($user_id){
+        $data['id_user'] = $user_id;
+        $data['roles'] = $this->usuario_model->get_roles();
+        $data['usuario'] = $this->usuario_model->get_data_by_id($user_id);
+        $view = $this->load->view('usuarios/edit_usuario', $data, TRUE);
+        echo $view;
     }
     
-    public function editar($id_user) {
-        
+    public function editar() {
+        $user_id = $this->input->post('id_user');
+        $user_cedula = $this->input->post('txtCedula');
+        $user_nombres = $this->input->post('txtNombre');
+        $user_apellidos = $this->input->post('txtApellido');
+        $user_telefono = $this->input->post('txtTelefono');
+        $user_mail = $this->input->post('txtMail');
+        $user_password = $this->input->post('txtPassword');
+        $user_rol = $this->input->post('rol');
+
+        //Aqui va a ir la ruta de la imagen
+        $user_usuario = '';
+
+        //Imprimimos los datos para verificar que los esta extrayendo correctamente:
+//        echo 'Datos a guardar: <br>';
+//        echo 'Cedula:' . $user_cedula . ' <br>';
+//        echo 'Nombre:' . $user_nombres . ' <br>';
+//        echo 'Apellido:' . $user_apellidos . ' <br>';
+//        echo 'Telefono: ' . $user_telefono . '<br>';
+//        echo 'Mail: ' . $user_mail . '<br>';
+//        echo 'PWD: ' . $user_password . '<br>';
+//        die();
+        $this->db->trans_begin(); // inicio de transaccion
+
+        $nuevo_id = $this->usuario_model->update($user_id, $user_cedula, $user_nombres, $user_apellidos, $user_usuario, $user_password, $user_mail, $user_telefono, $user_rol);
+        if ($nuevo_id <= 0) {
+            $this->db->trans_rollback();
+            $this->res_msj .= error_msg('<br>Ha ocurrido un error al actualizar el usuario en la base de datos.');
+            echo $this->res_msj;
+        }
+        // verifico que todo elproceso en si este bien ejecutado
+        if ($this->db->trans_status() === FALSE) {
+            $this->db->trans_rollback();
+            $this->res_msj .= error_msg('<br>Ha ocurrido un error al actualizar el usuario en la base de datos.');
+            echo $this->res_msj;
+//            echo error_msg('<br>Ha ocurrido un error al guardar el paciente en la base de datos.');
+        } else {
+            $this->res_msj .= success_msg('. Usuario Actualizado');
+            echo $this->res_msj;
+
+            $this->db->trans_commit(); // finaliza la transaccion de begin
+        }
         
     }
 

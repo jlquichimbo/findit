@@ -104,15 +104,6 @@ class Index extends CI_Controller {
         $this->load->view('portal/static/dashboard', $infoPage);
     }
     
-    function editar_local_view($id_emp) {
-        $data['id_emp'] = $id_emp;
-        $this->load->model('empresa_model');
-
-        $data['tipos_empresa'] = $this->empresa_model->get_tipos();
-        $view = $this->load->view('empresa/edit_local', $data, TRUE);
-        echo $view;
-        
-    }
     
     function crear_local() {
         $this->load->model('usuario_model');

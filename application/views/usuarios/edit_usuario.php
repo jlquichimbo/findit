@@ -5,24 +5,36 @@
         </div>
         <br/><br/>
     </div>
-    <form id="form_usuario_edit" class="form-horizontal" action="<?php echo base_url('usuario/registrar') ?>" method="post">
+    <form id="form_usuario_edit" class="form-horizontal" action="<?php echo base_url('usuario/editar') ?>" method="post">
         <div class="form-group">
             <label for="formGroup" class="col-sm-2 control-label">Cedula:</label>
             <div class="col-sm-2">
-                <input type="text" id="formGroup" name="txtCedula" value="<?php echo $usuario->cedula_ruc ?>" class="form-control" required autofocus>
+                <input value="<?php  echo $usuario[0]->cedula_ruc ?>" type="text" id="formGroup" name="txtCedula" class="form-control" required autofocus>
             </div>
         </div>
         <div class="form-group">
             <label for="formGroup" class="col-sm-2 control-label">Nombres:</label>
             <div class="col-sm-4">
-                <input type="text" id="formGroup" name="txtNombre" value="<?php echo $usuario->nombres ?>" class="form-control" required>
+                <input type="text" id="formGroup" name="txtNombre" value="<?php echo $usuario[0]->nombres ?>" class="form-control" required>
             </div>
         </div>
         <div class="form-group">
             <label for="formGroup" class="col-sm-2 control-label">Apellidos:</label>
             <div class="col-sm-4">
-                <input type="text" id="formGroup" name="txtApellido" value="<?php echo $usuario->apellidos ?>" class="form-control" required>
+                <input type="text" id="formGroup" name="txtApellido" value="<?php echo $usuario[0]->apellidos ?>" class="form-control" required>
             </div>
+        </div>
+       <div class="form-group">
+            <label for="formGroup" class="col-sm-2 control-label">Rol:</label>
+            <div class="col-sm-4">
+                <select id="rol" name="rol" class="form-control">
+                    <?php
+                    foreach ($roles as $rol) {
+                        echo '<option value="' . $rol->id . '">' . $rol->nombre . '</option>';
+                    }
+                    ?>
+                </select>
+            </div>  
         </div>
         <div class="form-group">
             <label for="formGroup" class="col-sm-2 control-label">Foto:</label>
@@ -39,13 +51,13 @@
         <div class="form-group">
             <label for="formGroup" class="col-sm-2 control-label">Telefono:</label>
             <div class="col-sm-4">
-                <input type="text" id="formGroup" name="txtTelefono" value="<?php echo $usuario->telefono ?>" class="form-control" required>
+                <input type="text" id="formGroup" name="txtTelefono" value="<?php echo $usuario[0]->telefono ?>" class="form-control" required>
             </div>
         </div>
         <div class="form-group">
             <label for="formGroup" class="col-sm-2 control-label">Correo:</label>
             <div class="col-sm-4">
-                <input type="mail" id="formGroup" name="txtMail" value="<?php echo $usuario->email ?>" class="form-control" required>
+                <input type="mail" id="formGroup" name="txtMail" value="<?php echo $usuario[0]->email ?>" class="form-control" required>
             </div>
         </div>
         <div class="form-group">
@@ -61,6 +73,7 @@
             </div>
         </div>
 
+        <input type="hidden" id="id_user" name="id_user" value="<?php echo $id_user ?>">
         <div class="form-group">
             <label for="formGroup" class="col-sm-2 control-label"></label>
             <div class="col-sm-4">
@@ -83,7 +96,7 @@
                 function (data) {
                     console.log(data);
 //                    $("#form_registro").html(data);
-                    $('#form_registro').prepend(data); //Añadimos la respuesta AJAX a nuestro div de notificación de respuesta
+                    $('#form_registro').html(data); //Añadimos la respuesta AJAX a nuestro div de notificación de respuesta
                 });
     });
 </script>

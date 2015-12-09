@@ -91,5 +91,14 @@ class Empresa extends CI_Controller {
             $this->db->trans_commit(); // finaliza la transaccion de begin
         }
     }
+     function editar_view($id_emp) {
+        $data['id_emp'] = $id_emp;
+        $this->load->model('empresa_model');
+
+        $data['tipos_empresa'] = $this->empresa_model->get_tipos();
+        $view = $this->load->view('empresa/edit_local', $data, TRUE);
+        echo $view;
+        
+    }
 
 }
