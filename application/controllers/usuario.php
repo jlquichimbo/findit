@@ -59,15 +59,15 @@ class Usuario extends CI_Controller {
             $this->db->trans_commit(); // finaliza la transaccion de begin
         }
     }
-    
-    public function editar_view($user_id){
+
+    public function editar_view($user_id) {
         $data['id_user'] = $user_id;
         $data['roles'] = $this->usuario_model->get_roles();
         $data['usuario'] = $this->usuario_model->get_data_by_id($user_id);
         $view = $this->load->view('usuarios/edit_usuario', $data, TRUE);
         echo $view;
     }
-    
+
     public function editar() {
         $user_id = $this->input->post('id_user');
         $user_cedula = $this->input->post('txtCedula');
@@ -110,9 +110,15 @@ class Usuario extends CI_Controller {
 
             $this->db->trans_commit(); // finaliza la transaccion de begin
         }
-        
+
     }
 
+    public function delete_view($id_user) {
+        $data['id_user'] = $id_user;
+        $data['usuario'] = $this->usuario_model->get_data_by_id($id_user);
+        $view = $this->load->view('usuarios/delete_usuario', $data, TRUE);
+        echo $view;
+    }
 }
 
 ?>

@@ -24,7 +24,7 @@
                 $editar = '<a user_id='.$usuario->id.' class="link_edit" href="#"> '
                         . '<i class="glyphicon glyphicon-pencil"> Editar</i></a>';
 
-                $eliminar = '<a  href="' . base_url("#") . '/' . $usuario->id . '">'
+                $eliminar = '<a user_id='.$usuario->id.' class="link_delete"  href="#">'
                         . '<i class= "glyphicon glyphicon-trash"/> Eliminar </a>';
                 echo Open('tr');
                 echo tagcontent('td', $usuario->id);
@@ -55,6 +55,26 @@
         //variable que almacena el id de la empresa
         $.ajax({
             url: BASE_URL + 'usuario/editar_view/'+id,
+            type: 'GET',
+//            dataType: "html",
+            success: function (data) {
+//                console.log(data);
+                $('#content_link').html(data);
+            }
+        });
+    });
+    
+    //Abrir formulario eliminar usuario por ajax
+    var BASE_URL = "<?php echo base_url(); ?>";
+    $('.link_delete').click(function (event){
+        // Obtener id del usuario clickeado
+        var id = $(this).attr("user_id");	
+
+        console.log(id);
+        event.preventDefault();//Para que no redirecciones a otro lado
+        //variable que almacena el id de la empresa
+        $.ajax({
+            url: BASE_URL + 'usuario/delete_view/'+id,
             type: 'GET',
 //            dataType: "html",
             success: function (data) {

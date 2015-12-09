@@ -58,16 +58,16 @@
     });
     
     //FUNCION PARA ELIMINAR CADA LOCAL
-    $('#link_delete').click(function (event){
+    $('.link_delete').click(function (event){
 //    $(document).on("click", ".link_edit", function (event) {
         // Obtener id del local clickeado
-        var id = $(this).attr("id");	
+        var id = $(this).attr("emp_id");	
 
         console.log(id);
         event.preventDefault();//Para que no redirecciones a otro lado
         //variable que almacena el id de la empresa
         $.ajax({
-            url: BASE_URL + 'empresa/delete/'+id,
+            url: BASE_URL + 'empresa/delete_view/'+id,
             type: 'GET',
 //            dataType: "html",
             success: function (data) {
