@@ -54,6 +54,14 @@ class Empresa extends CI_Controller {
         }
     }
 
+    function editar_view($id_emp) {
+        $data['id_emp'] = $id_emp;
+        $data['tipos_empresa'] = $this->empresa_model->get_tipos();
+        $data['empresa'] = $this->empresa_model->get_data($id_emp);
+        $view = $this->load->view('empresa/edit_local', $data, TRUE);
+        echo $view;
+    }
+
     public function editar() {
         $emp_id = $this->input->post('id_emp');
         $emp_admin_id = $this->input->post('id_admin');
@@ -87,12 +95,16 @@ class Empresa extends CI_Controller {
             $this->db->trans_commit(); // finaliza la transaccion de begin
         }
     }
-     function editar_view($id_emp) {
+
+    function delete_view($id_emp) {
         $data['id_emp'] = $id_emp;
         $data['tipos_empresa'] = $this->empresa_model->get_tipos();
         $data['empresa'] = $this->empresa_model->get_data($id_emp);
-        $view = $this->load->view('empresa/edit_local', $data, TRUE);
+        $view = $this->load->view('empresa/delete_local', $data, TRUE);
         echo $view;
+    }
+
+    function delete() {
         
     }
 

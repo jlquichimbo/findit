@@ -21,7 +21,8 @@
 
             foreach ($usuarios_list as $usuario) {
                 //Iconos para editar / eliminar
-                $editar = '<a id='.$usuario->id.' class="link_edit" href="#"> <i class="glyphicon glyphicon-pencil"> Editar</i></a>';
+                $editar = '<a user_id='.$usuario->id.' class="link_edit" href="#"> '
+                        . '<i class="glyphicon glyphicon-pencil"> Editar</i></a>';
 
                 $eliminar = '<a  href="' . base_url("#") . '/' . $usuario->id . '">'
                         . '<i class= "glyphicon glyphicon-trash"/> Eliminar </a>';
@@ -47,7 +48,7 @@
     var BASE_URL = "<?php echo base_url(); ?>";
     $('.link_edit').click(function (event){
         // Obtener id del usuario clickeado
-        var id = $(this).attr("id");	
+        var id = $(this).attr("user_id");	
 
         console.log(id);
         event.preventDefault();//Para que no redirecciones a otro lado

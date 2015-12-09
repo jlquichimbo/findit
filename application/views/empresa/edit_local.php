@@ -63,7 +63,14 @@
                     Editar
                 </button>
             </div>
-        </div>
+            <label for="formGroup" class="col-sm-2 control-label"></label>
+            <div class="col-sm-4">
+                <button id="btn_cancel" type="reset" class="btn btn-danger btn-lg">
+                    <span class="glyphicon glyphicon-remove"></span>
+                    Cancelar
+                </button>
+            </div>
+        </div>	
     </form>
 </div>
 <script>
@@ -76,6 +83,11 @@
                 function (data) {
                     $("#form_registro").html(data);
                 });
+    });
+    
+    //Ocultar el div al hacer clic en cancelar
+    $('#btn_cancel').click(function (){
+        $('#form_registro').hide(1000);
     });
 
 

@@ -17,10 +17,9 @@
             foreach ($empresas_list as $empresa) {
                 //Iconos para editar / eliminar
 //                $editar = '<a id="link_edit" href="' . base_url("#") . '/' . $empresa->id
-                $editar = '<a id="' . $empresa->id . '" class="link_edit" href="#"> <i class="glyphicon glyphicon-pencil"> Editar</i></a>';
+                $editar = '<a emp_id="' . $empresa->id . '" class="link_edit" href="#"> <i class="glyphicon glyphicon-pencil"> Editar</i></a>';
 
-                $eliminar = '<a id="link_delete" href="' . base_url("#") . '/' . $empresa->id . '">'
-                        . '<i class= "glyphicon glyphicon-trash"/> Eliminar </a>';
+                $eliminar = '<a emp_id="' . $empresa->id . '" class="link_delete" href="#"><i class= "glyphicon glyphicon-trash"/> Eliminar </a>';
                 echo Open('tr');
                 echo tagcontent('td', $empresa->id);
                 echo tagcontent('td', $empresa->nombre);
@@ -38,7 +37,28 @@
     //Abrir formulario editar local por ajax
 
     var BASE_URL = "<?php echo base_url(); ?>";
+    //FUNCION PARA EDITAR CADA LOCAL
     $('.link_edit').click(function (event){
+//    $(document).on("click", ".link_edit", function (event) {
+        // Obtener id del local clickeado
+        var id = $(this).attr("emp_id");	
+
+        console.log(id);
+        event.preventDefault();//Para que no redirecciones a otro lado
+        //variable que almacena el id de la empresa
+        $.ajax({
+            url: BASE_URL + 'empresa/editar_view/'+id,
+            type: 'GET',
+//            dataType: "html",
+            success: function (data) {
+//                console.log(data);
+                $('#content_link').html(data);
+            }
+        });
+    });
+    
+    //FUNCION PARA ELIMINAR CADA LOCAL
+    $('#link_delete').click(function (event){
 //    $(document).on("click", ".link_edit", function (event) {
         // Obtener id del local clickeado
         var id = $(this).attr("id");	
@@ -47,7 +67,7 @@
         event.preventDefault();//Para que no redirecciones a otro lado
         //variable que almacena el id de la empresa
         $.ajax({
-            url: BASE_URL + 'empresa/editar_view/'+id,
+            url: BASE_URL + 'empresa/delete/'+id,
             type: 'GET',
 //            dataType: "html",
             success: function (data) {
