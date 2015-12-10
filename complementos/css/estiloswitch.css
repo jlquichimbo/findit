@@ -62,3 +62,36 @@
 .onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
     right: 0px;
 }
+/*Formulario establecer horario*/
+.formContEstablecer{
+    background: red;
+    padding: 1em;
+}
+#form_horario{
+    background: green;
+}
+/*Estilos reloj*/
+#relojHoraInicio, #relojHoraCierre{
+    background: #000;
+    width: 100%;
+    color: #fff;
+    padding: 0.2em;
+    padding-right: 0.3em;
+}
+
+.filaReloj, .filaMando, .filaEvento{
+    text-align: center;
+    color: #000;
+    margin: auto;
+}
+.filaReloj{
+    color: #fff;
+    background: red;
+}
+.colMando{
+    background: #fff;    
+    
+}
+.filaEvento{
+    color: #fff;
+}
