@@ -13,7 +13,8 @@ class Index extends CI_Controller {
         $this->load->model('empresa_model');
     }
 
-    public function index() {
+    public function index() {  
+        
         $infoPage['titulo'] = 'Administrador';
         $this->load->model('usuario_model');
 

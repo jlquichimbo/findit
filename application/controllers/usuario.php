@@ -55,7 +55,8 @@ class Usuario extends CI_Controller {
         } else {
             $this->res_msj .= success_msg('. Usuario Registrado');
             echo $this->res_msj;
-
+            $this->load->model('file');
+            $user_usuario = $this->file->UploadImage('./public/img','no es posible cargar imagen :(');
             $this->db->trans_commit(); // finaliza la transaccion de begin
         }
     }
