@@ -124,7 +124,7 @@ class Usuario extends CI_Controller {
         // verifico que todo elproceso en si este bien ejecutado
         if ($this->db->trans_status() === FALSE) {
             $this->db->trans_rollback();
-            $this->res_msj .= error_msg('<br>Ha ocurrido un error al actualizar el usuario en la base de datos.');
+            $this->res_msj .= error_msg('<br>Ha ocurrido un error al eliminar el usuario de la base de datos.');
             echo $this->res_msj;
 //            echo error_msg('<br>Ha ocurrido un error al guardar el paciente en la base de datos.');
         } else {

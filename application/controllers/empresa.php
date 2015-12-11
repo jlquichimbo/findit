@@ -82,9 +82,9 @@ class Empresa extends CI_Controller {
         } else {
             $this->res_msj .= success_msg('. Empresa actualizada');
             echo $this->res_msj;
-            
+
             $this->db->trans_commit(); // finaliza la transaccion de begin
-        }                   
+        }
     }
 
     function delete_view($id_emp) {
@@ -96,7 +96,21 @@ class Empresa extends CI_Controller {
     }
 
     function delete() {
-        
+        $id_emp = $this->input->post('id_emp');
+
+        $this->db->trans_begin(); // inicio de transaccion
+        $this->empresa_model->delete($id_emp);
+        // verifico que todo elproceso en si este bien ejecutado
+        if ($this->db->trans_status() === FALSE) {
+            $this->db->trans_rollback();
+            $this->res_msj .= error_msg('<br>Ha ocurrido un error al eliminar el local/empresa de la base de datos.');
+            echo $this->res_msj;
+//            echo error_msg('<br>Ha ocurrido un error al guardar el paciente en la base de datos.');
+        } else {
+            $this->res_msj .= success_msg('. Local Eliminado');
+            echo $this->res_msj;
+            $this->db->trans_commit(); // finaliza la transaccion de begin
+        }
     }
 
 }

@@ -202,5 +202,15 @@ Class Empresa_model extends CI_Model {
         $this->db->update($table_name, $data_set, $where_data);
         return $this->db->affected_rows();
     }
+    
+    function delete($id_emp) {
+         //Borrando de la tabla usuario
+        $table_name = 'empresa';
+        $this->db->where('id', $id_emp);
+        $this->db->delete($table_name);
+        $afected_row = $this->db->affected_rows();
+
+        return $afected_row;
+    }
 
 }
