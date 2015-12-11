@@ -107,6 +107,7 @@
             </div>
         </aside>
         <section class="col-md-8">
+           <!-- <p>class="col-md-8"</p>-->
             <br>
             <div id="mapa_content"></div>
             <br>

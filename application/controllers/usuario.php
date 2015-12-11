@@ -23,9 +23,9 @@ class Usuario extends CI_Controller {
         $user_nombres = $this->input->post('txtNombre');
         $user_apellidos = $this->input->post('txtApellido');
         $file_name = $this->input->post('file_name');
-        $user_telefono = $this->input->post('txtTelefono');
+        $user_telefono = $this->input->post('txtPassword');
         $user_mail = $this->input->post('txtMail');
-        $user_password = $this->input->post('txtPassword');
+        $user_password = $this->input->post('txtTelefono');
         //$user_usuario = $user_mail;
 
 

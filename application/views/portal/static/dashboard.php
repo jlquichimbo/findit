@@ -23,19 +23,23 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
         <style type="text/css">
             #mapa_content {
-                height: 20em;
+                height: 60em;
+                
             }
+            
+            
+            
+            
         </style>
     </head>
     <body>
 
-        <nav class="navbar navbar-inverse navbar-static-top" role="navigation">
-            <div class="container headerFindIt">
+     
                 <?php
                 echo $header;
                 ?>
-            </div>
-        </nav>
+
+ 
         <div class="container-fluid">
             <div class="row">
                 <div class="col-sm-3 col-md-2 sidebar">

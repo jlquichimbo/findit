@@ -34,7 +34,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a href="<?= base_url('portal') ?>" class="navbar-brand"><img src="<?php echo base_url(); ?>/complementos/img/icon-logo.jpg" alt="Loguito"></a>
+                        <a href="<?= base_url('portal') ?>"><img src="<?php echo base_url(); ?>/complementos/img/icon-logo.jpg" alt="Loguito"></a>
                     </div>
                     <!--Inicia menu-->
                     <div class="collapse navbar-collapse" id="navegacion-fm">

@@ -62,17 +62,17 @@ function formatear(hom){
 
 function dibujarReloj(h, m){
 	//Primer reloj
-	var contenedor="<h4><label id='infoHoraInicio'>"+h+" : "+m+"</label></h4><hr><div class='row filaMando'><div class='col-md-6 colMando'><h2 onclick='cambiarHora(11)'>+</h2></div><div class='col-md-6 colMando'><h2 onclick='cambiarMinuto(11)'>+</h2></div></div>";
+	var contenedor="<h4><label id='infoHoraInicio'>"+h+" : "+m+"</label></h4><hr><div class='row filaMando'><div class='col-md-6 colMandoIz'><h4 onclick='cambiarHora(11)'>+</h4></div><div class='col-md-6 colMandoDer'><h4 onclick='cambiarMinuto(11)'>+</h4></div></div>";
 	contenedor=contenedor+"<div class='row filaReloj'><div class='col-md-6'><h2 id='hora'>"+h+"</h2></div><div class='col-md-6'><h2 id='minuto'>"+m+"</h2></div></div>";
-	contenedor=contenedor+"<div class='row filaMando'><div class='col-md-6 colMando'><h2 onclick='cambiarHora(21)'>-</h2></div><div class='col-md-6 colMando'><h2 onclick='cambiarMinuto(21)'>-</h2></div></div>";
-	contenedor=contenedor+"<div class='row filaEvento'><div class='col-md-6'><label id='btnAceptar' onclick='setHora(1)'>Seleccionar</label></div><div class='col-md-6'><label id='btnCancelar' onclick='cancelar(1)'>Cancelar</label></div></div>";
+	contenedor=contenedor+"<div class='row filaMando'><div class='col-md-6 colMandoIz'><h4 onclick='cambiarHora(21)'>-</h4></div><div class='col-md-6 colMandoDer'><h4 onclick='cambiarMinuto(21)'>-</h4></div></div>";
+	contenedor=contenedor+"<div class='row filaEvento'><div class='col-md-6 col-Evento'><label class='col-Evento' id='btnAceptar' onclick='setHora(1)'>Seleccionar</label></div><div class='col-md-6 col-Evento'><label class='col-Evento' id='btnCancelar' onclick='cancelar(1)'>Cancelar</label></div></div>";
 	document.getElementById("relojHoraInicio").innerHTML = contenedor;	
 	document.getElementById("relojHoraInicio").style.display = "block";
 	//Segundo reloj
-	contenedor="<h4><label id='infoHoraCierre'>00 : 00</label></h4><hr><div class='row filaMando'><div class='col-md-6 colMando'><h2 onclick='cambiarHora(12)'>+</h2></div><div class='col-md-6 colMando'><h2 onclick='cambiarMinuto(12)'>+</h2></div></div>";
+	contenedor="<h4><label id='infoHoraCierre'>00 : 00</label></h4><hr><div class='row filaMando'><div class='col-md-6 colMandoIz'><h4 onclick='cambiarHora(12)'>+</h4></div><div class='col-md-6 colMandoDer'><h4 onclick='cambiarMinuto(12)'>+</h4></div></div>";
 	contenedor=contenedor+"<div class='row filaReloj'><div class='col-md-6'><h2 id='rhoraCierre'>00</h2></div><div class='col-md-6'><h2 id='minutoCierre'>00</h2></div></div>";
-	contenedor=contenedor+"<div class='row filaMando'><div class='col-md-6 colMando'><h2 onclick='cambiarHora(22)'>-</h2></div><div class='col-md-6 colMando'><h2 onclick='cambiarMinuto(22)'>-</h2></div></div>";
-	contenedor=contenedor+"<div class='row filaEvento'><div class='col-md-6'><label id='btnAceptarCierre' onclick='setHora(2)'>Seleccionar</label></div><div class='col-md-6'><label id='btnCancelarCierre' onclick='cancelar(2)'>Cancelar</label></div></div>";
+	contenedor=contenedor+"<div class='row filaMando'><div class='col-md-6 colMandoIz'><h4 onclick='cambiarHora(22)'>-</h4></div><div class='col-md-6 colMandoDer'><h4 onclick='cambiarMinuto(22)'>-</h4></div></div>";
+	contenedor=contenedor+"<div class='row filaEvento'><div class='col-md-6 col-Evento'><label class='col-Evento' id='btnAceptarCierre' onclick='setHora(2)'>Seleccionar</label></div><div class='col-md-6 col-Evento'><label class='col-Evento' id='btnCancelarCierre' onclick='cancelar(2)'>Cancelar</label></div></div>";
 	document.getElementById("relojHoraCierre").innerHTML = contenedor;
 }
 function cambiarHora(indicador){

@@ -61,8 +61,9 @@
         </div>
         <div class="form-group">
             <label for="formGroup" class="col-sm-2 control-label"></label>
+            <div class="pull-right">
             <div class="col-sm-4">
-                <div class="pull-right">
+                
                 <button type="submit" class="btn btn-success btn-lg" id="ajaxformbtn" data-target="messages_div">
                     <span class="glyphicon glyphicon-ok"></span>
                     Crear
