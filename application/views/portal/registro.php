@@ -26,10 +26,8 @@
         </div>
         <div class="form-group">
             <label for="formGroup" class="col-sm-2 control-label">Foto:</label>
-            <div class="col-sm-4">      
-                <form method="post" action="accion.php" enctype="multipart/form-data">
-                <input name="file_name" type="file" />
-                <!--<input type="file" id="formGroup" name="file_name" class="form-control">-->
+            <div class="col-sm-4">
+                <input type="file" id="formGroup" name="file_name" class="form-control">
             </div>
         </div>
         <!--			<div class="form-group">
@@ -47,7 +45,7 @@
         <div class="form-group">
             <label for="formGroup" class="col-sm-2 control-label">Correo:</label>
             <div class="col-sm-4">
-                <input type="email" id="formGroup" name="txtMail" class="form-control" required>
+                <input type="mail" id="formGroup" name="txtMail" class="form-control" required>
             </div>
         </div>
         <div class="form-group">
@@ -62,7 +60,6 @@
                 <input type="password" id="formGroup" name="txtConfirmarPassword" class="form-control" required>
             </div>
         </div>
-         
 
         <div class="form-group">
             <label for="formGroup" class="col-sm-2 control-label"></label>

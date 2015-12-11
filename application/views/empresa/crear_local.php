@@ -5,40 +5,41 @@
 
 <h2 class="page-header">Crear Local:</h2>
 
-<div class="row">  
+<div class="well">  
     <form id="form_empresa_register" class="form-horizontal" action="<?php echo base_url('empresa/crear_local') ?>" method="post">
         <div class="form-group">
             <label for="formGroup" class="col-sm-4 control-label">Nombre local:</label>
-            <div class="col-sm-8">
-                <input type="text" id="emp_name" name="emp_name" class="form-control campos" placeholder="Ingrese el nombre de su local" required autofocus>
+            <div class="col-sm-4">
+                <input type="text" id="emp_name" name="emp_name" class="form-control campos" placeholder="Digite el nombre de su local" required autofocus>
             </div>
         </div>
         <div class="form-group">
             <label for="formGroup" class="col-sm-4 control-label">Direccion:</label>
-            <div class="col-sm-8">
-                <input type="text" id="emp_address" name="emp_address" class="form-control campos" placeholder="Ingrese un sector que referencie su local" required>
+            <div class="col-sm-4">
+                <input type="text" id="emp_address" name="emp_address" class="form-control campos" placeholder="Digite las calles de la ubicación de su local" required>
             </div>
         </div>
         <?php
         ?>
         <div class="form-group">
             <label for="formGroup" class="col-sm-4 control-label">Categoria:</label>
-            <div class="col-sm-8">
+            <div class="col-sm-4">
                 <select id="emp_tipo" name="emp_tipo" class="form-control">
                     <?php
                     foreach ($tipos_empresa as $tipo) {
                         echo '<option value="' . $tipo->id . '">' . $tipo->nombre . '</option>';
                     }
                     ?>
-                    <!--                    <option value="normal">Local 1</option>
-                                        <option value="ingeniero">Local 2</option>
-                                        <option value="php">Local 3</option>-->
                 </select>
             </div>  
         </div>
         <div class="form-group">
             <label for="formGroup" class="col-sm-4 control-label">Seleccione ubicaci&oacute;n:</label>
-            <div class="col-sm-8">
+            <div class="col-sm-4">
+                 <input type="text" id="emp_address" name="emp_address" class="form-control campos" placeholder="Pinche en el mapa la ubicación de su local" required  disabled="disabled" >
+                 <br>
+            </div>
+               
                 <div id="googleMap" style="width:100%;height:20em;"></div>
                 <br>
                 <label id="txtLatitud"></label>
@@ -52,7 +53,7 @@
                     <label id="txtLatitud"></label>
                   </div>
                 </div>-->
-            </div>
+            
         </div>
         <br>
         <div id="messages_div">
@@ -61,10 +62,12 @@
         <div class="form-group">
             <label for="formGroup" class="col-sm-2 control-label"></label>
             <div class="col-sm-4">
+                <div class="pull-right">
                 <button type="submit" class="btn btn-success btn-lg" id="ajaxformbtn" data-target="messages_div">
                     <span class="glyphicon glyphicon-ok"></span>
                     Crear
                 </button>
+                    </div>
             </div>
         </div>
     </form>

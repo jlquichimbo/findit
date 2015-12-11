@@ -1,8 +1,9 @@
 <!-- Page Sidebar -->
 <!-- Blog Sidebar Widgets Column -->
 <!-- Blog Search Well -->
+<span class="x-label-value" id="ext-gen30"><br></span>
 <div class="well">
-    <center><a href="<?= base_url('superadmin/index') ?>"><img src="<?php echo base_url(); ?>/complementos/img/avatar-login.png" width="150" heigth="150"></a></center>
+    <center><a><img src="<?php echo base_url(); ?>/complementos/img/avatar-login.png" width="130" heigth="150"></a></center>
   <!--<center><a href="index-portal.php"><img src="../img/usuario.jpeg" width="150" heigth="150"></a></center>-->
 </div>
 <!-- Blog Categories Well -->
@@ -24,10 +25,4 @@
 
 
 <?php
-
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 

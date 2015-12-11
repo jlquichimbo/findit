@@ -47,9 +47,8 @@ class Empresa extends CI_Controller {
             echo $this->res_msj;
 //            echo error_msg('<br>Ha ocurrido un error al guardar el paciente en la base de datos.');
         } else {
-            $this->res_msj .= success_msg('. Empresa registrada');
+            $this->res_msj .= success_msg('. Datos actualizados');
             echo $this->res_msj;
-
             $this->db->trans_commit(); // finaliza la transaccion de begin
         }
     }
@@ -71,14 +70,6 @@ class Empresa extends CI_Controller {
         $emp_latitud = $this->input->post('emp_lat');
         $emp_longitud = $this->input->post('emp_lng');
 
-        //Imprimimos los datos para verificar que los esta extrayendo correctamente:
-//        echo 'Datos a guardar: <br>';
-//        echo 'Nombre:' . $emp_nombre . ' <br>';
-//        echo 'Direccion: ' . $emp_direccion . '<br>';
-//        echo 'Tipo: ' . $emp_tipo . '<br>';
-//        echo 'Latitud: ' . $emp_latitud . '<br>';
-//        echo 'Longitud: ' . $emp_longitud . '<br>';
-
         $this->db->trans_begin(); // inicio de transaccion
 
         $nuevo_id = $this->empresa_model->update($emp_id, $emp_nombre, $emp_direccion, $emp_tipo, $emp_admin_id, $emp_latitud, $emp_longitud);
@@ -91,9 +82,9 @@ class Empresa extends CI_Controller {
         } else {
             $this->res_msj .= success_msg('. Empresa actualizada');
             echo $this->res_msj;
-
+            
             $this->db->trans_commit(); // finaliza la transaccion de begin
-        }
+        }                   
     }
 
     function delete_view($id_emp) {

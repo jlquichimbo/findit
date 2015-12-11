@@ -1,11 +1,12 @@
 <div id="content_link"></div>
 
+
+
 <h3>Listado Usuarios</h3>
 <div class="table-responsive">
-    <table class="table table-hover">
+    <table id="myDataTable">
         <thead>
             <tr>
-                <th>Id</th>
                 <th>Nombres</th>
                 <th>Apellidos</th>
                 <th>C.I. / RUC</th>
@@ -22,12 +23,11 @@
             foreach ($usuarios_list as $usuario) {
                 //Iconos para editar / eliminar
                 $editar = '<a user_id='.$usuario->id.' class="link_edit" href="#"> '
-                        . '<i class="glyphicon glyphicon-pencil"> Editar</i></a>';
+                        . '<i class="glyphicon glyphicon-pencil"></i></a>';
 
                 $eliminar = '<a user_id='.$usuario->id.' class="link_delete"  href="#">'
-                        . '<i class= "glyphicon glyphicon-trash"/> Eliminar </a>';
+                        . '<i class= "glyphicon glyphicon-trash"/></a>';
                 echo Open('tr');
-                echo tagcontent('td', $usuario->id);
                 echo tagcontent('td', $usuario->nombres);
                 echo tagcontent('td', $usuario->apellidos);
                 echo tagcontent('td', $usuario->cedula_ruc);
@@ -86,3 +86,20 @@
     
     
 </script>
+<script type="text/javascript" language="javascript" src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" language="javascript" src="//cdn.datatables.net/1.10.4/js/jquery.dataTables.min.js"></script>
+<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.4/css/jquery.dataTables.css">
+
+
+
+<script type="text/javascript" charset="utf-8"> 
+	
+		$('#myDataTable').dataTable( {
+			"bPaginate": true,
+			"bLengthChange": true,
+			"bFilter": true,
+			"bSort": true,
+			"bInfo": true,
+			"bAutoWidth": true } );
+
+</script> 

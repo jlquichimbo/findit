@@ -22,23 +22,25 @@ class Usuario extends CI_Controller {
         $user_cedula = $this->input->post('txtCedula');
         $user_nombres = $this->input->post('txtNombre');
         $user_apellidos = $this->input->post('txtApellido');
-        $file_name = $this->input->post('file_name');
         $user_telefono = $this->input->post('txtTelefono');
         $user_mail = $this->input->post('txtMail');
         $user_password = $this->input->post('txtPassword');
 
-        //$user_usuario = $user_mail;
-        
-        
+        $user_usuario = $user_mail;
+
+        //Imprimimos los datos para verificar que los esta extrayendo correctamente:
+//        echo 'Datos a guardar: <br>';
+//        echo 'Cedula:' . $user_cedula . ' <br>';
+//        echo 'Nombre:' . $user_nombre . ' <br>';
+//        echo 'Apellido:' . $user_apellido . ' <br>';
+//        echo 'Direccion: ' . $user_direccion . '<br>';
+//        echo 'Telefono: ' . $user_telefono . '<br>';
+//        echo 'Mail: ' . $user_mail . '<br>';
+//        echo 'PWD: ' . $user_password . '<br>';
+//        die();
         $this->db->trans_begin(); // inicio de transaccion
-        
-        
-        
-        $this->load->model('file');
-        $this->file->UploadImage('./public/img/','no es posible cargar imagen');
-        
-        $nuevo_id = $this->usuario_model->save_new($user_cedula, $user_nombres, $user_apellidos, $file_name, $user_telefono, $user_mail, $user_password);
-        
+
+        $nuevo_id = $this->usuario_model->save_new($user_cedula, $user_nombres, $user_apellidos, $user_usuario, $user_password, $user_mail, $user_telefono);
         if ($nuevo_id <= 0) {
             $this->db->trans_rollback();
             $this->res_msj .= error_msg('<br>Ha ocurrido un error al guardar el usuario en la base de datos.');
@@ -51,13 +53,10 @@ class Usuario extends CI_Controller {
             echo $this->res_msj;
 //            echo error_msg('<br>Ha ocurrido un error al guardar el paciente en la base de datos.');
         } else {
-            header("Location:".base_url()."portal/vistaloguearUsuario");
-           /* $this->res_msj .= success_msg('. Usuario Registrado');
-            echo $this->res_msj;*/
-            
-            
-            
-            
+            $this->res_msj .= success_msg('. Usuario Registrado');
+            echo $this->res_msj;
+            $this->load->model('file');
+            $user_usuario = $this->file->UploadImage('./public/img','no es posible cargar imagen :(');
             $this->db->trans_commit(); // finaliza la transaccion de begin
         }
     }

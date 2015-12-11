@@ -44,7 +44,17 @@
                         </p>
                     </div>
                 </div>
+                    <!-- Left and right controls -->
+    <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
             </div>
+
         </div>
     </div>
 </div>
@@ -97,7 +107,9 @@
             </div>
         </aside>
         <section class="col-md-8">
+            <br>
             <div id="mapa_content"></div>
+            <br>
         </section>
     </div>
 </section>
@@ -108,6 +120,9 @@ $js = array(base_url('complementos/js/comunes.js'),
 );
 echo jsload($js);
 ?>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  
 <script src="<?php echo base_url(); ?>complementos/frameworks/moment.min.js"></script>
 <script src="<?php echo base_url(); ?>complementos/js/reloj.js"></script>
 <script src="<?php echo base_url(); ?>complementos/js/portal.js"></script>
