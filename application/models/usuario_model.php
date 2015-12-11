@@ -103,7 +103,7 @@ Class Usuario_model extends CI_Model {
         $table_name = 'usuario';
         $this->db->where('id', $user_id);
         $this->db->update($table_name, $data_set);
-        $afected_row =  $this->db->affected_rows();
+        $afected_row = $this->db->affected_rows();
 
         //Guardar rol nuevo
         $rol_data = array(
@@ -112,6 +112,21 @@ Class Usuario_model extends CI_Model {
         $this->db->where('usuario_id', $user_id);
         $this->db->update('usuario_rol', $rol_data);
 
+        return $afected_row;
+    }
+
+    function delete($user_id) {
+        //Borrando de la tabla usuario
+        $table_name = 'usuario';
+        $this->db->where('id', $user_id);
+        $this->db->delete($table_name);
+        $afected_row = $this->db->affected_rows();
+        
+        //Borrando de la tabla usuario_rol
+        $table_name = 'usuario_rol';
+        $this->db->where('usuario_id', $user_id);
+        $this->db->delete($table_name);
+        
         return $afected_row;
     }
 
