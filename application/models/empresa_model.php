@@ -144,6 +144,14 @@ Class Empresa_model extends CI_Model {
         $query = $this->db->get();
         return $query->result();
     }
+    /* Extrae UN tipo de empresa/servicio */
+
+    function get_tipo($id_tipo) {
+        $this->db->from('empresa_tipo');
+
+        $query = $this->db->get();
+        return $query->result();
+    }
 
     //obtener los 5 locales mas cercanos de la ubicacion del usuario
 
@@ -185,7 +193,8 @@ Class Empresa_model extends CI_Model {
         return $query->result();
     }
 
-    function update($id, $nombre, $direccion, $tipo_id, $admin_id, $lat, $lng, $open_hour = '0:00', $close_hour = '0:00') {
+    /*Actualiza los datos de empresa/local */
+    function update_local($id, $nombre, $direccion, $tipo_id, $admin_id, $lat, $lng, $open_hour = '0:00', $close_hour = '0:00') {
         //Se deja comentado latitud y longitud para que no se actualizen esos campos
         $data_set = array(
             'nombre' => $nombre,
@@ -203,10 +212,34 @@ Class Empresa_model extends CI_Model {
         return $this->db->affected_rows();
     }
     
-    function delete($id_emp) {
+    /*Borra una empresa/ local*/
+    function delete_local($id_emp) {
          //Borrando de la tabla usuario
         $table_name = 'empresa';
         $this->db->where('id', $id_emp);
+        $this->db->delete($table_name);
+        $afected_row = $this->db->affected_rows();
+
+        return $afected_row;
+    }
+    
+    /*Actualiza los datos de un tipo de empresa/local */
+    function update_tipo($id, $nombre) {
+        //Se deja comentado latitud y longitud para que no se actualizen esos campos
+        $data_set = array(
+            'nombre' => $nombre,
+        );
+        $table_name = 'empresa_tipo';
+        $where_data = array('id'=>$id);
+        $this->db->update($table_name, $data_set, $where_data);
+        return $this->db->affected_rows();
+    }
+    
+    /*Borra un tipo de empresa/ local*/
+    function delete_tipo($id_tipo) {
+         //Borrando de la tabla usuario
+        $table_name = 'empresa_tipo';
+        $this->db->where('id', $id_tipo);
         $this->db->delete($table_name);
         $afected_row = $this->db->affected_rows();
 

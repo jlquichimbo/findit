@@ -44,7 +44,7 @@
         event.preventDefault();//Para que no redirecciones a otro lado
         //variable que almacena el id de la empresa
         $.ajax({
-            url: BASE_URL + 'empresa/editar_view/'+id,
+            url: BASE_URL + 'empresa/editar_local_view/'+id,
             type: 'GET',
 //            dataType: "html",
             success: function (data) {
@@ -64,7 +64,7 @@
         event.preventDefault();//Para que no redirecciones a otro lado
         //variable que almacena el id de la empresa
         $.ajax({
-            url: BASE_URL + 'empresa/delete_view/'+id,
+            url: BASE_URL + 'empresa/delete_local_view/'+id,
             type: 'GET',
 //            dataType: "html",
             success: function (data) {

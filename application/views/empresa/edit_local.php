@@ -30,9 +30,6 @@
                         echo '<option value="' . $tipo->id . '">' . $tipo->nombre . '</option>';
                     }
                     ?>
-                    <option value="normal">Local 1</option>
-                    <option value="ingeniero">Local 2</option>
-                    <option value="php">Local 3</option>
                 </select>
             </div>  
         </div>
