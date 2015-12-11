@@ -62,3 +62,61 @@
 .onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
     right: 0px;
 }
+/*Formulario establecer horario*/
+.formContEstablecer{
+    padding: 1em;
+}
+#form_horario{
+    width: 100%;
+    padding: 1em;
+    border-radius: 1em;
+    border: 0.2em solid #000;
+}
+.nomLocal{
+    margin-left: 2em;
+}
+.etiquetaHora{
+    text-align: right;
+    margin: 0;
+    padding: 0;
+}
+/*Estilos reloj*/
+#relojHoraInicio, #relojHoraCierre{
+    background: #000;
+    width: 100%;
+    color: #fff;
+    padding: 0.2em;
+    padding-right: 0.3em;
+}
+#LineaHorario{
+    border: 0.1em solid #000;
+}
+
+.filaReloj, .filaMando, .filaEvento{
+    text-align: center;
+    color: #000;
+    margin: auto;
+}
+.filaReloj{
+    color: #fff;
+    background: red;
+    margin-top: 0.3em; 
+    margin-bottom: 0.2em;
+}
+.colMandoIz, .colMandoDer{
+    background: green;
+    width: 49%;
+    cursor:pointer; 
+}
+.colMandoDer{
+    margin-left: 0.1em;
+}
+.colMandoIz{
+    margin-right: 0.1em;   
+}
+.filaEvento{
+    color: #fff;
+}
+.col-Evento{
+    cursor:pointer;
+}
