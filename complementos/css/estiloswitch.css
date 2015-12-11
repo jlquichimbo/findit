@@ -64,13 +64,13 @@
 }
 /*Formulario establecer horario*/
 .formContEstablecer{
-    background: red;
     padding: 1em;
 }
 #form_horario{
-    background: green;
     width: 100%;
     padding: 1em;
+    border-radius: 1em;
+    border: 0.2em solid #000;
 }
 .nomLocal{
     margin-left: 2em;
@@ -88,6 +88,9 @@
     padding: 0.2em;
     padding-right: 0.3em;
 }
+#LineaHorario{
+    border: 0.1em solid #000;
+}
 
 .filaReloj, .filaMando, .filaEvento{
     text-align: center;
@@ -97,11 +100,23 @@
 .filaReloj{
     color: #fff;
     background: red;
+    margin-top: 0.3em; 
+    margin-bottom: 0.2em;
 }
-.colMando{
-    background: #fff;    
-    
+.colMandoIz, .colMandoDer{
+    background: green;
+    width: 49%;
+    cursor:pointer; 
+}
+.colMandoDer{
+    margin-left: 0.1em;
+}
+.colMandoIz{
+    margin-right: 0.1em;   
 }
 .filaEvento{
     color: #fff;
+}
+.col-Evento{
+    cursor:pointer;
 }

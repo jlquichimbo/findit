@@ -2,7 +2,7 @@
     <div class="col-sm-12">
         <form id="form_horario">
             <h2>Establecer Horario:</h2>
-            <hr>
+            <hr id ="LineaHorario">
             <div class="row">
                 <div class="col-md-9">
                     <div class="row nomLocal">
@@ -57,7 +57,7 @@
                     </div>
                 </div>
                 <div class="col-md-3">
-                    
+                    <img src="<?php echo base_url(); ?>complementos/img/reloj.gif" class="img-responsive" width="65%" alt="Reloj animado">
                 </div>
             </div>          
         </form>
