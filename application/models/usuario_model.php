@@ -64,20 +64,23 @@ Class Usuario_model extends CI_Model {
 
     /* Guarda un nuevo usuario */
 
-    function save_new($cedula, $nombres, $apellidos, $usuario, $password, $email, $telefono) {
+    function save_new($cedula, $nombres, $apellidos, $usuario, $telefono, $email, $password) {
         $form_data = array(
             'cedula_ruc' => $cedula,
             'nombres' => $nombres,
             'apellidos' => $apellidos,
             'usuario' => $usuario,
-            'password' => $password,
-            'email' => $email,
             'telefono' => $telefono,
+            'email' => $email,
+            'password' => $password,
+            
+            
         );
         $table_name = 'usuario';
         $this->db->insert($table_name, $form_data);
         $usuario_id = $this->db->insert_id();
-
+        
+        
         //Guardar rol 2
         $rol_data = array(
             'usuario_id' => $usuario_id,
