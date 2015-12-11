@@ -4,9 +4,9 @@ function crearBoton(estados){
 	var boton="";
 	for (var i = 0; i < estados.length; i++) {
 		if (estados[i][1]==1) {
-			boton="<div class='onoffswitch'><input type='checkbox' name='onoffswitch"+estados[i][0]+"' class='onoffswitch-checkbox' id='myonoffswitch"+estados[i][0]+"' checked><label class='onoffswitch-label' for='myonoffswitch"+estados[i][0]+"'><span class='onoffswitch-inner'></span><span class='onoffswitch-switch'></span></label></div>";
+			boton="<div class='onoffswitch'><input type='checkbox' onclick='establecerHorario("+estados[i][0]+")' name='onoffswitch"+estados[i][0]+"' class='onoffswitch-checkbox' id='myonoffswitch"+estados[i][0]+"' checked><label class='onoffswitch-label' for='myonoffswitch"+estados[i][0]+"'><span class='onoffswitch-inner'></span><span class='onoffswitch-switch'></span></label></div>";
 		}else{
-			boton="<div class='onoffswitch'><input type='checkbox' name='onoffswitch"+estados[i][0]+"' class='onoffswitch-checkbox' id='myonoffswitch"+estados[i][0]+"'><label class='onoffswitch-label' for='myonoffswitch"+estados[i][0]+"'><span class='onoffswitch-inner'></span><span class='onoffswitch-switch'></span></label></div>";
+			boton="<div class='onoffswitch'><input type='checkbox' onclick='establecerHorario("+estados[i][0]+")name='onoffswitch"+estados[i][0]+"' class='onoffswitch-checkbox' id='myonoffswitch"+estados[i][0]+"'><label class='onoffswitch-label' for='myonoffswitch"+estados[i][0]+"'><span class='onoffswitch-inner'></span><span class='onoffswitch-switch'></span></label></div>";
 		}		
 		document.getElementById("btn"+estados[i][0]).innerHTML = boton;
 	}

@@ -51,7 +51,7 @@
     position: absolute; 
     top: 0; 
     bottom: 0;
-    right: 81px;
+    right: 95px;
     border: 2px solid #000; 
     border-radius: 20px;
     transition: all 0.3s ease-in 0s; 
@@ -65,6 +65,7 @@
 /*Formulario establecer horario*/
 .formContEstablecer{
     padding: 1em;
+    display: none;
 }
 #form_horario{
     width: 100%;
@@ -98,15 +99,17 @@
     margin: auto;
 }
 .filaReloj{
-    color: #fff;
-    background: red;
+    background: #fff;
     margin-top: 0.3em; 
     margin-bottom: 0.2em;
+    border-radius: 1em;
+    color: #000;
 }
 .colMandoIz, .colMandoDer{
-    background: green;
+    background: #fff;
     width: 49%;
-    cursor:pointer; 
+    cursor:pointer;
+    border-radius: 0.5em;
 }
 .colMandoDer{
     margin-left: 0.1em;
