@@ -194,9 +194,17 @@ Class Empresa_model extends CI_Model {
         return $query->result();
     }
 
-    //funcion de establecer horarios
-    function estHorario($id, $estado){
-        $confirma=false;
+    //funcion para desactivar Horario
+    function desactivarHorario($id){
+        $data_set = array(
+            'disponible' => 0,
+            'hora_apertura' => "00:00:00",
+            'hora_cierre' => "00:00:00",
+        );        
+        $table_name = 'empresa';
+        $where_data = array('id'=>$id);
+        $this->db->update($table_name, $data_set, $where_data);
+        return $this->db->affected_rows();
     }
     /*Actualiza los datos de empresa/local */
     function update_local($id, $nombre, $direccion, $tipo_id, $admin_id, $lat, $lng, $open_hour = '0:00', $close_hour = '0:00') {

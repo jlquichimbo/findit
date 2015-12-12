@@ -4,18 +4,17 @@ function crearBoton(estados){
 	var boton="";
 	for (var i = 0; i < estados.length; i++) {
 		if (estados[i][1]==1) {
-			boton="<div class='onoffswitch'><input type='checkbox' onclick='establecerHorario("+estados[i][0]+")' name='onoffswitch"+estados[i][0]+"' class='onoffswitch-checkbox' id='myonoffswitch"+estados[i][0]+"' checked><label class='onoffswitch-label' for='myonoffswitch"+estados[i][0]+"'><span class='onoffswitch-inner'></span><span class='onoffswitch-switch'></span></label></div>";
+			boton="<div id='"+estados[i][0]+"' class='onoffswitch'><input type='checkbox' onclick='establecerHorario("+estados[i][0]+")' name='onoffswitch"+estados[i][0]+"' class='onoffswitch-checkbox' id='myonoffswitch"+estados[i][0]+"' checked><label class='onoffswitch-label' for='myonoffswitch"+estados[i][0]+"'><span class='onoffswitch-inner'></span><span class='onoffswitch-switch'></span></label></div>";
 		}else{
-			boton="<div class='onoffswitch'><input type='checkbox' onclick='establecerHorario("+estados[i][0]+")' name='onoffswitch"+estados[i][0]+"' class='onoffswitch-checkbox' id='myonoffswitch"+estados[i][0]+"'><label class='onoffswitch-label' for='myonoffswitch"+estados[i][0]+"'><span class='onoffswitch-inner'></span><span class='onoffswitch-switch'></span></label></div>";
+			boton="<div id='"+estados[i][0]+"' class='onoffswitch'><input type='checkbox' onclick='establecerHorario("+estados[i][0]+")' name='onoffswitch"+estados[i][0]+"' class='onoffswitch-checkbox' id='myonoffswitch"+estados[i][0]+"'><label class='onoffswitch-label' for='myonoffswitch"+estados[i][0]+"'><span class='onoffswitch-inner'></span><span class='onoffswitch-switch'></span></label></div>";
 		}		
 		document.getElementById("btn"+estados[i][0]).innerHTML = boton;
 	}
 	idLocales=estados;
 }
-
+//funcion para actualizar el estado de disponibilidad a desactivado y visualiza el formulario de establecer horario
 function establecerHorario(id){
 	var i = 0, est =0;
-	var url = 'admin/index/establecerHorario/' + id;
 	while ( i <idLocales.length) {
 		if (idLocales[i][0]==id) {
 			est=idLocales[i][1];
@@ -23,10 +22,24 @@ function establecerHorario(id){
 		}
 		i=i+1;
 	}
-	url=url+'/'+est;
-	if (est==1) {		
+	if (est==1) {
+		
+		//$(idSwitch).remove();
+		//Necesito actualizar el estado a cero con el id q obtengo
+		var ruta = 'admin/index/desactivarHorario/' + id;	
+		
+		$.ajax({
+            url: ruta,
+            type: 'GET',
+//            dataType: "html",
+            success: function (data) {
+            	alert(data);
+            }
+        });
+
 		//Se elimina los div de los switch creados anteriormente, se vuelve a crearlos y a cargar la lista de locales
 	}else{
+		//extraigo los datos de la base de datos segun el id q tengo
 		document.getElementById("formContenedor").style.display = "block";
 		document.getElementById("contTabla").style.display = "none";
 	}

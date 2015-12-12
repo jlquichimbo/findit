@@ -134,12 +134,38 @@ class Index extends CI_Controller {
 //        }
     }
 
-    public function establecerHorario($id, $estado){
-        $this->load->model('empresa_model');
-        $local = $this->empresa_model->getLocSeleccionado($localSeleccionado);
-        if(!empty($local)) {
-            echo json_encode($local);
+    public function desactivarHorario($id){
+        $emp_id = $id;
+        //$emp_admin_id = $this->input->post('id_admin');
+        $this->db->trans_begin(); // inicio de transaccion
+        $nuevo_id = $this->empresa_model->desactivarHorario($id);
+        // verifico que todo elproceso en si este bien ejecutado
+        if ($this->db->trans_status() === FALSE) {
+            $this->db->trans_rollback();
+            
+        } else {
+            $this->db->trans_commit(); // finaliza la transaccion de begin
         }
+
+
+
+        //Cargar vistas
+        $this->load->library('table');
+
+        $infoPage['titulo'] = 'Administrador';
+        $infoPage['header'] = $this->load->view('login/header_login', '', TRUE);
+        $infoPage['sidebar'] = $this->load->view('admin/sidebar', '', TRUE);
+
+        // Crear cabezera personalizada
+        $this->load->model('empresa_model');
+        $data['locales'] = $this->empresa_model->presentaEmpresa($this->user->email);
+//        echo $this->user->id;
+//        print_r($data['locales']);
+        $infoPage['content'] = $this->load->view('admin/locales', $data, TRUE);
+        $infoPage['footer'] = $this->load->view('portal/static/footer', '', TRUE);
+
+        //Cargamos el dashboard
+        $this->load->view('portal/static/dashboard', $infoPage);
     }
 
     /* function vista_registrar_empresa() {
