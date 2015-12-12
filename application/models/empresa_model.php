@@ -147,6 +147,7 @@ Class Empresa_model extends CI_Model {
     /* Extrae UN tipo de empresa/servicio */
 
     function get_tipo($id_tipo) {
+        $this->db->where('id', $id_tipo);
         $this->db->from('empresa_tipo');
 
         $query = $this->db->get();

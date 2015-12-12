@@ -1,6 +1,6 @@
 
 <!--<script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js?ver=3.1.2'></script>-->
-<script async="" type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDjSP5qZdefYhf1lI6iuBh0gT5BUgYQUWw&amp;sensor=true&callback=initialize"></script>
+<!--<script async="" type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDjSP5qZdefYhf1lI6iuBh0gT5BUgYQUWw&amp;sensor=true&callback=initialize"></script>-->
 <!--<script type="text/javascript" src='https://www.google.com/jsapi'></script>-->
 <!--<script src="<?php echo base_url(); ?>complementos/js/portal.js"></script>-->
 
@@ -75,7 +75,7 @@
     var BASE_URL = "<?php echo base_url(); ?>";
     $("#form_empresa_edit").submit(function (event) {
         event.preventDefault(); //Evitamos que el evento submit siga en ejecución, evitando que se recargue toda la página
-        $.post(BASE_URL + 'empresa/editar', //La variable url ha de contener la base_url() de nuestra aplicacion
+        $.post(BASE_URL + 'empresa/editar_local', //La variable url ha de contener la base_url() de nuestra aplicacion
                 $("#form_empresa_edit").serialize(), //Codificamos todo el formulario en formato de URL por medio de la receta
                 function (data) {
                     $("#form_registro").html(data);
@@ -88,29 +88,29 @@
     });
 
 
-    var center = new google.maps.LatLng(-3.99313, -79.20422);
-    var map;
-    function initialize() {
-        // Create the map.
-        var mapOptions = {
-            zoom: 17,
-            center: center,
-            mapTypeId: google.maps.MapTypeId.TERRAIN
-        };
-        map = new google.maps.Map(document.getElementById('googleMap'), mapOptions);
-        google.maps.event.addListener(map, 'click', function (event) {
-            marca(event.latLng);
-        });
-    }
-    google.maps.event.addDomListener(window, 'load', initialize);
-    function marca(location) {
-        $("#emp_lat").val(location.lat());
-        $("#emp_lng").val(location.lng());
-        var marker = new google.maps.Marker({
-            position: location,
-            map: map
-        });
-    }
+//    var center = new google.maps.LatLng(-3.99313, -79.20422);
+//    var map;
+//    function initialize() {
+//        // Create the map.
+//        var mapOptions = {
+//            zoom: 17,
+//            center: center,
+//            mapTypeId: google.maps.MapTypeId.TERRAIN
+//        };
+//        map = new google.maps.Map(document.getElementById('googleMap'), mapOptions);
+//        google.maps.event.addListener(map, 'click', function (event) {
+//            marca(event.latLng);
+//        });
+//    }
+//    google.maps.event.addDomListener(window, 'load', initialize);
+//    function marca(location) {
+//        $("#emp_lat").val(location.lat());
+//        $("#emp_lng").val(location.lng());
+//        var marker = new google.maps.Marker({
+//            position: location,
+//            map: map
+//        });
+//    }
 
 </script>
 <?php

@@ -5,8 +5,8 @@
             <tr>
                 <th>Tipo</th>
                 <th>Descripción</th>
-                <th>Editar</th>
-                <th>Eliminar</th>
+<!--                <th>Editar</th>
+                <th>Eliminar</th>-->
             </tr>
         </thead>
         <tbody>
@@ -14,16 +14,16 @@
 
             foreach ($roles as $rol) {
                 //Iconos para editar / eliminar
-                $editar = '<a href="' . base_url("#") . '/' . $rol->id
-                        . '"> <i class="glyphicon glyphicon-pencil"></i></a>';
-
-                $eliminar = '<a  href="' . base_url("#") . '/' . $rol->id . '">'
-                        . '<i class= "glyphicon glyphicon-trash"/></a>';
+//                $editar = '<a href="' . base_url("#") . '/' . $rol->id
+//                        . '"> <i class="glyphicon glyphicon-pencil"></i></a>';
+//
+//                $eliminar = '<a  href="' . base_url("#") . '/' . $rol->id . '">'
+//                        . '<i class= "glyphicon glyphicon-trash"/></a>';
                 echo Open('tr');
                 echo tagcontent('td', $rol->nombre);
                 echo tagcontent('td', $rol->descripcion);
-                echo tagcontent('td', $editar);
-                echo tagcontent('td', $eliminar);
+//                echo tagcontent('td', $editar);
+//                echo tagcontent('td', $eliminar);
                 echo Close('tr');
             }
             ?>

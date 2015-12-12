@@ -1,10 +1,3 @@
-
-<!--<script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js?ver=3.1.2'></script>-->
-<script async="" type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDjSP5qZdefYhf1lI6iuBh0gT5BUgYQUWw&amp;sensor=true&callback=initialize"></script>
-<!--<script type="text/javascript" src='https://www.google.com/jsapi'></script>-->
-<!--<script src="<?php echo base_url(); ?>complementos/js/portal.js"></script>-->
-
-
 <h2 class="page-header">Editar Local:</h2>
 
 <div class="row" id="form_registro">  
