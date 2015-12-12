@@ -194,6 +194,10 @@ Class Empresa_model extends CI_Model {
         return $query->result();
     }
 
+    //funcion de establecer horarios
+    function estHorario($id, $estado){
+        $confirma=false;
+    }
     /*Actualiza los datos de empresa/local */
     function update_local($id, $nombre, $direccion, $tipo_id, $admin_id, $lat, $lng, $open_hour = '0:00', $close_hour = '0:00') {
         //Se deja comentado latitud y longitud para que no se actualizen esos campos

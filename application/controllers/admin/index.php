@@ -134,6 +134,14 @@ class Index extends CI_Controller {
 //        }
     }
 
+    public function establecerHorario($id, $estado){
+        $this->load->model('empresa_model');
+        $local = $this->empresa_model->getLocSeleccionado($localSeleccionado);
+        if(!empty($local)) {
+            echo json_encode($local);
+        }
+    }
+
     /* function vista_registrar_empresa() {
       $infoPage['titulo'] = 'Registrar Empresa';
       $this->load->view('login/header_login', $infoPage);

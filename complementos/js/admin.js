@@ -6,13 +6,31 @@ function crearBoton(estados){
 		if (estados[i][1]==1) {
 			boton="<div class='onoffswitch'><input type='checkbox' onclick='establecerHorario("+estados[i][0]+")' name='onoffswitch"+estados[i][0]+"' class='onoffswitch-checkbox' id='myonoffswitch"+estados[i][0]+"' checked><label class='onoffswitch-label' for='myonoffswitch"+estados[i][0]+"'><span class='onoffswitch-inner'></span><span class='onoffswitch-switch'></span></label></div>";
 		}else{
-			boton="<div class='onoffswitch'><input type='checkbox' onclick='establecerHorario("+estados[i][0]+")name='onoffswitch"+estados[i][0]+"' class='onoffswitch-checkbox' id='myonoffswitch"+estados[i][0]+"'><label class='onoffswitch-label' for='myonoffswitch"+estados[i][0]+"'><span class='onoffswitch-inner'></span><span class='onoffswitch-switch'></span></label></div>";
+			boton="<div class='onoffswitch'><input type='checkbox' onclick='establecerHorario("+estados[i][0]+")' name='onoffswitch"+estados[i][0]+"' class='onoffswitch-checkbox' id='myonoffswitch"+estados[i][0]+"'><label class='onoffswitch-label' for='myonoffswitch"+estados[i][0]+"'><span class='onoffswitch-inner'></span><span class='onoffswitch-switch'></span></label></div>";
 		}		
 		document.getElementById("btn"+estados[i][0]).innerHTML = boton;
 	}
 	idLocales=estados;
 }
 
+function establecerHorario(id){
+	var i = 0, est =0;
+	var url = 'admin/index/establecerHorario/' + id;
+	while ( i <idLocales.length) {
+		if (idLocales[i][0]==id) {
+			est=idLocales[i][1];
+			i=idLocales.length;
+		}
+		i=i+1;
+	}
+	url=url+'/'+est;
+	if (est==1) {		
+		//Se elimina los div de los switch creados anteriormente, se vuelve a crearlos y a cargar la lista de locales
+	}else{
+		document.getElementById("formContenedor").style.display = "block";
+		document.getElementById("contTabla").style.display = "none";
+	}
+}
 
 
 //reloj selector de horario
