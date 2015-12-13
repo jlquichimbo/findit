@@ -58,7 +58,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </div>
         </div>
     </body>
-    <div class="row">
+
         <?php
         echo $footer;
         ?>

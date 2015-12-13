@@ -73,9 +73,6 @@
                     <th>Nombre</th>
                     <th>Dirección</th>
                     <th>Empresa</th>
-                    <th>Id Admin</th>
-                    <th>Latitud</th>
-                    <th>Longitud</th>
                     <th>Disponibilidad</th>
                     <th>Apertura</th>
                     <th>Cierre</th>
@@ -99,9 +96,8 @@
                     echo tagcontent('td', $empresa->nombre);
                     echo tagcontent('td', $empresa->direccion);
                     echo tagcontent('td', $empresa->tipo);
-                    echo tagcontent('td', $empresa->nombre_admin);
-                    echo tagcontent('td', $empresa->latitud);
-                    echo tagcontent('td', $empresa->longitud);
+                  //  echo tagcontent('td', $empresa->latitud);
+                   // echo tagcontent('td', $empresa->longitud);
                     echo tagcontent('td', "<div id='btn".$empresa->id."'></div>");
                             $estados[$contBtn][0]=$empresa->id;
                             if($empresa->disponible==1){                    
