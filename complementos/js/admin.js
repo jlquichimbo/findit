@@ -23,7 +23,9 @@ function establecerHorario(id){
         i=i+1;
     }
     console.log(id);
-    event.preventDefault();//Para que no redirecciones a otro lado
+//    event.preventDefault();//Para que no redirecciones a otro lado
+//    var BASE_URL = "<?php echo base_url(); ?>";
+
     var url = 'estadolocal/desactivarHorario/' + id;
     if (est==1) {
         est=0;
@@ -31,8 +33,8 @@ function establecerHorario(id){
 
         //variable que almacena el id de la empresa
         $.ajax({
-            url: 'estadolocal/desactivarHorario/'+id+'/'+est,
-            type: 'GET',
+            url: 'desactivarHorario/'+id+'/'+est,
+            type: 'POST',
 //            dataType: "html",
             success: function (data) {
 //                console.log(data);
