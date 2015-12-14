@@ -22,23 +22,45 @@ function establecerHorario(id){
         }
         i=i+1;
     }
+    console.log(id);
+    event.preventDefault();//Para que no redirecciones a otro lado
     var url = 'estadolocal/desactivarHorario/' + id;
     if (est==1) {
         est=0;
-        url=url+'/'+est;    
+        
+
+        //variable que almacena el id de la empresa
         $.ajax({
-            type: "POST",
-            url: url,
-            success: function (locales) {
-                alert(locales);
+            url: 'estadolocal/desactivarHorario/'+id+'/'+est,
+            type: 'GET',
+//            dataType: "html",
+            success: function (data) {
+//                console.log(data);
+                alert(data);
+            }
+        });
+
+
+
+
+
+
+
+        //url=url+'/'+est;    
+        //$.ajax({
+          //  type: "POST",
+            //url: url,
+
+            //success: function (locales) {
+              //  alert(locales);
                 /*$.each(locales, function (id, local) {
                     
                     var html = "<h3>" + local.nombre + "</h3>"+"<br/>";
                     alert(html);
                     //var html = getHtmlData(local);                    
                 });*/
-            }
-        });
+            //}
+        //});
         /*$.ajax({
             type: "POST",
             url: ruta, 

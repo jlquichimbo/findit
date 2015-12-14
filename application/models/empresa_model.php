@@ -195,7 +195,7 @@ Class Empresa_model extends CI_Model {
     }
 
     //funcion para desactivar Horario
-    function desactivarHorario($id){
+    function desactivarHorario($id, $estado){
         $data_set = array(
             'disponible' => 0,
             'hora_apertura' => "00:00:00",
