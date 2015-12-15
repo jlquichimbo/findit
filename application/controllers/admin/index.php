@@ -88,29 +88,23 @@ class Index extends CI_Controller {
         $this->load->view('portal/static/dashboard', $infoPage);
 
 
-
         //$this->load->view('portal/static/footer');
     }
 
     public function desactivarHorario($id, $estado) {
+        $confir=0;
         $id_emp = $id;
         $est = $estado;
-
         $this->db->trans_begin(); // inicio de transaccion
         $this->empresa_model->desactivarHorario($id_emp, $est);
         // verifico que todo elproceso en si este bien ejecutado
         if ($this->db->trans_status() === FALSE) {
             $this->db->trans_rollback();
-//            $this->res_msj .= error_msg('<br>Ha ocurrido un error al eliminar el local/empresa de la base de datos.');
-            $this->res_msj .= '<br>Ha ocurrido un error al eliminar el local/empresa de la base de datos.';
-            echo $this->res_msj;
-//            echo error_msg('<br>Ha ocurrido un error al guardar el paciente en la base de datos.');
         } else {
-//            $this->res_msj .= success_msg('. Local Cerrado');
-            $this->res_msj .= 'Local Cerrado \n'.$id_emp.' estado: '.$est;
-            echo $this->res_msj;
+            $confir=1;
             $this->db->trans_commit(); // finaliza la transaccion de begin
         }
+        echo $confir;
     }
     
     

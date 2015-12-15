@@ -22,61 +22,25 @@ function establecerHorario(id){
         }
         i=i+1;
     }
-    console.log(id);
-//    event.preventDefault();//Para que no redirecciones a otro lado
-//    var BASE_URL = "<?php echo base_url(); ?>";
-
-    var url = 'estadolocal/desactivarHorario/' + id;
+    //var url = 'estadolocal/desactivarHorario/' + id;
     if (est==1) {
         est=0;
-        
-
+        for (var i = 0; i < idLocales.length; i++) {
+            $("#btn"+idLocales[i][0]).remove();
+        }
         //variable que almacena el id de la empresa
         $.ajax({
             url: 'desactivarHorario/'+id+'/'+est,
             type: 'POST',
-//            dataType: "html",
             success: function (data) {
-//                console.log(data);
-                alert(data);
+                if (data==1) {
+                    //llamar funcion cargarMisLocales() del controlador index
+                    redirect('cargarMisLocales', 'refresh');
+                }else{
+                    alert("No se pudo establecer horario");
+                }
             }
         });
-
-
-
-
-
-
-
-        //url=url+'/'+est;    
-        //$.ajax({
-          //  type: "POST",
-            //url: url,
-
-            //success: function (locales) {
-              //  alert(locales);
-                /*$.each(locales, function (id, local) {
-                    
-                    var html = "<h3>" + local.nombre + "</h3>"+"<br/>";
-                    alert(html);
-                    //var html = getHtmlData(local);                    
-                });*/
-            //}
-        //});
-        /*$.ajax({
-            type: "POST",
-            url: ruta, 
-            data: {
-                id: id,
-                estado: 0,
-            },
-            success: function (estHorario) {
-                alert(estHorario);
-            }
-        });*/
-        //$(idSwitch).remove();
-        //Necesito actualizar el estado a cero con el id q obtengo
-        //var ruta = 'admin/index/desactivarHorario/' + id; 
 
 
         //Se elimina los div de los switch creados anteriormente, se vuelve a crearlos y a cargar la lista de locales
