@@ -206,6 +206,27 @@ Class Empresa_model extends CI_Model {
         $this->db->update($table_name, $data_set, $where_data);
         return $this->db->affected_rows();
     }
+    
+    //funcion para extraer nombre de local que desea establecer horario
+    function getNombreLocal($id) {
+        $this->db->select('nombre');
+        $this->db->from('empresa');
+        $this->db->where('id', $id);
+        $query = $this->db->get();
+        return $query->result();
+    }
+    //funcion para activar Horario
+    function activarHorario($id, $estado, $Hinicio, $Hfin){
+        $data_set = array(
+            'disponible' => $estado,
+            'hora_apertura' => $Hinicio,
+            'hora_cierre' => $Hfin,
+        );        
+        $table_name = 'empresa';
+        $where_data = array('id'=>$id);
+        $this->db->update($table_name, $data_set, $where_data);
+        return $this->db->affected_rows();
+    }
     /*Actualiza los datos de empresa/local */
     function update_local($id, $nombre, $direccion, $tipo_id, $admin_id, $lat, $lng, $open_hour = '0:00', $close_hour = '0:00') {
         //Se deja comentado latitud y longitud para que no se actualizen esos campos

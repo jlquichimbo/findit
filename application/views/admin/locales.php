@@ -10,7 +10,7 @@
                             <h4><b>Nombre local:</b></h4>
                         </div>                
                         <div class="col-sm-4">
-                            <input type="text" id="nombreLocal" class="form-control" name="nombreLocal" value="tururu" disabled>
+                            <input type="text" id="nombreLocal" class="form-control" name="nombreLocal" disabled>
                         </div>
                     </div>
                     <br>
@@ -52,6 +52,12 @@
                             <button type="submit" class="btn btn-success btn-lg" id="ajaxformbtn" data-target="messages_div">
                                 <span class="glyphicon glyphicon-fire"></span>
                                 Establecer
+                            </button>
+                        </div>
+                        <div class="col-sm-4">
+                            <button type="submit" class="btn btn-success btn-lg" id="ajaxformbtn" data-target="messages_div">
+                                <span class="glyphicon glyphicon-fire"></span>
+                                Cancelar
                             </button>
                         </div>
                     </div>

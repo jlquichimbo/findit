@@ -90,13 +90,38 @@ class Index extends CI_Controller {
 
         //$this->load->view('portal/static/footer');
     }
-
+    
+    
+    //Extrateer datos de la empresa que desea actualizar su horario
+    public function getNombreLocal($id){
+        $local = $this->empresa_model->getNombreLocal($id);
+        if(!empty($local)) {
+            echo json_encode($local);
+        }
+    }
     public function desactivarHorario($id, $estado) {
         $confir=0;
         $id_emp = $id;
         $est = $estado;
         $this->db->trans_begin(); // inicio de transaccion
         $this->empresa_model->desactivarHorario($id_emp, $est);
+        // verifico que todo elproceso en si este bien ejecutado
+        if ($this->db->trans_status() === FALSE) {
+            $this->db->trans_rollback();
+        } else {
+            $confir=1;
+            $this->db->trans_commit(); // finaliza la transaccion de begin
+        }
+        echo $confir;
+    }
+    public function activarHorario($id, $estado, $Hinicio, $Hfin) {
+        $confir=0;
+        $id_emp = $id;
+        $est = $estado;
+        $hi=$Hinicio;
+        $hf=$Hfin;
+        $this->db->trans_begin(); // inicio de transaccion
+        $this->empresa_model->activarHorario($id_emp, $est, $hi, $hf);
         // verifico que todo elproceso en si este bien ejecutado
         if ($this->db->trans_status() === FALSE) {
             $this->db->trans_rollback();
