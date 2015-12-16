@@ -6,8 +6,8 @@
             <div class="row">
                 <div class="col-md-9">
                     <div class="row nomLocal">
-                        <div class="col-sm-2 etiquetaHora ">
-                            <h4><b>Nombre local:</b></h4>
+                        <div class="col-sm-6 etiquetaHora">
+                            <h4><b>Local:</b></h4>
                         </div>                
                         <div class="col-sm-4">
                             <input type="text" id="nombreLocal" class="form-control" name="nombreLocal" disabled>
@@ -32,7 +32,7 @@
                         </div>
                         <div class="col-md-6">
                             <div class="row">
-                                <div class="col-sm-4 etiquetaHora">
+                                <div class="col-md-5 etiquetaHora">
                                     <h4><b>Hora de cierre:</b></h4>
                                 </div>
                                 <div class="col-sm-7">
@@ -49,14 +49,14 @@
                     <br>
                     <div class="row">
                         <div class="col-sm-4">
-                            <button type="submit" class="btn btn-success btn-lg" id="ajaxformbtn" data-target="messages_div">
+                            <button type="submit" class="btn btn-success btn-lg" data-target="messages_div" onclick="guardarHorario()">
                                 <span class="glyphicon glyphicon-fire"></span>
                                 Establecer
                             </button>
                         </div>
                         <div class="col-sm-4">
-                            <button type="submit" class="btn btn-success btn-lg" id="ajaxformbtn" data-target="messages_div">
-                                <span class="glyphicon glyphicon-fire"></span>
+                            <button id="btn_cancel" type="submit" class="btn btn-danger btn-lg" onclick="cancelarEstablecerHorario()">
+                                <span class="glyphicon glyphicon-remove"></span>
                                 Cancelar
                             </button>
                         </div>
@@ -106,7 +106,7 @@
                    // echo tagcontent('td', $empresa->longitud);
                     echo tagcontent('td', "<div id='btn".$empresa->id."'></div>");
                             $estados[$contBtn][0]=$empresa->id;
-                            if($empresa->disponible==1){                    
+                            if($empresa->disponible==1){
                                 $estados[$contBtn][1]=1;
                             }
                             else{

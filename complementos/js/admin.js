@@ -34,7 +34,10 @@ function establecerHorario(id) {
             success: function (data) {
                 if (data == 1) {
                     idLocales[filamodificada][1] = 0;
-                    //llamar funcion cargarMisLocales() del controlador index 
+                    //document.getElementById('celdaHi').innerHTML="00:00:00";
+                    //llamar funcion cargarMisLocales() del controlador index
+                    document.getElementById("myDataTable").rows[filamodificada].cells[4].innerHTML = "00:00:00";
+                    document.getElementById("myDataTable").rows[filamodificada].cells[5].innerHTML = "00:00:00";
                 } else {
                     alert("No se pudo establecer horario");
                 }
@@ -61,7 +64,7 @@ function establecerHorario(id) {
 //Funcion para guardar horario
 function guardarHorario() {
     var est = 1;
-    var hInicio = $('#horaInicio').val(); 
+    var hInicio = $('#horaInicio').val();
     var hFin = $('#horaCierre').val();
     $.ajax({
         //Hora inicio y hora fin debo onbtener del formulario
@@ -75,6 +78,8 @@ function guardarHorario() {
             }
         }
     });
+}
+function cancelarEstablecerHorario(){
     document.getElementById("formContenedor").style.display = "none";
     document.getElementById("contTabla").style.display = "block";
 }
@@ -129,14 +134,14 @@ function dibujarReloj(h, m) {
     var contenedor = "<h4><label id='infoHoraInicio'>" + h + " : " + m + "</label></h4><hr><div class='row filaMando'><div class='col-md-6 colMandoIz'><h4 onclick='cambiarHora(11)'>+</h4></div><div class='col-md-6 colMandoDer'><h4 onclick='cambiarMinuto(11)'>+</h4></div></div>";
     contenedor = contenedor + "<div class='row filaReloj'><div class='col-md-6'><h2 id='hora'>" + h + "</h2></div><div class='col-md-6'><h2 id='minuto'>" + m + "</h2></div></div>";
     contenedor = contenedor + "<div class='row filaMando'><div class='col-md-6 colMandoIz'><h4 onclick='cambiarHora(21)'>-</h4></div><div class='col-md-6 colMandoDer'><h4 onclick='cambiarMinuto(21)'>-</h4></div></div>";
-    contenedor = contenedor + "<div class='row filaEvento'><div class='col-md-6 col-Evento'><label class='col-Evento' id='btnAceptar' onclick='setHora(1)'>Seleccionar</label></div><div class='col-md-6 col-Evento'><label class='col-Evento' id='btnCancelar' onclick='cancelar(1)'>Cancelar</label></div></div>";
+    contenedor = contenedor + "<br><div class='row filaEvento'><div class='col-md-6 col-Evento'><label class='col-Evento' id='btnAceptar' onclick='setHora(1)'>Seleccionar</label></div><div class='col-md-6 col-Evento'><label class='col-Evento' id='btnCancelar' onclick='cancelar(1)'>Cancelar</label></div></div>";
     document.getElementById("relojHoraInicio").innerHTML = contenedor;
     document.getElementById("relojHoraInicio").style.display = "block";
     //Segundo reloj
     contenedor = "<h4><label id='infoHoraCierre'>00 : 00</label></h4><hr><div class='row filaMando'><div class='col-md-6 colMandoIz'><h4 onclick='cambiarHora(12)'>+</h4></div><div class='col-md-6 colMandoDer'><h4 onclick='cambiarMinuto(12)'>+</h4></div></div>";
     contenedor = contenedor + "<div class='row filaReloj'><div class='col-md-6'><h2 id='rhoraCierre'>00</h2></div><div class='col-md-6'><h2 id='minutoCierre'>00</h2></div></div>";
     contenedor = contenedor + "<div class='row filaMando'><div class='col-md-6 colMandoIz'><h4 onclick='cambiarHora(22)'>-</h4></div><div class='col-md-6 colMandoDer'><h4 onclick='cambiarMinuto(22)'>-</h4></div></div>";
-    contenedor = contenedor + "<div class='row filaEvento'><div class='col-md-6 col-Evento'><label class='col-Evento' id='btnAceptarCierre' onclick='setHora(2)'>Seleccionar</label></div><div class='col-md-6 col-Evento'><label class='col-Evento' id='btnCancelarCierre' onclick='cancelar(2)'>Cancelar</label></div></div>";
+    contenedor = contenedor + "<br><div class='row filaEvento'><div class='col-md-6 col-Evento'><label class='col-Evento' id='btnAceptarCierre' onclick='setHora(2)'>Seleccionar</label></div><div class='col-md-6 col-Evento'><label class='col-Evento' id='btnCancelarCierre' onclick='cancelar(2)'>Cancelar</label></div></div>";
     document.getElementById("relojHoraCierre").innerHTML = contenedor;
 }
 function cambiarHora(indicador) {
@@ -214,7 +219,7 @@ function getMinuto(m, indica) {
 }
 function setHora(indicador) {
     if (indicador == 1) {
-        document.getElementById('horaInicio').value = $("#hora").text() + " : " + $("#minuto").text();
+        document.getElementById('horaInicio').value = $("#hora").text() + ":" + $("#minuto").text();
         document.getElementById("relojHoraInicio").style.display = "none";
         var h = $("#hora").text();
         var m = $("#minuto").text();
@@ -223,7 +228,7 @@ function setHora(indicador) {
         relojHoraCierre(h, m);
         cancel = 1;
     } else {
-        document.getElementById('horaCierre').value = $("#rhoraCierre").text() + " : " + $("#minutoCierre").text();
+        document.getElementById('horaCierre').value = $("#rhoraCierre").text() + ":" + $("#minutoCierre").text();
         document.getElementById("relojHoraCierre").style.display = "none";
         hor2 = $("#rhoraCierre").text();
         min2 = $("#minutoCierre").text();

@@ -68,13 +68,13 @@
     border-radius: 1em;
     border: 0.2em solid #000;
 }
-.nomLocal{
-    margin-left: 2em;
-}
-.etiquetaHora{
+.etiquetaHora, .nomLocal{
     text-align: right;
     margin: 0;
     padding: 0;
+}
+#LineaHorario{
+    border: 0.1em solid #000;
 }
 /*Estilos reloj*/
 #relojHoraInicio, #relojHoraCierre{
@@ -82,39 +82,34 @@
     width: 100%;
     color: #fff;
     padding: 0.2em;
-    padding-right: 0.3em;
-}
-#LineaHorario{
-    border: 0.1em solid #000;
 }
 
 .filaReloj, .filaMando, .filaEvento{
     text-align: center;
     color: #000;
-    margin: auto;
+    margin: 0.2em;
+    padding-left: 1.05em;
+    width: 100%;
 }
 .filaReloj{
     background: #fff;
-    margin-top: 0.3em; 
-    margin-bottom: 0.2em;
     border-radius: 1em;
     color: #000;
 }
 .colMandoIz, .colMandoDer{
     background: #fff;
-    width: 49%;
     cursor:pointer;
     border-radius: 0.5em;
-}
-.colMandoDer{
-    margin-left: 0.1em;
-}
-.colMandoIz{
-    margin-right: 0.1em;   
 }
 .filaEvento{
     color: #fff;
 }
 .col-Evento{
+    padding-top: 0.2em;
     cursor:pointer;
+}
+.col-Evento:hover {
+    background: #fff;
+    color: #000;
+    border-radius: 1em;
 }
