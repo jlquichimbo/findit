@@ -126,7 +126,7 @@ class Empresa extends CI_Controller {
         $id_emp = $this->input->post('id_emp');
 
         $this->db->trans_begin(); // inicio de transaccion
-        $this->empresa_model->delete($id_emp);
+        $this->empresa_model->delete_local($id_emp);
         // verifico que todo elproceso en si este bien ejecutado
         if ($this->db->trans_status() === FALSE) {
             $this->db->trans_rollback();
