@@ -17,30 +17,50 @@ class Usuario extends CI_Controller {
     public function index() {
         //$this->load->view('registrousuario_view');
     }
-
+ 
+    /*public function insert() {
+      $post= $this->input->post();
+      $this->load->model('upload');
+      $file_name = $this->upload->UploadImage('uploads/images/users','no es posible cargar imagen... :(');
+      $post['file_name']=$file_name; //Asignar una nueva key lamada file_name con el nombre del fichero
+      $bool=$this->usuario_model->insert($post);
+      
+      if($bool){
+         header("Location:".base_url()."portal/vistaloguearUsuario");
+    }else{
+         header("Location:".base_url()."portal");
+    }
+      
+    }*/
+    
+    
     public function registrar() {
-        $this->load->library('form_validation');
-
+        
+        
         $user_cedula = $this->input->post('txtCedula');
         $user_nombres = $this->input->post('txtNombre');
         $user_apellidos = $this->input->post('txtApellido');
-        $file_name = $this->input->post('file_name');
-        $user_password = $this->input->post('txtPassword');
-        $user_confirm_password = $this->input->post('txtConfirmarPassword');
-        $user_mail = $this->input->post('txtMail');
+        //$userfile = $this->input->post('userfile');
+        $userfile = $_POST['userfile'];
         $user_telefono = $this->input->post('txtTelefono');
-        //$user_usuario = $user_mail;
+        $user_mail = $this->input->post('txtMail');
+        $user_password = $this->input->post('txtPassword');
+        
 
-        $user_password = md5($user_password);
 
-
-
-        $this->db->trans_begin(); // inicio de transaccion
+        $foto=$userfile;
         $this->load->model('file');
-        $this->file->UploadImage('./public/img/', 'no es posible cargar imagen');
-
-        $nuevo_id = $this->usuario_model->save_new($user_cedula, $user_nombres, $user_apellidos, $file_name, $user_password, $user_mail, $user_telefono);
-
+        $foto = $this->file->UploadImage('uploads/images/users','no es posible cargar imagen... :(');
+      
+        $this->db->trans_begin(); // inicio de transaccion
+        
+        
+        
+      /* $this->load->model('file');
+       $userfile=$this->file->UploadImage('uploads/images/users','no es posible cargar imagen');
+       */ 
+        $nuevo_id = $this->usuario_model->save_new($user_cedula, $user_nombres, $user_apellidos, $foto, $user_telefono, $user_mail, $user_password);
+        
         if ($nuevo_id <= 0) {
             $this->db->trans_rollback();
             $this->res_msj .= error_msg('<br>Ha ocurrido un error al guardar el usuario en la base de datos.');
@@ -53,17 +73,17 @@ class Usuario extends CI_Controller {
             echo $this->res_msj;
 //            echo error_msg('<br>Ha ocurrido un error al guardar el paciente en la base de datos.');
         } else {
-            //Redireccionar al login
-            header("Location:" . base_url() . "portal/vistaloguearUsuario");
-            /* $this->res_msj .= success_msg('. Usuario Registrado');
-              echo $this->res_msj; */
-
-
-
-
-            $this->db->trans_commit(); // finaliza la transaccion de begin
+            header("Location:".base_url()."portal/vistaloguearUsuario");
+           /* $this->res_msj .= success_msg('. Usuario Registrado');
+            echo $this->res_msj;*/
+            
+            
+            
+            
+        $this->db->trans_commit(); // finaliza la transaccion de begin
         }
     }
+    
 
     public function editar_view($user_id) {
         $data['id_user'] = $user_id;
@@ -82,8 +102,10 @@ class Usuario extends CI_Controller {
         $user_mail = $this->input->post('txtMail');
         $user_password = $this->input->post('txtPassword');
         $user_rol = $this->input->post('rol');
+
         //Aqui va a ir la ruta de la imagen
         $user_usuario = '';
+
         //Imprimimos los datos para verificar que los esta extrayendo correctamente:
 //        echo 'Datos a guardar: <br>';
 //        echo 'Cedula:' . $user_cedula . ' <br>';
@@ -94,6 +116,7 @@ class Usuario extends CI_Controller {
 //        echo 'PWD: ' . $user_password . '<br>';
 //        die();
         $this->db->trans_begin(); // inicio de transaccion
+
         $nuevo_id = $this->usuario_model->update($user_id, $user_cedula, $user_nombres, $user_apellidos, $user_usuario, $user_password, $user_mail, $user_telefono, $user_rol);
         if ($nuevo_id <= 0) {
             $this->db->trans_rollback();
@@ -109,8 +132,10 @@ class Usuario extends CI_Controller {
         } else {
             $this->res_msj .= success_msg('. Usuario Actualizado');
             echo $this->res_msj;
+
             $this->db->trans_commit(); // finaliza la transaccion de begin
         }
+
     }
 
     public function delete_view($id_user) {
@@ -119,25 +144,6 @@ class Usuario extends CI_Controller {
         $view = $this->load->view('usuarios/delete_usuario', $data, TRUE);
         echo $view;
     }
-
-    public function delete() {
-        $user_id = $this->input->post('id_user');
-
-        $this->db->trans_begin(); // inicio de transaccion
-        $this->usuario_model->delete($user_id);
-        // verifico que todo elproceso en si este bien ejecutado
-        if ($this->db->trans_status() === FALSE) {
-            $this->db->trans_rollback();
-            $this->res_msj .= error_msg('<br>Ha ocurrido un error al eliminar el usuario de la base de datos.');
-            echo $this->res_msj;
-//            echo error_msg('<br>Ha ocurrido un error al guardar el paciente en la base de datos.');
-        } else {
-            $this->res_msj .= success_msg('. Usuario Eliminado');
-            echo $this->res_msj;
-            $this->db->trans_commit(); // finaliza la transaccion de begin
-        }
-    }
-
 }
 
 ?>
