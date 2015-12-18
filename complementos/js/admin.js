@@ -80,7 +80,8 @@ function guardarHorario() {
     });
 }
 function cancelarEstablecerHorario(){
-    document.getElementById("formContenedor").style.display = "none";
+//    document.getElementById("formContenedor").style.display = "none";
+    $('#formContenedor').hide(1000);
     document.getElementById("contTabla").style.display = "block";
 }
 
