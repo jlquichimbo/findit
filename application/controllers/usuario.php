@@ -19,24 +19,27 @@ class Usuario extends CI_Controller {
     }
 
     public function registrar() {
+        $this->load->library('form_validation');
+
         $user_cedula = $this->input->post('txtCedula');
         $user_nombres = $this->input->post('txtNombre');
         $user_apellidos = $this->input->post('txtApellido');
         $file_name = $this->input->post('file_name');
-        $user_telefono = $this->input->post('txtPassword');
+        $user_password = $this->input->post('txtPassword');
+        $user_confirm_password = $this->input->post('txtConfirmarPassword');
         $user_mail = $this->input->post('txtMail');
-        $user_password = $this->input->post('txtTelefono');
+        $user_telefono = $this->input->post('txtTelefono');
         //$user_usuario = $user_mail;
+
+        $user_password = md5($user_password);
+
 
 
         $this->db->trans_begin(); // inicio de transaccion
-
-
-
         $this->load->model('file');
         $this->file->UploadImage('./public/img/', 'no es posible cargar imagen');
 
-        $nuevo_id = $this->usuario_model->save_new($user_cedula, $user_nombres, $user_apellidos, $file_name, $user_telefono, $user_mail, $user_password);
+        $nuevo_id = $this->usuario_model->save_new($user_cedula, $user_nombres, $user_apellidos, $file_name, $user_password, $user_mail, $user_telefono);
 
         if ($nuevo_id <= 0) {
             $this->db->trans_rollback();
@@ -50,6 +53,7 @@ class Usuario extends CI_Controller {
             echo $this->res_msj;
 //            echo error_msg('<br>Ha ocurrido un error al guardar el paciente en la base de datos.');
         } else {
+            //Redireccionar al login
             header("Location:" . base_url() . "portal/vistaloguearUsuario");
             /* $this->res_msj .= success_msg('. Usuario Registrado');
               echo $this->res_msj; */
