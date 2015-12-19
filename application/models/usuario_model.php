@@ -5,9 +5,11 @@ Class Usuario_model extends CI_Model {
     function save_new_user($username, $password) {
         
     }
+
     public function getPost() {
         return $this->db->get('post');
     }
+
     /* Extrae los datos de un solo usuario */
 
     function get_data($email) {
@@ -65,56 +67,53 @@ Class Usuario_model extends CI_Model {
     }
 
     /* Guarda un nuevo usuario */
-     /* public function insert($post = null) {
-            if ($post != null){
-                $cedula = $post['txtCedula'];
-                $nombres = $post['txtNombre'];
-                $apellidos = $post['txtApellido'];
-                $file_name = $post['file_name'];
-                $telefono = $post['txtTelefono'];
-                $email = $post['txtMail'];
-                $password = $post['txtPassword'];
-                
-               $SQL ="INSERT INTO USUARIO(cedula_ruc,nombres, apellidos, usuario, telefono, email, password) VALUES ('$cedula', '$nombres','$apellidos', '$file_name', '$telefono', '$email', '$password')";
-               
-               if($this->db->query($SQL)){
-                   return true;
-               }
-                   return false;
+    /* public function insert($post = null) {
+      if ($post != null){
+      $cedula = $post['txtCedula'];
+      $nombres = $post['txtNombre'];
+      $apellidos = $post['txtApellido'];
+      $file_name = $post['file_name'];
+      $telefono = $post['txtTelefono'];
+      $email = $post['txtMail'];
+      $password = $post['txtPassword'];
 
-            }
-        }*/
-       
-     
-        
+      $SQL ="INSERT INTO USUARIO(cedula_ruc,nombres, apellidos, usuario, telefono, email, password) VALUES ('$cedula', '$nombres','$apellidos', '$file_name', '$telefono', '$email', '$password')";
 
-    function save_new($cedula, $nombres, $apellidos, $usuario, $telefono, $email, $password) {
+      if($this->db->query($SQL)){
+      return true;
+      }
+      return false;
+
+      }
+      } */
+
+    function save_new($cedula, $nombres, $apellidos, $imagen, $telefono, $email, $password) {
         $form_data = array(
             'cedula_ruc' => $cedula,
             'nombres' => $nombres,
             'apellidos' => $apellidos,
-            'usuario' => $usuario,
+            'usuario' => $imagen,
             'telefono' => $telefono,
             'email' => $email,
             'password' => $password,
         );
-        
-      
-        
-       $table_name = 'usuario';
-       $this->db->insert($table_name, $form_data);
+
+
+
+        $table_name = 'usuario';
+        $this->db->insert($table_name, $form_data);
         $usuario_id = $this->db->insert_id();
-        
-        
+
+
         //Guardar rol 2
         $rol_data = array(
             'usuario_id' => $usuario_id,
             'rol_id' => 2
-    );
+        );
 
-      $this->db->insert('usuario_rol', $rol_data);
+        $this->db->insert('usuario_rol', $rol_data);
         return $usuario_id;
-     }  
+    }
 
     /* Actualizar usuario existente por id */
 
@@ -131,7 +130,7 @@ Class Usuario_model extends CI_Model {
         $table_name = 'usuario';
         $this->db->where('id', $user_id);
         $this->db->update($table_name, $data_set);
-        $afected_row =  $this->db->affected_rows();
+        $afected_row = $this->db->affected_rows();
 
         //Guardar rol nuevo
         $rol_data = array(
@@ -144,4 +143,5 @@ Class Usuario_model extends CI_Model {
     }
 
 }
+
 ?>

@@ -41,10 +41,10 @@ class Usuario extends CI_Controller {
         $user_nombres = $this->input->post('txtNombre');
         $user_apellidos = $this->input->post('txtApellido');
         //$userfile = $this->input->post('userfile');
-        $userfile = $_POST['userfile'];
+        $userfile =  $this->input->post('userfile');
         $user_telefono = $this->input->post('txtTelefono');
         $user_mail = $this->input->post('txtMail');
-        $user_password = $this->input->post('txtPassword');
+        $user_password = md5($this->input->post('txtPassword'));
         
 
 
@@ -54,11 +54,6 @@ class Usuario extends CI_Controller {
       
         $this->db->trans_begin(); // inicio de transaccion
         
-        
-        
-      /* $this->load->model('file');
-       $userfile=$this->file->UploadImage('uploads/images/users','no es posible cargar imagen');
-       */ 
         $nuevo_id = $this->usuario_model->save_new($user_cedula, $user_nombres, $user_apellidos, $foto, $user_telefono, $user_mail, $user_password);
         
         if ($nuevo_id <= 0) {
