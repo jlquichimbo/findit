@@ -17,7 +17,7 @@
             <button class="btn btn-lg btn-primary btn-block" type="submit">Iniciar sesión</button>
             <br/>
             <p class="help-block">
-                    <a  href="<?= base_url('portal/vistaRegistrarUsuario') ?>">¿No puedes acceder a tu cuenta?</a>
+                    <a  href="<?= base_url('portal/vistaRecuperarPass') ?>">¿Olvidastes tu contraseña?</a>
             </p>
         </form>
     </div>

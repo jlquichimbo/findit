@@ -52,7 +52,18 @@ Class Usuario_model extends CI_Model {
         $query = $this->db->get();
         return $query->result();
     }
-
+    
+    /* Extrae Usuario para enviar correo*/
+    function getUsuario($destino){
+        $this->db->select('nombres, '
+                . 'apellidos, '
+                . 'password, '
+        );
+        $this->db->from('usuario');
+        $this->db->where('email', $destino);
+        $query = $this->db->get();
+        return $query->result();
+    }
     function get_users_by_type() {
         
     }
