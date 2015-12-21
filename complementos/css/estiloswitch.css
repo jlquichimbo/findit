@@ -60,7 +60,7 @@
 /*Formulario establecer horario*/
 .formContEstablecer{
     padding: 1em;
-    //display: none;
+    display: none;
 }
 #form_horario{
     width: 100%;

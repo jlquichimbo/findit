@@ -131,6 +131,7 @@ Class Empresa_model extends CI_Model {
         $this->db->join('empresa_tipo', 'tipo_id = empresa_tipo.id');
         $this->db->join('usuario', 'admin_id = usuario.id');
         $this->db->where('tipo_id', $type_id);
+        $this->db->where('disponible', 1);
 
         $query = $this->db->get();
         return $query->result();
