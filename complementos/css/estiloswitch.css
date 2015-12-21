@@ -60,7 +60,7 @@
 /*Formulario establecer horario*/
 .formContEstablecer{
     padding: 1em;
-    display: none;
+    //display: none;
 }
 #form_horario{
     width: 100%;
@@ -79,17 +79,16 @@
 /*Estilos reloj*/
 #relojHoraInicio, #relojHoraCierre{
     background: #000;
-    width: 100%;
+    width: 89%;
     color: #fff;
-    padding: 0.2em;
+    margin-left: 1em;
 }
 
 .filaReloj, .filaMando, .filaEvento{
     text-align: center;
     color: #000;
-    margin: 0.2em;
-    padding-left: 1.05em;
-    width: 100%;
+    background: red;
+    margin: 0.1em;
 }
 .filaReloj{
     background: #fff;
@@ -100,7 +99,8 @@
     background: #fff;
     cursor:pointer;
     border-radius: 0.5em;
-}
+    width: 15%;
+}/*
 .filaEvento{
     color: #fff;
 }
@@ -112,4 +112,4 @@
     background: #fff;
     color: #000;
     border-radius: 1em;
-}
+}*/
