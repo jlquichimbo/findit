@@ -52,7 +52,6 @@ class Index extends CI_Controller {
     }
 
     function cargarCrearLocal() {
-        $this->load->model('usuario_model');
         $infoPage['titulo'] = 'Administrador';
 
         //Consultamos los tipos de empresas para enviar al combobox
@@ -70,14 +69,12 @@ class Index extends CI_Controller {
     }
 
     function cargarMisLocales() {
-        $this->load->library('table');
 
         $infoPage['titulo'] = 'Administrador';
         $infoPage['header'] = $this->load->view('login/header_login', '', TRUE);
         $infoPage['sidebar'] = $this->load->view('admin/sidebar', '', TRUE);
 
         // Crear cabezera personalizada
-        $this->load->model('empresa_model');
         $data['locales'] = $this->empresa_model->presentaEmpresa($this->user->email);
 //        echo $this->user->id;
 //        print_r($data['locales']);
@@ -89,6 +86,23 @@ class Index extends CI_Controller {
 
 
         //$this->load->view('portal/static/footer');
+    }
+    
+    public function loadAnuncios(){
+         $infoPage['titulo'] = 'Administrador - Anuncios';
+
+        //Consultamos los tipos de empresas para enviar al combobox
+        $data['locales'] = $this->empresa_model->get_empresas_by_user($this->user->id);
+        $data['upload_state'] = FALSE;
+
+        //Estructura del dashboard
+        $infoPage['header'] = $this->load->view('login/header_login', '', TRUE);
+        $infoPage['sidebar'] = $this->load->view('admin/sidebar', '', TRUE);
+        $infoPage['content'] = $this->load->view('empresa/crear_anuncio', $data, TRUE);
+        $infoPage['footer'] = $this->load->view('portal/static/footer', '', TRUE);
+
+        //Cargamos el dashboard
+        $this->load->view('portal/static/dashboard', $infoPage);
     }
     
     

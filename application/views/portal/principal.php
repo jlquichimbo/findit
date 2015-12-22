@@ -44,15 +44,15 @@
                         </p>
                     </div>
                 </div>
-                    <!-- Left and right controls -->
-    <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-      <span class="sr-only">Previous</span>
-    </a>
-    <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-      <span class="sr-only">Next</span>
-    </a>
+                <!-- Left and right controls -->
+                <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
             </div>
 
         </div>
@@ -73,9 +73,7 @@
                     <?php
                     //Lista de tipos
                     $combo_tipos = combobox(
-                            $tipos_empresa, 
-                            array('label' => 'nombre', 'value' => 'id', 'nombre' => 'tipo_local'), 
-                            array('name' => 'local_id', 'id' => 'local_id', 'class' => 'form-control'), true);
+                            $tipos_empresa, array('label' => 'nombre', 'value' => 'id', 'nombre' => 'tipo_local'), array('name' => 'local_id', 'id' => 'local_id', 'class' => 'form-control'), true);
                     echo get_combo_group('Categoria', $combo_tipos, 'col-md-12 form-group');
                     ?>
                 </div>
@@ -121,9 +119,9 @@ $js = array(base_url('complementos/js/comunes.js'),
 );
 echo jsload($js);
 ?>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-  
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
 <script src="<?php echo base_url(); ?>complementos/frameworks/moment.min.js"></script>
 <script src="<?php echo base_url(); ?>complementos/js/reloj.js"></script>
 <script src="<?php echo base_url(); ?>complementos/js/portal.js"></script>

@@ -12,7 +12,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <link rel="stylesheet" href="<?php echo base_url(); ?>complementos/frameworks/bootstrap3.3.5/css/bootstrap.min.css">
         <link rel="stylesheet" href="<?php echo base_url(); ?>complementos/css/estilosportal.css">
         <!--GOOGLE MAPS-->
-        <script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js?ver=3.1.2'></script>
+<!--        <script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js?ver=3.1.2'></script>
         <script type="text/javascript"
                 src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDjSP5qZdefYhf1lI6iuBh0gT5BUgYQUWw&amp;sensor=true">
         </script>
@@ -21,9 +21,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             #mapa_content {
                 height: 20em;
             }
-        </style>
+        </style>-->
     </head>
-    <body onLoad="inicializar()">
+    <!--<body onLoad="inicializar()">-->
+    <body>
                  <header>
             <nav class="navbar navbar-inverse navbar-static-top" role="navigation">
                 <div class="container headerFindIt">

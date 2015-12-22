@@ -23,7 +23,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             }
         </style>
     </head>
-    <body onLoad="inicializar()">
+    <!--<body onLoad="inicializar()">-->
+    <body>
         <header>
             <nav class="navbar navbar-inverse navbar-static-top" role="navigation">
                 <div class="container headerFindIt">

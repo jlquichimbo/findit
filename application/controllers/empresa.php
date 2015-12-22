@@ -86,7 +86,7 @@ class Empresa extends CI_Controller {
             $this->db->trans_commit(); // finaliza la transaccion de begin
         }
     }
-    
+
     function editar_tipo_view($id_tipo) {
         $data['id_tipo'] = $id_tipo;
         $data['tipo'] = $this->empresa_model->get_tipo($id_tipo);
@@ -139,9 +139,7 @@ class Empresa extends CI_Controller {
             $this->db->trans_commit(); // finaliza la transaccion de begin
         }
     }
-    
-    
-    
+
     function delete_tipo_view($id_tipo) {
         $data['id_tipo'] = $id_tipo;
         $view = $this->load->view('empresa/delete_tipo', $data, TRUE);
@@ -164,6 +162,91 @@ class Empresa extends CI_Controller {
             echo $this->res_msj;
             $this->db->trans_commit(); // finaliza la transaccion de begin
         }
+    }
+
+    function crear_anuncio() {
+        $anunc_title = $this->input->post('anunc_name');
+        $anunc_emp_id = $this->input->post('anuncio_emp_id');
+        $admin_id = $this->user->id;
+        $this->load->model('file');
+        $anuncio = $this->uploadImg();
+        $anunc_file = $anuncio['upload_data']['file_name'];
+
+
+        //Imprimimos los datos para verificar que los esta extrayendo correctamente:
+        echo 'Datos a guardar: <br>';
+        echo 'Nombre:' . $anunc_title . ' <br>';
+        echo 'File: ' . $anuncio['upload_data']['file_name']. '<br>';
+        echo "Empresa Id: " . $anunc_emp_id . '<br>';
+        echo "User Id: " . $admin_id . '<br>';
+
+        $this->db->trans_begin(); // inicio de transaccion
+        $this->load->model('anuncio_model');
+
+        $nuevo_id = $this->anuncio_model->save_new($anunc_title, $anunc_file, $anunc_emp_id);
+        if ($nuevo_id <= 0) {
+            $this->db->trans_rollback();
+            echo $this->res_msj;
+        }
+        // verifico que todo elproceso en si este bien ejecutado
+        if ($this->db->trans_status() === FALSE) {
+            $this->db->trans_rollback();
+            $this->res_msj .= error_msg('<br>Ha ocurrido un error al guardar el anuncio en la base de datos.');
+            echo $this->res_msj;
+//            echo error_msg('<br>Ha ocurrido un error al guardar el paciente en la base de datos.');
+        } else {
+            $this->crear_anuncio_view($anuncio['upload_state']);
+//            echo $this->res_msj;
+            $this->db->trans_commit(); // finaliza la transaccion de begin
+        }
+    }
+    
+    function crear_anuncio_view($upload_state){
+         $infoPage['titulo'] = 'Administrador - Anuncios';
+
+        //Consultamos los tipos de empresas para enviar al combobox
+        $data['locales'] = $this->empresa_model->get_empresas_by_user($this->user->id);
+        $data['upload_state'] = $upload_state;
+
+        //Estructura del dashboard
+        $infoPage['header'] = $this->load->view('login/header_login', '', TRUE);
+        $infoPage['sidebar'] = $this->load->view('admin/sidebar', '', TRUE);
+        $infoPage['content'] = $this->load->view('empresa/crear_anuncio', $data, TRUE);
+        $infoPage['footer'] = $this->load->view('portal/static/footer', '', TRUE);
+
+        //Cargamos el dashboard
+        $this->load->view('portal/static/dashboard', $infoPage);
+    }
+
+    function uploadImg() {
+        //Configure
+        //set the path where the files uploaded will be copied. NOTE if using linux, set the folder to permission 777
+        $config['upload_path'] = 'uploads/images/anuncios';
+
+        // set the filter image types
+        $config['allowed_types'] = 'gif|jpg|png';
+
+        //load the upload library
+        $this->load->library('upload', $config);
+
+        $this->upload->initialize($config);
+
+        $this->upload->set_allowed_types('*');
+
+        $data['upload_data'] = '';
+
+        //if not successful, set the error message
+        if (!$this->upload->do_upload('userfile')) {
+            $data = array('msg' => $this->upload->display_errors());
+            $data['upload_state'] = false;
+        } else { //else, set the success message
+            $data = array('msg' => "Subida completa!");
+
+            $data['upload_data'] = $this->upload->data();
+            $data['upload_state'] = true;
+        }
+        print_r($this->upload->data());
+        return $data;
     }
 
 }
