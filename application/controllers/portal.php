@@ -15,7 +15,9 @@ class Portal extends CI_Controller {
     public function index() {
         //Consultamos los tipos de empresas para enviar al combobox
         $this->load->model("empresa_model");
+        $this->load->model("anuncio_model");
         $data['tipos_empresa'] = $this->empresa_model->get_tipos();
+        $data['anuncios'] = $this->anuncio_model->get_all();
 
         $infoPage['titulo'] = 'Inicio';
         $this->load->view('portal/static/header', $infoPage);

@@ -174,11 +174,11 @@ class Empresa extends CI_Controller {
 
 
         //Imprimimos los datos para verificar que los esta extrayendo correctamente:
-        echo 'Datos a guardar: <br>';
-        echo 'Nombre:' . $anunc_title . ' <br>';
-        echo 'File: ' . $anuncio['upload_data']['file_name']. '<br>';
-        echo "Empresa Id: " . $anunc_emp_id . '<br>';
-        echo "User Id: " . $admin_id . '<br>';
+//        echo 'Datos a guardar: <br>';
+//        echo 'Nombre:' . $anunc_title . ' <br>';
+//        echo 'File: ' . $anuncio['upload_data']['file_name']. '<br>';
+//        echo "Empresa Id: " . $anunc_emp_id . '<br>';
+//        echo "User Id: " . $admin_id . '<br>';
 
         $this->db->trans_begin(); // inicio de transaccion
         $this->load->model('anuncio_model');
@@ -195,18 +195,19 @@ class Empresa extends CI_Controller {
             echo $this->res_msj;
 //            echo error_msg('<br>Ha ocurrido un error al guardar el paciente en la base de datos.');
         } else {
-            $this->crear_anuncio_view($anuncio['upload_state']);
+            $this->crear_anuncio_view($anuncio);
 //            echo $this->res_msj;
             $this->db->trans_commit(); // finaliza la transaccion de begin
         }
     }
     
-    function crear_anuncio_view($upload_state){
+    function crear_anuncio_view($anuncio_data){
          $infoPage['titulo'] = 'Administrador - Anuncios';
 
         //Consultamos los tipos de empresas para enviar al combobox
         $data['locales'] = $this->empresa_model->get_empresas_by_user($this->user->id);
-        $data['upload_state'] = $upload_state;
+        $data['upload_state'] = $anuncio_data['upload_state'];
+        $data['msg'] = $anuncio_data['msg'];
 
         //Estructura del dashboard
         $infoPage['header'] = $this->load->view('login/header_login', '', TRUE);
@@ -245,7 +246,6 @@ class Empresa extends CI_Controller {
             $data['upload_data'] = $this->upload->data();
             $data['upload_state'] = true;
         }
-        print_r($this->upload->data());
         return $data;
     }
 

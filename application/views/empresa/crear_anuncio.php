@@ -10,7 +10,7 @@
     ?>
 </div>
 <div class="well" id="div_form_anuncio">  
-    <input type="hidden" name="upload_state" id="upload_state">
+    <input type="hidden" name="upload_state" id="upload_state" value="<?php echo $upload_state?>">
     <form id="form_anuncio_register" class="form-horizontal"  method="post" enctype="multipart/form-data" action="<?php echo base_url(); ?>empresa/crear_anuncio">
         <p style="text-align: center" class="col-sm-10"> Suba una imagen publicitaria para mostrar a los usuarios de FindIt</p>
         <div class="form-group">
@@ -62,7 +62,7 @@
     $(document).ready(function () {
         //Variable para saber si la imagen se subio con exito
         var state_upload = $("#upload_state").val();
-        if(state_upload == 1){
+        if(state_upload){
             $('#div_form_anuncio').hide(1000);
             $('#res_msj').show(1000);
         }
