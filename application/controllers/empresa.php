@@ -171,7 +171,7 @@ class Empresa extends CI_Controller {
         $this->load->model('file');
         $anuncio = $this->uploadImg();
         $anunc_file = $anuncio['upload_data']['file_name'];
-
+        $fecha_inicio = date("Y-n-j");//Fecha de hoy
 
         //Imprimimos los datos para verificar que los esta extrayendo correctamente:
 //        echo 'Datos a guardar: <br>';
@@ -183,7 +183,7 @@ class Empresa extends CI_Controller {
         $this->db->trans_begin(); // inicio de transaccion
         $this->load->model('anuncio_model');
 
-        $nuevo_id = $this->anuncio_model->save_new($anunc_title, $anunc_file, $anunc_emp_id);
+        $nuevo_id = $this->anuncio_model->save_new($anunc_title, $anunc_file, $anunc_emp_id, $fecha_inicio);
         if ($nuevo_id <= 0) {
             $this->db->trans_rollback();
             echo $this->res_msj;
