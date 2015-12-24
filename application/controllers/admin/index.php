@@ -70,7 +70,7 @@ class Index extends CI_Controller {
 
         // Crear cabezera personalizada
         $this->load->model('empresa_model');
-        
+
         $data['locales'] = $this->empresa_model->presentaEmpresa($this->user->email);
         $infoPage['header'] = $this->load->view('login/header_login', '', TRUE);
         $this->load->model('usuario_model');
@@ -131,20 +131,21 @@ class Index extends CI_Controller {
         echo $confir;
     }
 
-    /* function vista_registrar_empresa() {
-      $infoPage['titulo'] = 'Registrar Empresa';
-      $this->load->view('login/header_login', $infoPage);
-      $this->load->view('admin/empresa_register_form');
-      $this->load->view('portal/static/footer');
-      }
+    public function loadAnuncios() {
+        $infoPage['titulo'] = 'Administrador - Anuncios';
+        //Consultamos los tipos de empresas para enviar al combobox
+        $data['locales'] = $this->empresa_model->get_empresas_by_user($this->user->id);
+        $data['upload_state'] = FALSE;
+        $this->load->model('usuario_model');
+        $datas['data_user'] = $this->usuario_model->get_data($this->user->email);
 
+        //Estructura del dashboard
+        $infoPage['header'] = $this->load->view('login/header_login', '', TRUE);
+        $infoPage['sidebar'] = $this->load->view('admin/sidebar', $datas, TRUE);
+        $infoPage['content'] = $this->load->view('empresa/crear_anuncio', $data, TRUE);
+        $infoPage['footer'] = $this->load->view('portal/static/footer', '', TRUE);
+        //Cargamos el dashboard
+        $this->load->view('portal/static/dashboard', $infoPage);
+    }
 
-      function datos_usuario(){
-      $this->load->model('usuario_model');
-
-      $data_user['data_user'] = $this->usuario_model->get_user_data();
-      $this->load->view('login/header_login');
-      $this->load->view('admin/datos_registro',$data_user);
-      $this->load->view('portal/static/footer');
-      } */
 }

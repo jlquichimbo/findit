@@ -39,42 +39,6 @@
                     }
                     echo $item;
                     ?>
-                    <!--                <div class="item active">
-                                        <img src="<?php echo base_url(); ?>/complementos/img/slider1.jpg" alt="Slider-1">
-                                        <div class="carousel-caption">
-                                            <h4>Ferreter&iacute;a</h4>
-                                            <p>
-                                                <button type="button" class="btn btn-primary">Visita este Local</button>
-                                            </p>
-                                        </div>
-                                    </div>-->
-                    <!--                    <div class="item">
-                                            <img src="<?php echo base_url(); ?>/complementos/img/slider2.jpg" alt="Slider-2">
-                                            <div class="carousel-caption">
-                                                <h4>Restaurante</h4>
-                                                <p>
-                                                    <button type="button" class="btn btn-primary">Visita este Local</button>
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <div class="item">
-                                            <img src="<?php echo base_url(); ?>/complementos/img/slider3.jpg" alt="Slider-3">
-                                            <div class="carousel-caption">
-                                                <h4>Centro comercial</h4>
-                                                <p>
-                                                    <button type="button" class="btn btn-primary">Visita este Local</button>
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <div class="item">
-                                            <img src="<?php echo base_url(); ?>/complementos/img/slider4.jpg" alt="Slider-4">
-                                            <div class="carousel-caption">
-                                                <h4>Piscina</h4>
-                                                <p>
-                                                    <button type="button" class="btn btn-primary">Visita este Local</button>
-                                                </p>
-                                            </div>
-                                        </div>-->
                     <!-- Left and right controls -->
                     <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
                         <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>

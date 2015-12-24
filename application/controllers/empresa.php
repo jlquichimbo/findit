@@ -202,8 +202,11 @@ class Empresa extends CI_Controller {
     }
     
     function crear_anuncio_view($anuncio_data){
-         $infoPage['titulo'] = 'Administrador - Anuncios';
+        $infoPage['titulo'] = 'Administrador - Anuncios';
 
+        $this->load->model('usuario_model');
+        $datas['data_user'] = $this->usuario_model->get_data($this->user->email);
+        
         //Consultamos los tipos de empresas para enviar al combobox
         $data['locales'] = $this->empresa_model->get_empresas_by_user($this->user->id);
         $data['upload_state'] = $anuncio_data['upload_state'];
@@ -211,7 +214,7 @@ class Empresa extends CI_Controller {
 
         //Estructura del dashboard
         $infoPage['header'] = $this->load->view('login/header_login', '', TRUE);
-        $infoPage['sidebar'] = $this->load->view('admin/sidebar', '', TRUE);
+        $infoPage['sidebar'] = $this->load->view('admin/sidebar', $datas, TRUE);
         $infoPage['content'] = $this->load->view('empresa/crear_anuncio', $data, TRUE);
         $infoPage['footer'] = $this->load->view('portal/static/footer', '', TRUE);
 
