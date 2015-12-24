@@ -1,6 +1,6 @@
     <br>
     <div class="well">
-        <center><a><img src="<?php echo base_url(). $data_user[0]->usuario; ?>" width="130" heigth="150"></a></center>
+        <center><a><img src="<?php echo base_url(). 'uploads/images/users/'. $data_user[0]->usuario; ?>" width="150" heigth="150"></a></center>
     </div>
     
     <!-- Blog Categories Well -->
