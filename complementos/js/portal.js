@@ -97,6 +97,7 @@ $('#local_id').change(function () {
             url: url, 
             dataType: 'json',
             success: function (locales) {
+                console.log(locales);
                 $.each(locales, function (id, local) {
                     addMarca(local);
                 });
