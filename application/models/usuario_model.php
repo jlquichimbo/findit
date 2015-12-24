@@ -13,7 +13,7 @@ Class Usuario_model extends CI_Model {
     /* Extrae los datos de un solo usuario */
 
     function get_data($email) {
-        $this->db->select('nombres, apellidos, cedula_ruc, email, telefono');
+        $this->db->select('nombres, apellidos, usuario, cedula_ruc, email, telefono');
         $this->db->from('usuario');
         $this->db->where('email', $email);
 
@@ -24,7 +24,7 @@ Class Usuario_model extends CI_Model {
     }
 
     function get_data_by_id($id) {
-        $this->db->select('nombres, apellidos, cedula_ruc, email, telefono');
+        $this->db->select('nombres, apellidos, usuario, cedula_ruc, email, telefono');
         $this->db->from('usuario');
         $this->db->where('id', $id);
 
@@ -40,8 +40,10 @@ Class Usuario_model extends CI_Model {
         $this->db->select('usuario.id,'
                 . 'nombres, '
                 . 'apellidos, '
+                . 'usuario,'
                 . 'cedula_ruc, '
                 . 'email,'
+                . 'telefono,'
                 . 'usuario,'
                 . 'rol.nombre rol,'
                 . 'rol.id rol_ids,'

@@ -39,14 +39,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <!--Inicia menu-->
                     <div class="collapse navbar-collapse" id="navegacion-fm">
                         <!--<a href ="login.php" type="button" class="btn btn-primary navbar-btn navbar-right">Ingresa</a>-->
-                        <a href ="<?= base_url('portal/vistaloguearUsuario') ?>" type="button" class="btn btn-primary navbar-btn navbar-right">Ingresa</a>
+                        <a href ="<?= base_url('portal/vistaloguearUsuario') ?>" type="button" class="btn btn-primary navbar-btn navbar-right">Iniciar sesión</a>
 
                         <a href ="<?= base_url('portal/vistaRegistrarUsuario') ?>" type="button" class="btn btn-primary navbar-btn navbar-right">Registrate</a>
 
-                        <form action="#" class="navbar-form navbar-right" role="search">
-                            <div class="form-group"><input type="text" class="form-control" placeholder="Buscar..."></div>
-                            <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search"></span></button>
-                        </form>
                     </div>
                 </div>
             </nav>

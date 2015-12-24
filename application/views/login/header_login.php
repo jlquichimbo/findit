@@ -42,11 +42,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <a href ="<?= base_url('#') ?>" type="button" class="btn btn-primary navbar-btn navbar-right">Mi perfil</a>
 
                         <a href ="<?= base_url('login/login/logout') ?>" type="button" class="btn btn-primary navbar-btn navbar-right">Salir</a>
-
-                        <form action="#" class="navbar-form navbar-right" role="search">
-                            <div class="form-group"><input type="text" class="form-control" placeholder="Buscar..."></div>
-                            <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search"></span></button>
-                        </form>
                     </div>
                 </div>
             </nav>

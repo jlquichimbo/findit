@@ -18,7 +18,7 @@ class Portal extends CI_Controller {
         $data['tipos_empresa'] = $this->empresa_model->get_tipos();
 
         $infoPage['titulo'] = 'Inicio';
-        $this->load->view('portal/static/header', $infoPage);
+        $this->load->view('portal/static/headerAdm', $infoPage);
         $this->load->view('portal/principal', $data);
         $this->load->view('portal/static/footer');
         //$this->vistaRegistrarUsuario();
@@ -44,41 +44,6 @@ class Portal extends CI_Controller {
 //        $this->load->view('login/login/index');
         $this->load->view('portal/static/footer');
     }
-
-    /* public function vistaDatosRegistro() {
-      $infoPage['titulo'] = 'Dat_Registro';
-      $this->load->view('portal/static/header', $infoPage);
-      $this->load->view('portal/datos_registro');
-      $this->load->view('portal/static/footer');
-      }
-
-      public function modelRegistrarUsuario() {
-      $this->form_validation->set_rules('Cedula', 'La cedula que ingreso es incorrecta', 'required');
-      $this->form_validation->set_rules('Nombres', 'El nombre debe contener solo letras', 'required');
-      $this->form_validation->set_rules('Apellido', 'El apellido debe contener solo letras', 'required');
-      $this->form_validation->set_rules('Direcion', 'La Direcion no existe', 'required');
-      $this->form_validation->set_rules('Mail', 'Debe ingresar un mail', 'required');
-      $this->form_validation->set_rules('User', 'El usuario ya existe', 'required');
-      $this->form_validation->set_rules('Password', 'El passworddebe ser mayor a 5 caracteres', 'required');
-      if ($this->form_validation->run == FALSE) {
-      $infoPage['titulo'] = 'Registrar Usuario';
-      $this->load->view('portal/static/header', $infoPage);
-      $this->load->view('portal/registro');
-      $this->load->view('portal/static/footer');
-      } else {
-      $datosUsuario = array(
-      'ceduladb' => $this->input->post('Cedula'),
-      'nombresdb' => $this->input->post('Nombres'),
-      'apellidodb' => $this->input->post('Apellido'),
-      'direcciondb' => $this->input->post('Direcion'),
-      'maildb' => $this->input->post('Mail'),
-      'userdb' => $this->input->post('User'),
-      'passworddb' => $this->input->post('Password')
-      );
-      $this->model_portal->registrarUsuario($datosUsuario);
-      redirect(base_url() . 'portal/');
-      }
-      } */
 
     public function get_locales_by_tipe($type) {
         //Graba nueva empresa con generic model:

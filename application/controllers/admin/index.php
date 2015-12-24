@@ -22,28 +22,21 @@ class Index extends CI_Controller {
 //        print_r($data['data_user']);
         //Estructura del dashboard
         $infoPage['header'] = $this->load->view('login/header_login', '', TRUE);
-        $infoPage['sidebar'] = $this->load->view('admin/sidebar', '', TRUE);
+        $infoPage['sidebar'] = $this->load->view('admin/sidebar', $data, TRUE);
         $infoPage['content'] = $this->load->view('usuarios/datos_registro', $data, TRUE);
         $infoPage['footer'] = $this->load->view('portal/static/footer', '', TRUE);
 
         //Cargamos el dashboard
         $this->load->view('portal/static/dashboard', $infoPage);
-
-        //cargamos el foterr
-        //$this->load->view('portal/static/footer');
     }
 
     function load_users() {
 
-        // $infoPage['titulo'] = 'Super Administrador';
-        $infoPage['header'] = $this->load->view('login/header_login', '', TRUE);
-        $infoPage['sidebar'] = $this->load->view('superadmin/sidebar', '', TRUE);
-
-        //Cargamos modelo usuarios
+        $infoPage['titulo'] = 'Administrador';
         $this->load->model('usuario_model');
-
-        //Extraemos todos los uausrios
         $data['usuarios_list'] = $this->usuario_model->get_all();
+        $infoPage['header'] = $this->load->view('login/header_login', '', TRUE);
+        $infoPage['sidebar'] = $this->load->view('superadmin/sidebar', $data, TRUE);
         $infoPage['content'] = $this->load->view('usuarios/datos_registro', $infoPage, TRUE);
         $infoPage['footer'] = $this->load->view('portal/static/footer', '', TRUE);
 
@@ -52,15 +45,16 @@ class Index extends CI_Controller {
     }
 
     function cargarCrearLocal() {
-        $this->load->model('usuario_model');
         $infoPage['titulo'] = 'Administrador';
 
+        $this->load->model('usuario_model');
         //Consultamos los tipos de empresas para enviar al combobox
+        $datas['data_user'] = $this->usuario_model->get_data($this->user->email);
         $data['tipos_empresa'] = $this->empresa_model->get_tipos();
 
         //Estructura del dashboard
         $infoPage['header'] = $this->load->view('login/header_login', '', TRUE);
-        $infoPage['sidebar'] = $this->load->view('admin/sidebar', '', TRUE);
+        $infoPage['sidebar'] = $this->load->view('admin/sidebar', $datas, TRUE);
         $infoPage['content'] = $this->load->view('empresa/crear_local', $data, TRUE);
         $infoPage['footer'] = $this->load->view('portal/static/footer', '', TRUE);
 
@@ -70,19 +64,23 @@ class Index extends CI_Controller {
     }
 
     function cargarMisLocales() {
-        $this->load->library('table');
-
         $infoPage['titulo'] = 'Administrador';
-        $infoPage['header'] = $this->load->view('login/header_login', '', TRUE);
-        $infoPage['sidebar'] = $this->load->view('admin/sidebar', '', TRUE);
+
+        $this->load->library('table');
 
         // Crear cabezera personalizada
         $this->load->model('empresa_model');
+        
         $data['locales'] = $this->empresa_model->presentaEmpresa($this->user->email);
+        $infoPage['header'] = $this->load->view('login/header_login', '', TRUE);
+        $this->load->model('usuario_model');
+        $datas['data_user'] = $this->usuario_model->get_data($this->user->email);
+        $infoPage['sidebar'] = $this->load->view('admin/sidebar', $datas, TRUE);
+
 //        echo $this->user->id;
 //        print_r($data['locales']);
         $infoPage['content'] = $this->load->view('admin/locales', $data, TRUE);
-        $infoPage['footer'] = $this->load->view('portal/static/footer', '', TRUE);
+        $infoPage['footer'] = $this->load->view('portal/static/footer2', '', TRUE);
 
         //Cargamos el dashboard
         $this->load->view('portal/static/dashboard', $infoPage);
@@ -90,17 +88,17 @@ class Index extends CI_Controller {
 
         //$this->load->view('portal/static/footer');
     }
-    
-    
+
     //Extrateer datos de la empresa que desea actualizar su horario
-    public function getNombreLocal($id){
+    public function getNombreLocal($id) {
         $local = $this->empresa_model->getNombreLocal($id);
-        if(!empty($local)) {
+        if (!empty($local)) {
             echo json_encode($local);
         }
     }
+
     public function desactivarHorario($id, $estado) {
-        $confir=0;
+        $confir = 0;
         $id_emp = $id;
         $est = $estado;
         $this->db->trans_begin(); // inicio de transaccion
@@ -109,30 +107,29 @@ class Index extends CI_Controller {
         if ($this->db->trans_status() === FALSE) {
             $this->db->trans_rollback();
         } else {
-            $confir=1;
+            $confir = 1;
             $this->db->trans_commit(); // finaliza la transaccion de begin
         }
         echo $confir;
     }
+
     public function activarHorario($id, $estado, $Hinicio, $Hfin) {
-        $confir=0;
+        $confir = 0;
         $id_emp = $id;
         $est = $estado;
-        $hi=$Hinicio;
-        $hf=$Hfin;
+        $hi = $Hinicio;
+        $hf = $Hfin;
         $this->db->trans_begin(); // inicio de transaccion
         $this->empresa_model->activarHorario($id_emp, $est, $hi, $hf);
         // verifico que todo elproceso en si este bien ejecutado
         if ($this->db->trans_status() === FALSE) {
             $this->db->trans_rollback();
         } else {
-            $confir=1;
+            $confir = 1;
             $this->db->trans_commit(); // finaliza la transaccion de begin
         }
         echo $confir;
     }
-    
-    
 
     /* function vista_registrar_empresa() {
       $infoPage['titulo'] = 'Registrar Empresa';

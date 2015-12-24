@@ -5,25 +5,27 @@
 <!--<script src="<?php echo base_url(); ?>complementos/js/portal.js"></script>-->
 
 
-<h2 class="page-header">Editar Local:</h2>
 
-<div class="row" id="form_registro">  
+<br>
+<div class="well" id="form_registro">
+    <h2 class="page-header">Editar Local:</h2>
+
     <form id="form_empresa_edit" class="form-horizontal" action="<?php echo base_url('empresa/crear_local') ?>" method="post">
         <div class="form-group">
-            <label for="formGroup" class="col-sm-4 control-label">Nombre local:</label>
+            <label for="formGroup" class="col-sm-2 control-label">Nombre local:</label>
             <div class="col-sm-8">
                 <input value="<?php echo $empresa[0]->nombre ?>" type="text" id="emp_name" name="emp_name" class="form-control campos" placeholder="Ingrese el nombre de su local" required autofocus>
             </div>
         </div>
         <div class="form-group">
-            <label for="formGroup" class="col-sm-4 control-label">Direccion:</label>
+            <label for="formGroup" class="col-sm-2 control-label">Direccion:</label>
             <div class="col-sm-8">
                 <input value="<?php echo $empresa[0]->direccion ?>" type="text" id="emp_address" name="emp_address" class="form-control campos" placeholder="Ingrese un sector que referencie su local" required>
             </div>
         </div>
         <div class="form-group">
-            <label for="formGroup" class="col-sm-4 control-label">Categoria:</label>
-            <div class="col-sm-8">
+            <label for="formGroup" class="col-sm-2 control-label">Categoria:</label>
+            <div class="col-sm-5">
                 <select id="emp_tipo" name="emp_tipo" class="form-control">
                     <?php
                     foreach ($tipos_empresa as $tipo) {
@@ -49,27 +51,26 @@
         <input value="<?php echo $id_emp ?>" type="hidden" id="id_emp" name="id_emp" class="campos" >
         <input value="<?php echo $empresa[0]->id_admin ?>"  type="hidden" id="admin_id" name="id_admin" class="campos">
 
-        <div id="messages_div">
-
-        </div>
         <div class="form-group">
-            <label for="formGroup" class="col-sm-2 control-label"></label>
-            <div class="col-sm-4">
+            <label for="formGroup" class="col-sm-12 control-label">
+            <div class="col-sm-9">
                 <button type="submit" class="btn btn-success btn-lg" id="ajaxformbtn" data-target="messages_div">
-                    <span class="glyphicon glyphicon-ok"></span>
-                    Editar
+                    <span class="glyphicon glyphicon-floppy-disk"></span>
+                    Guardar
                 </button>
             </div>
-            <label for="formGroup" class="col-sm-2 control-label"></label>
-            <div class="col-sm-4">
+            <div class="col-sm-2">
                 <button id="btn_cancel" type="reset" class="btn btn-danger btn-lg">
                     <span class="glyphicon glyphicon-remove"></span>
                     Cancelar
                 </button>
             </div>
-        </div>	
-    </form>
+                </label>
+        </div>
+</div>	
+</form>
 </div>
+
 <script>
     /*Envio del formulario por ajax*/
     var BASE_URL = "<?php echo base_url(); ?>";
@@ -81,9 +82,9 @@
                     $("#form_registro").html(data);
                 });
     });
-    
+
     //Ocultar el div al hacer clic en cancelar
-    $('#btn_cancel').click(function (){
+    $('#btn_cancel').click(function () {
         $('#form_registro').hide(1000);
     });
 

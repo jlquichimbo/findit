@@ -34,10 +34,13 @@
                     console.log(data);
 //                    $("#form_registro").html(data);
                     $('#form_empresa_delete').html(data); //Añadimos la respuesta AJAX a nuestro div de notificación de respuesta
+                    location.reload();
                 });
+
     });
+
     //Ocultar el div al hacer clic en cancelar
-    $('#btn_cancel').click(function (){
+    $('#btn_cancel').click(function () {
         $('#form_delete').hide(1000);
     });
 </script>

@@ -94,6 +94,7 @@
                     }
                     // c.close();
 //                    $('div#sending_form').prepend(data); //Añadimos la respuesta AJAX a nuestro div de notificación de respuesta
+                location.reload();
                 });
     });
 

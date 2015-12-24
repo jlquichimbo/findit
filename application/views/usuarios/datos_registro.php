@@ -4,18 +4,10 @@
     <!--<hr align="left" noshade="noshade" size="2" width="80%" />-->
 
     <center><a><img class="img-responsive" src="<?php echo base_url(); ?>/complementos/img/banner.jpg" alt=""  /></a></center> 
-
-
-   <!-- <center>
-        <div style="width: 500px; margin-bottom: 300px; margin-top: 100px">
-            <?php
-          //  echo "<b>Email:</b>" . $data_user[0]->email . "<br>";
-            ?>
-        </div>
-    </center>-->
-     </div>
+</div>
 <br>
 <div class="well well-lg">
     <?php echo "Bienvenidos a la aplicación FIND-IT la cual te ayudara hacer conocer más tu negocio!, podras crear tus locales"
-    . " como tambien tu seras quien pongas el horario de apertura y de cierre, gracias a esta tecnología"?>
-     </div>
+    . " como tambien tu seras quien pongas el horario de apertura y de cierre, gracias a esta tecnología"
+    ?>
+</div>

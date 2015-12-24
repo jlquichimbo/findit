@@ -1,11 +1,8 @@
-<!-- Page Sidebar -->
-<!-- Blog Sidebar Widgets Column -->
-    <!-- Blog Search Well -->
     <br>
     <div class="well">
-        <center><a><img src="<?php echo base_url(); ?>/complementos/img/avatar-login.png" width="130" heigth="150"></a></center>
-      <!--<center><a href="index-portal.php"><img src="../img/usuario.jpeg" width="150" heigth="150"></a></center>-->
+        <center><a><img src="<?php echo base_url(). $data_user[0]->usuario; ?>" width="130" heigth="150"></a></center>
     </div>
+    
     <!-- Blog Categories Well -->
     
         <ul class="nav nav-sidebar">
@@ -15,7 +12,5 @@
  
         </ul>
 <!-- /.row -->
-
-
 <?php
 

@@ -5,6 +5,7 @@
         <thead>
             <tr>
                 <th>Nombre</th>
+                <th>Dirección</th>
                 <th>Administrador</th>
                 <th>Tipo</th>
                 <th>Editar</th>
@@ -20,6 +21,7 @@
                 $eliminar = '<a emp_id="' . $empresa->id . '" class="link_delete" href="#"><i class= "glyphicon glyphicon-trash"/></a>';
                 echo Open('tr');
                 echo tagcontent('td', $empresa->nombre);
+                echo tagcontent('td', $empresa->direccion);
                 echo tagcontent('td', $empresa->nombre_admin);
                 echo tagcontent('td', $empresa->tipo);
                 echo tagcontent('td', $editar);

@@ -1,7 +1,4 @@
 <div id="content_link"></div>
-
-
-
 <h3>Listado Usuarios</h3>
 <div class="table-responsive">
     <table id="myDataTable">
@@ -10,9 +7,10 @@
                 <th>Nombres</th>
                 <th>Apellidos</th>
                 <th>C.I. / RUC</th>
-                <th>Username</th>
+                <th>Foto</th>
                 <th>Email</th>
                 <th>Rol</th>
+                <th>Telefono</th>
                 <th>Editar</th>
                 <th>Eliminar</th>
             </tr>
@@ -21,19 +19,24 @@
             <?php
 
             foreach ($usuarios_list as $usuario) {
+                
                 //Iconos para editar / eliminar
                 $editar = '<a user_id='.$usuario->id.' class="link_edit" href="#"> '
                         . '<i class="glyphicon glyphicon-pencil"></i></a>';
 
                 $eliminar = '<a user_id='.$usuario->id.' class="link_delete"  href="#">'
                         . '<i class= "glyphicon glyphicon-trash"/></a>';
+                 
+                $imagen=  base_url();
+                
                 echo Open('tr');
                 echo tagcontent('td', $usuario->nombres);
                 echo tagcontent('td', $usuario->apellidos);
                 echo tagcontent('td', $usuario->cedula_ruc);
-                echo tagcontent('td', $usuario->usuario);
+                echo tagcontent('td', "<a><img src= '$imagen.$usuario->usuario' width='50' heigth='60'></a>");
                 echo tagcontent('td', $usuario->email);
                 echo tagcontent('td', $usuario->rol);
+                echo tagcontent('td', $usuario->telefono);
                 echo tagcontent('td', $editar);
                 echo tagcontent('td', $eliminar);
                 echo Close('tr');
