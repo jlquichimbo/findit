@@ -9,8 +9,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <meta name="author" content="Grupo 2">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1"><!--Meta para dispositivos moviles-->
-        <link rel="stylesheet" href="<?php echo base_url(); ?>complementos/frameworks/bootstrap3.3.5/css/bootstrap.min.css">
-        <link rel="stylesheet" href="<?php echo base_url(); ?>complementos/css/estilosportal.css">
+        <link rel="stylesheet" href="<?=base_url()?>complementos/frameworks/bootstrap3.3.5/css/bootstrap.min.css">
+        <link rel="stylesheet" href="<?=base_url()?>complementos/css/estilosportal.css">
         <!--GOOGLE MAPS-->
         <script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js?ver=3.1.2'></script>
         <script type="text/javascript"

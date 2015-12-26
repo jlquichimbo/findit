@@ -1,7 +1,6 @@
 
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-
 ?>
 <html lang="en">
     <head>
@@ -24,22 +23,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <style type="text/css">
             #mapa_content {
                 height: 60em;
-                
             }
-            
-            
-            
-            
         </style>
     </head>
     <body>
-
-     
-                <?php
-                echo $header;
-                ?>
-
- 
+        <?php
+        echo $header;
+        ?>
         <div class="container-fluid">
             <div class="row">
                 <div class="col-sm-3 col-md-2 sidebar">
@@ -58,12 +48,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </div>
         </div>
     </body>
+    <script src="<?php echo base_url(); ?>complementos/frameworks/jquery.min.js"></script>
+    <script src="<?php echo base_url(); ?>complementos/frameworks/bootstrap3.3.5/js/bootstrap.min.js"></script>
 
-        <?php
-        echo $footer;
-        ?>
-        <script src="<?php echo base_url(); ?>complementos/frameworks/jquery.min.js"></script>
-        <script src="<?php echo base_url(); ?>complementos/frameworks/bootstrap3.3.5/js/bootstrap.min.js"></script>
-
-    </body>
+</body>
 </html>

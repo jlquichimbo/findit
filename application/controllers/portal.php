@@ -24,6 +24,8 @@ class Portal extends CI_Controller {
         $this->load->view('portal/principal', $data);
         $this->load->view('portal/static/footer');
         //$this->vistaRegistrarUsuario();
+       
+       
     }
 
     public function vistaRegistrarUsuario() {
@@ -34,17 +36,19 @@ class Portal extends CI_Controller {
         $infoPage['header'] = $this->load->view('portal/static/header', '', TRUE);
         $infoPage['sidebar'] = '';
         $infoPage['content'] = $this->load->view('portal/registro', '', TRUE);
-        $infoPage['footer'] = $this->load->view('portal/static/footer', '', TRUE);
-        //Cargamos el dashboard
         $this->load->view('portal/static/dashboard', $infoPage);
+        $infoPage['footer'] = $this->load->view('portal/static/footer');
+        //Cargamos el dashboard
+        
     }
 
     public function vistaloguearUsuario() {
         $infoPage['titulo'] = 'Ingresar';
+        
         $this->load->view('portal/static/header', $infoPage);
         $this->load->view('login/login_view');
 //        $this->load->view('login/login/index');
-        $this->load->view('portal/static/footer');
+        $infoPage['footer'] = $this->load->view('portal/static/footer');
     }
 
     public function get_locales_by_tipe($type) {

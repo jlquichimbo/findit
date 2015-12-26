@@ -21,28 +21,16 @@ class Index extends CI_Controller {
         $data['data_user'] = $this->usuario_model->get_data($this->user->email);
 //        print_r($data['data_user']);
         //Estructura del dashboard
-        $infoPage['header'] = $this->load->view('login/header_login', '', TRUE);
+        $infoPage['header'] = $this->load->view('login/header_admin', '', TRUE);
         $infoPage['sidebar'] = $this->load->view('admin/sidebar', $data, TRUE);
         $infoPage['content'] = $this->load->view('usuarios/datos_registro', $data, TRUE);
-        $infoPage['footer'] = $this->load->view('portal/static/footer', '', TRUE);
+       
+        $infoPage['footer'] = $this->load->view('portal/static/footer');
 
         //Cargamos el dashboard
-        $this->load->view('portal/static/dashboard', $infoPage);
+         $this->load->view('portal/static/dashboard', $infoPage);
     }
 
-    function load_users() {
-
-        $infoPage['titulo'] = 'Administrador';
-        $this->load->model('usuario_model');
-        $data['usuarios_list'] = $this->usuario_model->get_all();
-        $infoPage['header'] = $this->load->view('login/header_login', '', TRUE);
-        $infoPage['sidebar'] = $this->load->view('superadmin/sidebar', $data, TRUE);
-        $infoPage['content'] = $this->load->view('usuarios/datos_registro', $infoPage, TRUE);
-        $infoPage['footer'] = $this->load->view('portal/static/footer', '', TRUE);
-
-        //Cargamos el dashboard
-        $this->load->view('portal/static/dashboard', $infoPage);
-    }
 
     function cargarCrearLocal() {
         $infoPage['titulo'] = 'Administrador';
@@ -53,10 +41,10 @@ class Index extends CI_Controller {
         $data['tipos_empresa'] = $this->empresa_model->get_tipos();
 
         //Estructura del dashboard
-        $infoPage['header'] = $this->load->view('login/header_login', '', TRUE);
+        $infoPage['header'] = $this->load->view('login/header_admin', '', TRUE);
         $infoPage['sidebar'] = $this->load->view('admin/sidebar', $datas, TRUE);
         $infoPage['content'] = $this->load->view('empresa/crear_local', $data, TRUE);
-        $infoPage['footer'] = $this->load->view('portal/static/footer', '', TRUE);
+        $infoPage['footer'] = $this->load->view('portal/static/footer');
 
         //Cargamos el dashboard
         $this->load->view('portal/static/dashboard', $infoPage);
@@ -72,7 +60,7 @@ class Index extends CI_Controller {
         $this->load->model('empresa_model');
 
         $data['locales'] = $this->empresa_model->presentaEmpresa($this->user->email);
-        $infoPage['header'] = $this->load->view('login/header_login', '', TRUE);
+        $infoPage['header'] = $this->load->view('login/header_admin', '', TRUE);
         $this->load->model('usuario_model');
         $datas['data_user'] = $this->usuario_model->get_data($this->user->email);
         $infoPage['sidebar'] = $this->load->view('admin/sidebar', $datas, TRUE);
@@ -80,13 +68,28 @@ class Index extends CI_Controller {
 //        echo $this->user->id;
 //        print_r($data['locales']);
         $infoPage['content'] = $this->load->view('admin/locales', $data, TRUE);
-        $infoPage['footer'] = $this->load->view('portal/static/footer2', '', TRUE);
+        $infoPage['footer'] = $this->load->view('portal/static/footer');
 
         //Cargamos el dashboard
         $this->load->view('portal/static/dashboard', $infoPage);
 
 
         //$this->load->view('portal/static/footer');
+    }
+
+    function perfil() {
+        $infoPage['titulo'] = 'Administrador';
+        $this->load->model('usuario_model');
+        //sacamos la imagen
+        $infoPage['data_user'] = $this->usuario_model->get_data($this->user->email);
+
+        $infoPage['header'] = $this->load->view('login/header_admin', '', TRUE);
+        $infoPage['sidebar'] = $this->load->view('admin/sidebar', $infoPage, TRUE);
+        $infoPage['content'] = $this->load->view('usuarios/edit_adm', $infoPage, TRUE);
+        $infoPage['footer'] = $this->load->view('portal/static/footer');
+
+        //Cargamos el dashboard
+        $this->load->view('portal/static/dashboard', $infoPage);        
     }
 
     //Extrateer datos de la empresa que desea actualizar su horario
@@ -140,10 +143,10 @@ class Index extends CI_Controller {
         $datas['data_user'] = $this->usuario_model->get_data($this->user->email);
 
         //Estructura del dashboard
-        $infoPage['header'] = $this->load->view('login/header_login', '', TRUE);
+        $infoPage['header'] = $this->load->view('login/header_admin', '', TRUE);
         $infoPage['sidebar'] = $this->load->view('admin/sidebar', $datas, TRUE);
         $infoPage['content'] = $this->load->view('empresa/crear_anuncio', $data, TRUE);
-        $infoPage['footer'] = $this->load->view('portal/static/footer', '', TRUE);
+        $infoPage['footer'] = $this->load->view('portal/static/footer');
         //Cargamos el dashboard
         $this->load->view('portal/static/dashboard', $infoPage);
     }

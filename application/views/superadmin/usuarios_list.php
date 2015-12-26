@@ -1,6 +1,6 @@
 <div id="content_link"></div>
 <h3>Listado Usuarios</h3>
-<div class="table-responsive">
+<div class="well well-sm">
     <table id="myDataTable">
         <thead>
             <tr>
@@ -45,6 +45,7 @@
         </tbody>
     </table>
 </div>
+<br><br>
 <script>
     //Abrir formulario editar usurio por ajax
 

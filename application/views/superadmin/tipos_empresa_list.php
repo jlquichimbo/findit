@@ -1,7 +1,6 @@
-<h3>Listado tipos de empresa:</h3>
 <div id="content_link"></div>
-
-<div class="table-responsive">
+<h3>Listado tipos de empresa:</h3>
+<div class="well well-sm">
     <table id="myDataTable">
         <thead>
             <tr>
@@ -27,6 +26,7 @@
         </tbody>
     </table>
 </div>
+<br><br>
 <script type="text/javascript" language="javascript" src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <script type="text/javascript" language="javascript" src="//cdn.datatables.net/1.10.4/js/jquery.dataTables.min.js"></script>
 <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.4/css/jquery.dataTables.css">

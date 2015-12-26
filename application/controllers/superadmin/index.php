@@ -21,7 +21,7 @@ class Index extends CI_Controller {
         $infoPage['header'] = $this->load->view('login/header_login', '', TRUE);
         $infoPage['sidebar'] = $this->load->view('superadmin/sidebar', $infoPage, TRUE);
         $infoPage['content'] = $this->load->view('usuarios/datos_registro', $infoPage, TRUE);
-        $infoPage['footer'] = $this->load->view('portal/static/footer', '', TRUE);
+        $infoPage['footer'] = $this->load->view('portal/static/footer');
 
         //Cargamos el dashboard
         $this->load->view('portal/static/dashboard', $infoPage);
@@ -38,7 +38,7 @@ class Index extends CI_Controller {
         $infoPage['header'] = $this->load->view('login/header_login', '', TRUE);
         $infoPage['sidebar'] = $this->load->view('superadmin/sidebar', $infoPage, TRUE);
         $infoPage['content'] = $this->load->view('superadmin/usuarios_list', $data, TRUE);
-        $infoPage['footer'] = $this->load->view('portal/static/footer', '', TRUE);
+        $infoPage['footer'] = $this->load->view('portal/static/footer');
 
         //Cargamos el dashboard
         $this->load->view('portal/static/dashboard', $infoPage);
@@ -57,7 +57,7 @@ class Index extends CI_Controller {
         $infoPage['header'] = $this->load->view('login/header_login', '', TRUE);
         $infoPage['sidebar'] = $this->load->view('superadmin/sidebar', $infoPage, TRUE);
         $infoPage['content'] = $this->load->view('superadmin/empresas_list', $data, TRUE);
-        $infoPage['footer'] = $this->load->view('portal/static/footer', '', TRUE);
+        $infoPage['footer'] = $this->load->view('portal/static/footer');
 
         //Cargamos el dashboard
         $this->load->view('portal/static/dashboard', $infoPage);
@@ -74,7 +74,7 @@ class Index extends CI_Controller {
         $infoPage['header'] = $this->load->view('login/header_login', '', TRUE);
         $infoPage['sidebar'] = $this->load->view('superadmin/sidebar', $infoPage, TRUE);
         $infoPage['content'] = $this->load->view('superadmin/tipos_empresa_list', $data, TRUE);
-        $infoPage['footer'] = $this->load->view('portal/static/footer', '', TRUE);
+        $infoPage['footer'] = $this->load->view('portal/static/footer');
 
         //Cargamos el dashboard
         $this->load->view('portal/static/dashboard', $infoPage);
@@ -91,7 +91,7 @@ class Index extends CI_Controller {
         $infoPage['header'] = $this->load->view('login/header_login', '', TRUE);
         $infoPage['sidebar'] = $this->load->view('superadmin/sidebar', $infoPage, TRUE);
         $infoPage['content'] = $this->load->view('superadmin/roles_list', $data, TRUE);
-        $infoPage['footer'] = $this->load->view('portal/static/footer', '', TRUE);
+        $infoPage['footer'] = $this->load->view('portal/static/footer');
 
         //Cargamos el dashboard
         $this->load->view('portal/static/dashboard', $infoPage);
@@ -110,7 +110,7 @@ class Index extends CI_Controller {
         $infoPage['header'] = $this->load->view('login/header_login', '', TRUE);
         $infoPage['sidebar'] = $this->load->view('superadmin/sidebar', $infoPage, TRUE);
         $infoPage['content'] = $this->load->view('empresa/crear_local', $data, TRUE);
-        $infoPage['footer'] = $this->load->view('portal/static/footer', '', TRUE);
+        $infoPage['footer'] = $this->load->view('portal/static/footer');
 
         //Cargamos el dashboard
         $this->load->view('portal/static/dashboard', $infoPage);

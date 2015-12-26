@@ -1,5 +1,5 @@
 <h3>Listado roles:</h3>
-<div class="table-responsive">
+<div class="well well-sm">
     <table class="table table-hover">
         <thead>
             <tr>

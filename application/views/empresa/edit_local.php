@@ -14,7 +14,7 @@
         <div class="form-group">
             <label for="formGroup" class="col-sm-2 control-label">Nombre local:</label>
             <div class="col-sm-8">
-                <input value="<?php echo $empresa[0]->nombre ?>" type="text" id="emp_name" name="emp_name" class="form-control campos" placeholder="Ingrese el nombre de su local" required autofocus>
+                <input value='<?php echo $empresa[0]->nombre ?>' type="text" id="emp_name" name="emp_name" class="form-control campos" placeholder="Ingrese el nombre de su local" required>
             </div>
         </div>
         <div class="form-group">
@@ -80,6 +80,7 @@
                 $("#form_empresa_edit").serialize(), //Codificamos todo el formulario en formato de URL por medio de la receta
                 function (data) {
                     $("#form_registro").html(data);
+                     location.reload();
                 });
     });
 

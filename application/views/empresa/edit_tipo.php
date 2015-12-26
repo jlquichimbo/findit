@@ -1,36 +1,34 @@
-<h2 class="page-header">Editar Local:</h2>
-
-<div class="row" id="form_registro">  
+<br>
+<div class="well" id="form_registro">
+    <h2 class="page-header">Editar Tipo de Local:</h2>
     <form id="form_empresa_edit" class="form-horizontal" action="<?php echo base_url('empresa/crear_local') ?>" method="post">
         <input value="<?php echo $tipo[0]->id ?>"  type="hidden" id="id_tipo" name="id_tipo" class="campos">
         <div class="form-group">
-            <label for="formGroup" class="col-sm-4 control-label">Nombre Tipo:</label>
-            <div class="col-sm-8">
+            <label for="formGroup" class="col-sm-2 control-label">Nombre Tipo:</label>
+            <div class="col-sm-5">
                 <input value="<?php echo $tipo[0]->nombre ?>" type="text" id="tipo_name" name="tipo_name" class="form-control campos" placeholder="Ingrese el nombre de su local" required autofocus>
             </div>
         </div>
 
-        <div id="messages_div">
-
-        </div>
         <div class="form-group">
-            <label for="formGroup" class="col-sm-2 control-label"></label>
-            <div class="col-sm-4">
+            <label for="formGroup" class="col-sm-12 control-label">
+            <div class="col-sm-9">
                 <button type="submit" class="btn btn-success btn-lg" id="ajaxformbtn" data-target="messages_div">
                     <span class="glyphicon glyphicon-ok"></span>
                     Editar
                 </button>
             </div>
-            <label for="formGroup" class="col-sm-2 control-label"></label>
-            <div class="col-sm-4">
+            <div class="col-sm-2">
                 <button id="btn_cancel" type="reset" class="btn btn-danger btn-lg">
                     <span class="glyphicon glyphicon-remove"></span>
                     Cancelar
                 </button>
             </div>
+                </label>
         </div>	
+        </div>
     </form>
-</div>
+
 <script>
     /*Envio del formulario por ajax*/
     var BASE_URL = "<?php echo base_url(); ?>";
@@ -40,6 +38,7 @@
                 $("#form_empresa_edit").serialize(), //Codificamos todo el formulario en formato de URL por medio de la receta
                 function (data) {
                     $("#form_registro").html(data);
+                     location.reload();
                 });
     });
     

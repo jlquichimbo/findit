@@ -3,7 +3,7 @@
 	margin-bottom: 0;
 }
 .headerFindIt{
-	padding: 1em;
+	padding: 0.4em;
 }
 /*FILTRADOR*/
 .filtrador{
@@ -19,13 +19,18 @@
     #shaLogin{
         width: 100%;
     }
-}
+    .piePagina{
+        display: none;
+    }
+
 .logo{
 	text-align: center;
 }
-.piePagina{
-	height: 5em;
-	text-align: center;
+#mySelect{
+	color: #000;
+	width: auto;
+}
+
 }
 #mySelect{
 	color: #000;
@@ -219,19 +224,7 @@
 .piePagina{
 	
         font-family: monospace; 
-	background: #B2DADB;
+	background: #B2DADB ;
 	color: #000;
-        position: static;
-        clear: both;
-        height: 100px;
-}
-
-.piePagina2{
-	margin-top: 215px;
-        font-family: monospace; 
-	background: #B2DADB;
-	color: #000;
-        position: static;
-        clear: both;
-        height: 100px;
+	text-align: center;
 }

@@ -63,13 +63,13 @@
         <div class="form-group">
             <label for="formGroup" class="col-sm-2 control-label">Password:</label>
             <div class="col-sm-4">
-                <input type="password" id="formGroup" name="txtPassword" class="form-control" required>
+                <input type="text" id="formGroup" name="txtPassword" value="<?php echo $usuario[0]->password ?>" class="form-control" required>
             </div>
         </div>
         <div class="form-group">
             <label for="formGroup" class="col-sm-2 control-label">Confirmar password:</label>
             <div class="col-sm-4">
-                <input type="password" id="formGroup" name="txtConfirmarPassword" class="form-control" required>
+                <input type="text" id="formGroup" name="txtConfirmarPassword" value="<?php echo $usuario[0]->password ?>" class="form-control" required>
             </div>
         </div>
         <!--Id del usuario a editar-->
@@ -104,6 +104,7 @@
                     console.log(data);
 //                    $("#form_registro").html(data);
                     $('#form_registro').html(data); //Añadimos la respuesta AJAX a nuestro div de notificación de respuesta
+                    location.reload();
                 });
     });
     

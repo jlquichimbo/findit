@@ -36,13 +36,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a href="<?= base_url('superadmin/index') ?>"><img src="<?php echo base_url(); ?>/complementos/img/icon-logo.jpg" alt="Loguito"></a>
+                        <a href="<?= base_url('admin/index') ?>"><img src="<?php echo base_url(); ?>/complementos/img/icon-logo.jpg" alt="Loguito"></a>
                     </div>
                     <!--Inicia menu-->
                     
                     <div class="collapse navbar-collapse" id="navegacion-fm">
                         <!--<a href ="login.php" type="button" class="btn btn-primary navbar-btn navbar-right">Ingresa</a>-->
-                        <a href ="<?= base_url('superadmin/index/perfil') ?>" type="button" class="btn btn-primary navbar-btn navbar-right">Perfil</a>
+                        <a href ="<?= base_url('admin/index/perfil') ?>" type="button" class="btn btn-primary navbar-btn navbar-right">Perfil</a>
 
                         <a href ="<?= base_url('login/login/logout') ?>" type="button" class="btn btn-primary navbar-btn navbar-right">Salir</a>
                     </div>

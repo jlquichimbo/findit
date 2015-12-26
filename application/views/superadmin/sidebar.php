@@ -3,7 +3,7 @@
 <!-- Blog Search Well -->
 <span class="x-label-value" id="ext-gen30"><br></span>
 <div class="well">
-    <center><a><img src="<?php echo base_url(). $data_user[0]->usuario; ?>" width="130" heigth="150"></a></center>
+    <center><a><img src="<?php echo base_url().'uploads/images/users/'. $data_user[0]->usuario; ?>" width="130" heigth="150"></a></center>
  
 <!--<center><a href="index-portal.php"><img src="../img/usuario.jpeg" width="150" heigth="150"></a></center>-->
 </div>
