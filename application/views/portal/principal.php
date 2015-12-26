@@ -11,12 +11,12 @@
                 </ul>
                 <div class="carousel-inner">
                     <?php
-                    $item = '<div class="item active">';
+                    $item = '<div class="item active" align="center">';
                     $i = 0;
                     foreach ($anuncios as $anuncio) {
                         //Si es el primer anuncio va con la clase item active  
                         if ($i == 0) {
-                            $item .= '<img src="' . base_url() . '/uploads/images/anuncios/' . $anuncio->img . '" alt="' . $anuncio->id . '">'
+                            $item .= '<img src="' . base_url() . '/uploads/images/anuncios/' . $anuncio->img . '" alt="' . $anuncio->titulo . '" style="height: 25em;">'
                                     . '<div class="carousel-caption">'
                                     . '<h4>' . $anuncio->titulo . '</h4>'
                                     . '<p>'
@@ -26,7 +26,7 @@
                                     . '</div>';
                         } else {
                             $item .= '<div class="item">'
-                                    . '<img src="' . base_url() . '/uploads/images/anuncios/' . $anuncio->img . '" alt="' . $anuncio->id . '">'
+                                    . '<img src="' . base_url() . '/uploads/images/anuncios/' . $anuncio->img . '" alt="' . $anuncio->titulo . '" style="height: 25em;">'
                                     . '<div class="carousel-caption">'
                                     . '<h4>' . $anuncio->titulo . '</h4>'
                                     . '<p>'
