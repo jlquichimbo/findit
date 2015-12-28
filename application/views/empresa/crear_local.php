@@ -1,5 +1,3 @@
-<script src="<?php echo base_url(); ?>complementos/js/portal.js"></script>
-
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDjSP5qZdefYhf1lI6iuBh0gT5BUgYQUWw&amp;sensor=true"></script>
 <script type="text/javascript" src='https://www.google.com/jsapi'></script>
 
@@ -36,24 +34,24 @@
         <div class="form-group">
             <label for="formGroup" class="col-sm-4 control-label">Seleccione ubicaci&oacute;n:</label>
             <div class="col-sm-4">
-                 <input type="text" id="emp_address" name="emp_address" class="form-control campos" placeholder="Pinche en el mapa la ubicación de su local" required  disabled="disabled" >
-                 <br>
-            </div>
-               
-                <div id="googleMap" style="width:100%;height:20em;"></div>
+                <input type="text" id="emp_address" name="emp_address" class="form-control campos" placeholder="Pinche en el mapa la ubicación de su local" required  disabled="disabled" >
                 <br>
+            </div>
+
+            <div id="googleMap" style="width:100%;height:20em;"></div>
+            <br>
+            <label id="txtLatitud"></label>
+            <input type="hidden" id="emp_lat" name="emp_lat" class="campos">
+            <input type="hidden" id="emp_lng" name="emp_lng" class="campos">
+            <!--<div class="row">
+              <div class="col-sm-2">
+                <b>Longitud:</b>
+              </div>
+              <div class="col-sm-8">
                 <label id="txtLatitud"></label>
-                <input type="hidden" id="emp_lat" name="emp_lat" class="campos">
-                <input type="hidden" id="emp_lng" name="emp_lng" class="campos">
-                <!--<div class="row">
-                  <div class="col-sm-2">
-                    <b>Longitud:</b>
-                  </div>
-                  <div class="col-sm-8">
-                    <label id="txtLatitud"></label>
-                  </div>
-                </div>-->
-            
+              </div>
+            </div>-->
+
         </div>
         <br>
         <div id="messages_div">
@@ -62,13 +60,13 @@
         <div class="form-group">
             <label for="formGroup" class="col-sm-2 control-label"></label>
             <div class="pull-right">
-            <div class="col-sm-4">
-                
-                <button type="submit" class="btn btn-success btn-lg" id="ajaxformbtn" data-target="messages_div">
-                    <span class="glyphicon glyphicon-ok"></span>
-                    Crear
-                </button>
-                    </div>
+                <div class="col-sm-4">
+
+                    <button type="submit" class="btn btn-success btn-lg" id="ajaxformbtn" data-target="messages_div">
+                        <span class="glyphicon glyphicon-ok"></span>
+                        Crear
+                    </button>
+                </div>
             </div>
         </div>
     </form>
@@ -94,34 +92,73 @@
                     }
                     // c.close();
 //                    $('div#sending_form').prepend(data); //Añadimos la respuesta AJAX a nuestro div de notificación de respuesta
-                location.reload();
+                    location.reload();
                 });
     });
 
 
-    var center = new google.maps.LatLng(-3.99313, -79.20422);
     var map;
-    function initialize() {
-        // Create the map.
-        var mapOptions = {
-            zoom: 17,
-            center: center,
-            mapTypeId: google.maps.MapTypeId.TERRAIN
+    var controla = 0;
+    var marker = null;
+
+
+    function inicializar() {
+        navigator.geolocation.getCurrentPosition(lecturaGPS, errorGPS, {enableHighAccuracy: true});
+        var latlng = new google.maps.LatLng(-3.989509, -79.204280);
+        var myOptions = {
+            zoom: 13,
+            center: latlng,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
         };
-        map = new google.maps.Map(document.getElementById('googleMap'), mapOptions);
+        map = new google.maps.Map(document.getElementById("googleMap"), myOptions);
         google.maps.event.addListener(map, 'click', function (event) {
             marca(event.latLng);
         });
     }
-    google.maps.event.addDomListener(window, 'load', initialize);
+    google.maps.event.addDomListener(window, 'load', inicializar);
     function marca(location) {
         $("#emp_lat").val(location.lat());
         $("#emp_lng").val(location.lng());
-        var marker = new google.maps.Marker({
-            position: location,
-            map: map
-        });
+        if (controla == 0) {
+            marker = new google.maps.Marker({
+                position: location,
+                map: map
+            });
+            controla=1;
+        }else{
+            //map.setCenter(location);
+            marker.setPosition(location);
+        }
     }
+    function lecturaGPS(ubicacion) {
+        var miubicacion = new google.maps.LatLng(ubicacion.coords.latitude, ubicacion.coords.longitude);
+        map.setCenter(miubicacion);
+        marcador.setPosition(miubicacion);
+    }
+    function errorGPS() {
+        alerta("No se puede localizar :(");
+    }
+    /*function initialize() {
+     // Create the map.
+     var mapOptions = {
+     zoom: 17,
+     center: center,
+     mapTypeId: google.maps.MapTypeId.TERRAIN
+     };
+     map = new google.maps.Map(document.getElementById('googleMap'), mapOptions);
+     google.maps.event.addListener(map, 'click', function (event) {
+     marca(event.latLng);
+     });
+     }
+     google.maps.event.addDomListener(window, 'load', initialize);
+     function marca(location) {
+     $("#emp_lat").val(location.lat());
+     $("#emp_lng").val(location.lng());
+     var marker = new google.maps.Marker({
+     position: location,
+     map: map
+     });
+     }*/
 
 </script>
 <?php
