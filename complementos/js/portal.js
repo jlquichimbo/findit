@@ -79,6 +79,8 @@ function Lista(dataLocal){
 }
 //Jquery del selector de categorias de locales       
 $('#local_id').change(function () {
+    document.getElementById("labelHinicio").innerHTML = "_ _:_ _:_ _";
+    document.getElementById("labelHCierre").innerHTML = "_ _:_ _:_ _";
     $('#tipo_local').val($(this).val());
     var local_tipo = $('#local_id').val();
     var url = 'portal/get_locales_by_tipe/' + local_tipo;
@@ -133,7 +135,8 @@ function localIndividual(){
                     map: mapa,
                     title: local.nombre
                 });
-                var html = "<h3>" + local.nombre + "</h3>"+"<br/>";
+                document.getElementById("labelHinicio").innerHTML = local.hora_apertura;
+                document.getElementById("labelHCierre").innerHTML = local.hora_cierre;                
                 var html = getHtmlData(local);
                 var infoWindow = new google.maps.InfoWindow({
                     content: html,
