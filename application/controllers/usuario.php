@@ -188,6 +188,17 @@ class Usuario extends CI_Controller {
         $view = $this->load->view('usuarios/delete_usuario', $data, TRUE);
         echo $view;
     }
+    
+    //Comprobar si existe un email registrado en la base de datos
+    public function check_email(){
+        $email = $this->input->post('email');
+        $check_email = $this->usuario_model->check_email($email);
+        if(!empty($check_email)){
+            echo 'Este correo ya se encuentra registrado, inicie sesion';
+        }else{
+            echo '-1';
+        }
+    }
 }
 
 ?>

@@ -54,27 +54,30 @@ Class Usuario_model extends CI_Model {
         $query = $this->db->get();
         return $query->result();
     }
-    
-    /* Extrae Usuario para enviar correo*/
-    function getUsuario($destino){
+
+    /* Extrae Usuario para enviar correo */
+
+    function getUsuario($email) {
         $this->db->select('nombres, '
                 . 'apellidos, '
         );
         $this->db->from('usuario');
-        $this->db->where('email', $destino);
+        $this->db->where('email', $email);
         $query = $this->db->get();
         return $query->result();
     }
+
     //funcion para actualizar la generación de la nueva contraseña
-    function nuevaPass($mail, $pass){
+    function nuevaPass($mail, $pass) {
         $data_set = array(
             'password' => $pass,
-        );        
+        );
         $table_name = 'usuario';
-        $where_data = array('email'=>$mail);
+        $where_data = array('email' => $mail);
         $this->db->update($table_name, $data_set, $where_data);
         return $this->db->affected_rows();
     }
+
     function get_users_by_type() {
         
     }
@@ -114,7 +117,7 @@ Class Usuario_model extends CI_Model {
             'cedula_ruc' => $cedula,
             'nombres' => $nombres,
             'apellidos' => $apellidos,
-            'usuario' => $imagen='user.jpg',
+            'usuario' => $imagen = 'user.jpg',
             'telefono' => $telefono,
             'email' => $email,
             'password' => $password,
@@ -162,6 +165,14 @@ Class Usuario_model extends CI_Model {
         $this->db->update('usuario_rol', $rol_data);
 
         return $afected_row;
+    }
+
+    function check_email($email) {
+        $this->db->select('email');
+        $this->db->from('usuario');
+        $this->db->where('email', $email);
+        $query = $this->db->get();
+        return $query->result();
     }
 
 }
