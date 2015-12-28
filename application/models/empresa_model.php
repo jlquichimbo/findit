@@ -2,7 +2,7 @@
 
 Class Empresa_model extends CI_Model {
 
-    function save_new($nombre, $direccion, $tipo_id, $admin_id, $lat, $lng, $open_hour = '0:00', $close_hour ='0:00') {
+    function save_new($nombre, $direccion, $tipo_id, $admin_id, $lat, $lng, $open_hour = '0:00', $close_hour = '0:00') {
         $form_data = array(
             'nombre' => $nombre,
             'direccion' => $direccion,
@@ -43,6 +43,7 @@ Class Empresa_model extends CI_Model {
         $query = $this->db->get();
         return $query->result();
     }
+
     function presentaEmpresa($username) {
         $this->db->select('empresa.id, '
                 . 'empresa.nombre, '
@@ -62,12 +63,13 @@ Class Empresa_model extends CI_Model {
         $this->db->join('usuario', 'admin_id = usuario.id');
         $this->db->where('usuario.email', $username);
 
-        
+
         $query = $this->db->get();
         return $query->result();
     }
-    
-    /*Extrae las empresas que pertenecen a un usuario*/
+
+    /* Extrae las empresas que pertenecen a un usuario */
+
     function get_empresas_by_user($username) {
         $this->db->select('empresa.id, '
                 . 'empresa.nombre, '
@@ -88,7 +90,7 @@ Class Empresa_model extends CI_Model {
         $this->db->join('usuario', 'admin_id = usuario.id');
         $this->db->where('usuario.id', $username);
 
-        
+
         $query = $this->db->get();
         return $query->result();
     }
@@ -171,6 +173,7 @@ Class Empresa_model extends CI_Model {
         $query = $this->db->get();
         return $query->result();
     }
+
     /* Extrae UN tipo de empresa/servicio */
 
     function get_tipo($id_tipo) {
@@ -222,18 +225,18 @@ Class Empresa_model extends CI_Model {
     }
 
     //funcion para desactivar Horario
-    function desactivarHorario($id, $estado){
+    function desactivarHorario($id, $estado) {
         $data_set = array(
             'disponible' => $estado,
             'hora_apertura' => "00:00:00",
             'hora_cierre' => "00:00:00",
-        );        
+        );
         $table_name = 'empresa';
-        $where_data = array('id'=>$id);
+        $where_data = array('id' => $id);
         $this->db->update($table_name, $data_set, $where_data);
         return $this->db->affected_rows();
     }
-    
+
     //funcion para extraer nombre de local que desea establecer horario
     function getNombreLocal($id) {
         $this->db->select('nombre');
@@ -242,19 +245,22 @@ Class Empresa_model extends CI_Model {
         $query = $this->db->get();
         return $query->result();
     }
+
     //funcion para activar Horario
-    function activarHorario($id, $estado, $Hinicio, $Hfin){
+    function activarHorario($id, $estado, $Hinicio, $Hfin) {
         $data_set = array(
             'disponible' => $estado,
             'hora_apertura' => $Hinicio,
             'hora_cierre' => $Hfin,
-        );        
+        );
         $table_name = 'empresa';
-        $where_data = array('id'=>$id);
+        $where_data = array('id' => $id);
         $this->db->update($table_name, $data_set, $where_data);
         return $this->db->affected_rows();
     }
-    /*Actualiza los datos de empresa/local */
+
+    /* Actualiza los datos de empresa/local */
+
     function update_local($id, $nombre, $direccion, $tipo_id, $admin_id, $lat, $lng, $open_hour = '0:00', $close_hour = '0:00') {
         //Se deja comentado latitud y longitud para que no se actualizen esos campos
         $data_set = array(
@@ -268,14 +274,15 @@ Class Empresa_model extends CI_Model {
             'hora_cierre' => $close_hour,
         );
         $table_name = 'empresa';
-        $where_data = array('id'=>$id);
+        $where_data = array('id' => $id);
         $this->db->update($table_name, $data_set, $where_data);
         return $this->db->affected_rows();
     }
-    
-    /*Borra una empresa/ local*/
+
+    /* Borra una empresa/ local */
+
     function delete_local($id_emp) {
-         //Borrando de la tabla usuario
+        //Borrando de la tabla usuario
         $table_name = 'empresa';
         $this->db->where('id', $id_emp);
         $this->db->delete($table_name);
@@ -283,22 +290,33 @@ Class Empresa_model extends CI_Model {
 
         return $afected_row;
     }
-    
-    /*Actualiza los datos de un tipo de empresa/local */
+
+    /* Crea un tipo/categoria de empresa/local */
+    function create_tipo($nombre) {
+        $data_set = array(
+            'nombre' => $nombre,
+        );
+        $table_name = 'empresa_tipo';
+        $this->db->insert($table_name, $data_set);
+        return $this->db->insert_id();
+    }
+
+    /* Actualiza los datos de un tipo de empresa/local */
     function update_tipo($id, $nombre) {
         //Se deja comentado latitud y longitud para que no se actualizen esos campos
         $data_set = array(
             'nombre' => $nombre,
         );
         $table_name = 'empresa_tipo';
-        $where_data = array('id'=>$id);
+        $where_data = array('id' => $id);
         $this->db->update($table_name, $data_set, $where_data);
         return $this->db->affected_rows();
     }
-    
-    /*Borra un tipo de empresa/ local*/
+
+    /* Borra un tipo de empresa/ local */
+
     function delete_tipo($id_tipo) {
-         //Borrando de la tabla usuario
+        //Borrando de la tabla usuario
         $table_name = 'empresa_tipo';
         $this->db->where('id', $id_tipo);
         $this->db->delete($table_name);

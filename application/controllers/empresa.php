@@ -259,5 +259,5 @@ class Empresa extends CI_Controller {
         }
         return $data;
     }
-
+    
 }

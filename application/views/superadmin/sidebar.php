@@ -9,12 +9,13 @@
 </div>
 <!-- Blog Categories Well -->
 <ul class="nav nav-sidebar">
-    <li><a href="<?= base_url('superadmin/index') ?>"><i class="glyphicon glyphicon-plus"></i> Inicio</a></li>
-    <li><a href="<?= base_url('superadmin/index/load_users') ?>"><i class="glyphicon glyphicon-tasks"></i> Usuarios</a></li>
-    <li><a href="<?= base_url('superadmin/index/load_empresas') ?>"><i class="glyphicon glyphicon-tasks"></i> Empresas</a></li>
-    <li><a href="<?= base_url('superadmin/index/load_tipo_empresas') ?>"><i class="glyphicon glyphicon-tasks"></i> Tipo servicios</a></li>
+    <li><a href="<?= base_url('superadmin/index') ?>"><i class="glyphicon glyphicon-home"></i> Inicio</a></li>
+    <li><a href="<?= base_url('superadmin/index/load_users') ?>"><i class="glyphicon glyphicon-user"></i> Usuarios</a></li>
+    <li><a href="<?= base_url('superadmin/index/load_empresas') ?>"><i class="glyphicon glyphicon-globe"></i> Locales</a></li>
+    <li><a href="<?= base_url('superadmin/index/crear_local') ?>"><i class="glyphicon glyphicon-plus"></i> Crear Local</a></li>
+    <li><a href="<?= base_url('superadmin/index/load_tipo_empresas') ?>"><i class="glyphicon glyphicon-tag"></i> Categorias</a></li>
+    <li><a href="<?= base_url('superadmin/index/create_category_view') ?>"><i class="glyphicon glyphicon-plus"></i> Crear Categoria</a></li>
     <li><a href="<?= base_url('superadmin/index/load_roles') ?>"><i class="glyphicon glyphicon-tasks"></i> Roles</a></li>
-    <li><a href="<?= base_url('superadmin/index/crear_local') ?>"><i class="glyphicon glyphicon-tasks"></i> Crear Local</a></li>
 </ul>
 <!-- /.row -->
 <!--<div class="user-panel">

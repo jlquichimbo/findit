@@ -14,7 +14,7 @@ class Index extends CI_Controller {
 
         $infoPage['titulo'] = 'Super Administrador';
         $this->load->model('usuario_model');
-        
+
         $infoPage['data_user'] = $this->usuario_model->get_data($this->user->email);
 
         //Estructura del dashboard
@@ -70,7 +70,7 @@ class Index extends CI_Controller {
         //sacamos la imagen
         $this->load->model('usuario_model');
         $infoPage['data_user'] = $this->usuario_model->get_data($this->user->email);
-        
+
         $infoPage['header'] = $this->load->view('login/header_login', '', TRUE);
         $infoPage['sidebar'] = $this->load->view('superadmin/sidebar', $infoPage, TRUE);
         $infoPage['content'] = $this->load->view('superadmin/tipos_empresa_list', $data, TRUE);
@@ -87,7 +87,7 @@ class Index extends CI_Controller {
         //sacamos la imagen
         $this->load->model('usuario_model');
         $infoPage['data_user'] = $this->usuario_model->get_data($this->user->email);
-        
+
         $infoPage['header'] = $this->load->view('login/header_login', '', TRUE);
         $infoPage['sidebar'] = $this->load->view('superadmin/sidebar', $infoPage, TRUE);
         $infoPage['content'] = $this->load->view('superadmin/roles_list', $data, TRUE);
@@ -115,6 +115,40 @@ class Index extends CI_Controller {
         //Cargamos el dashboard
         $this->load->view('portal/static/dashboard', $infoPage);
         // $this->load->view('portal/static/footer');
+    }
+
+    function create_category_view() {
+        $this->load->model('usuario_model');
+
+        $infoPage['titulo'] = 'Administrador - Crear Categoria';
+        $infoPage['data_user'] = $this->usuario_model->get_data($this->user->email);
+
+        //Estructura del dashboard
+        $infoPage['header'] = $this->load->view('login/header_login', '', TRUE);
+        $infoPage['sidebar'] = $this->load->view('superadmin/sidebar', $infoPage, TRUE);
+        $infoPage['content'] = $this->load->view('superadmin/crear_categoria', null, TRUE);
+        $infoPage['footer'] = $this->load->view('portal/static/footer');
+
+        //Cargamos el dashboard
+        $this->load->view('portal/static/dashboard', $infoPage);
+    }
+
+    function create_category() {
+        $this->load->model('empresa_model');
+        $nombre_tipo = $this->input->post('categoria');
+
+        $this->db->trans_begin(); // inicio de transaccion
+        $this->empresa_model->create_tipo($nombre_tipo);
+        // verifico que todo elproceso en si este bien ejecutado
+        if ($this->db->trans_status() === FALSE) {
+            $this->db->trans_rollback();
+            //Enviamos 0 al formulario de ajax de la vista para que sepa que la transaccion fallo
+            echo 0;
+        } else {
+            //Enviamos 1 al formulario de ajax de la vista para que sepa que la transaccion se completo
+            $this->db->trans_commit(); // finaliza la transaccion de begin
+            echo 1;
+        }
     }
 
 }
