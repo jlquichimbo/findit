@@ -20,17 +20,17 @@
                                     . '<div class="carousel-caption">'
                                     . '<h4>' . $anuncio->titulo . '</h4>'
                                     . '<p>'
-                                    . '<button type="button" class="btn btn-primary">Visita este Local</button>'
+                                    . '<a class="btn btn-primary" type="button" href="'.$anuncio->url .'" target="_blank">Abre el anuncio</a>'
                                     . '</p>'
                                     . '</div>'
                                     . '</div>';
                         } else {
-                            $item .= '<div class="item">'
+                            $item .= '<div class="item" align="center">'
                                     . '<img src="' . base_url() . '/uploads/images/anuncios/' . $anuncio->img . '" alt="' . $anuncio->titulo . '" style="height: 25em;">'
                                     . '<div class="carousel-caption">'
                                     . '<h4>' . $anuncio->titulo . '</h4>'
                                     . '<p>'
-                                    . '<button type="button" class="btn btn-primary">Visita este Local</button>'
+                                    . '<a class="btn btn-primary" type="button" href="'.$anuncio->url .'" target="_blank">Abre el anuncio</a>'
                                     . '</p>'
                                     . '</div>'
                                     . '</div>';

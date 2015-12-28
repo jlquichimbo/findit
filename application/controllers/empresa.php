@@ -167,11 +167,19 @@ class Empresa extends CI_Controller {
     function crear_anuncio() {
         $anunc_title = $this->input->post('anunc_name');
         $anunc_emp_id = $this->input->post('anuncio_emp_id');
+        $anunc_url = $this->input->post('anunc_url');
         $admin_id = $this->user->id;
         $this->load->model('file');
         $anuncio = $this->uploadImg();
         $anunc_file = $anuncio['upload_data']['file_name'];
-        $fecha_inicio = date("Y-n-j");//Fecha de hoy
+
+        /* Fechas y horas */
+        $this->load->helper('date');
+        $fecha_inicio = mdate('%Y/%m/%d'); //Fecha de hoy
+        $fecha_fin = strtotime('+4 day', strtotime($fecha_inicio)); //Fecha que finaliza el anuncio
+        $fecha_fin = mdate('%Y/%m/%d', $fecha_fin);
+        $hora = mdate('%H:%i:%s');
+
 
         //Imprimimos los datos para verificar que los esta extrayendo correctamente:
 //        echo 'Datos a guardar: <br>';
@@ -183,7 +191,7 @@ class Empresa extends CI_Controller {
         $this->db->trans_begin(); // inicio de transaccion
         $this->load->model('anuncio_model');
 
-        $nuevo_id = $this->anuncio_model->save_new($anunc_title, $anunc_file, $anunc_emp_id, $fecha_inicio);
+        $nuevo_id = $this->anuncio_model->save_new($anunc_title, $anunc_file, $anunc_emp_id, $hora, $fecha_inicio, $fecha_fin, $anunc_url);
         if ($nuevo_id <= 0) {
             $this->db->trans_rollback();
             echo $this->res_msj;
@@ -200,13 +208,13 @@ class Empresa extends CI_Controller {
             $this->db->trans_commit(); // finaliza la transaccion de begin
         }
     }
-    
-    function crear_anuncio_view($anuncio_data){
+
+    function crear_anuncio_view($anuncio_data) {
         $infoPage['titulo'] = 'Administrador - Anuncios';
 
         $this->load->model('usuario_model');
         $datas['data_user'] = $this->usuario_model->get_data($this->user->email);
-        
+
         //Consultamos los tipos de empresas para enviar al combobox
         $data['locales'] = $this->empresa_model->get_empresas_by_user($this->user->id);
         $data['upload_state'] = $anuncio_data['upload_state'];

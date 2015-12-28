@@ -12,7 +12,7 @@
 <div class="well" id="div_form_anuncio">  
     <input type="hidden" name="upload_state" id="upload_state" value="<?php echo $upload_state?>">
     <form id="form_anuncio_register" class="form-horizontal"  method="post" enctype="multipart/form-data" action="<?php echo base_url(); ?>empresa/crear_anuncio">
-        <p style="text-align: center" class="col-sm-10"> Suba una imagen publicitaria para mostrar a los usuarios de FindIt</p>
+        <p style="text-align: center" class="col-sm-10"> Suba una imagen publicitaria para mostrar a los usuarios de FindIt<br>De preferencia use una dimension 200px x 450px</p>
         <div class="form-group">
             <label for="formGroup" class="col-sm-4 control-label">Titulo Anuncio:</label>
             <div class="col-sm-4">
@@ -37,6 +37,12 @@
                     ?>
                 </select>
             </div>  
+        </div>
+        <div class="form-group">
+            <label for="formGroup" class="col-sm-4 control-label">URL:</label>
+            <div class="col-sm-4">
+                <input type="text" id="anunc_url" name="anunc_url" class="form-control campos" placeholder="Enlace hacia su anuncio"  >
+            </div>
         </div>
         <br>
         <div id="messages_div">
