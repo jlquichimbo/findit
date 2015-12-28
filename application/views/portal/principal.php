@@ -92,10 +92,10 @@
                 </div>
                 <div class="row">
                     <div class="col-md-6"><br>
-                        Hora Inicio: <label for="">19:00:00</label>
+                        Hora Inicio: <label id="labelHinicio">_ _:_ _:_ _</label>
                     </div>
                     <div class="col-md-6"><br>
-                        Hora Cierre: <label for="">00:00:00</label>
+                        Hora Cierre: <label id="labelHCierre">_ _:_ _:_ _</label>
                     </div>
                 </div>
             </aside>
