@@ -2,20 +2,29 @@
     <div class="row">
         <div class="col-xs-12">
             <h2>Editar Usuario:</h2>
+            <div id="res_msj" style="display: none">
+                <?php
+                //Si se ha subido una imagen
+                if ($upload_state) {
+                    echo success_msg($msg);
+                }
+                ?>
+            </div>
         </div>
         <br/><br/>
     </div>
+    <input type="hidden" name="upload_state" id="upload_state" value="<?php echo $upload_state?>">
     <form id="form_usuario_edit" class="form-horizontal" action="<?php echo base_url(); ?>usuario/editarADM" method="post" enctype="multipart/form-data">
         <div class="form-group">
             <label for="formGroup" class="col-sm-2 control-label">Cedula:</label>
             <div class="col-sm-2">
-                <input value="<?php echo $data_user[0]->cedula_ruc ?>" type="text" id="formGroup" name="txtCedula" class="form-control" required autofocus  readonly="readonly">
+                <input value="<?php echo $data_user[0]->cedula_ruc ?>" type="text" id="formGroup" name="txtCedula" class="form-control" readonly="readonly">
             </div>
         </div>
         <div class="form-group">
             <label for="formGroup" class="col-sm-2 control-label">Nombres:</label>
             <div class="col-sm-4">
-                <input type="text" id="formGroup" name="txtNombre" value="<?php echo $data_user[0]->nombres ?>" class="form-control" required>
+                <input type="text" id="formGroup" name="txtNombre" value="<?php echo $data_user[0]->nombres ?>" class="form-control" required autofocus>
             </div>
         </div>
         <div class="form-group">
@@ -27,19 +36,9 @@
         <div class="form-group">
             <label for="formGroup" class="col-sm-2 control-label">Foto:</label>
             <div class="col-sm-4">
-                <input type="file" name="userfile" multiple="multiple">
+                <input type="file" name="userfile" required>
             </div>
         </div>
-        
-
-        
-        
-        
-        
-        
-        
-        
-        
         <div class="form-group">
             <label for="formGroup" class="col-sm-2 control-label">Telefono:</label>
             <div class="col-sm-4">
@@ -81,23 +80,18 @@
     </form>
 </div>
 <script>
-    /*Envio del formulario por ajax*/
-    /*var BASE_URL = "<?php echo base_url(); ?>";
-    $("#form_usuario_edit").submit(function (event) {
-
-        event.preventDefault(); //Evitamos que el evento submit siga en ejecución, evitando que se recargue toda la página
-        $.post(BASE_URL + 'usuario/editarADM', //La variable url ha de contener la base_url() de nuestra aplicacion
-                $("#form_usuario_edit").serialize(), //Codificamos todo el formulario en formato de URL por medio de la receta
-                function (data) {
-                    console.log(data);
-//                    $("#form_registro").html(data);
-                    $('#form_registro').html(data); //Añadimos la respuesta AJAX a nuestro div de notificación de respuesta
-                   // location.reload();
-                });
-    });*/
+    $(document).ready(function () {
+        //Variable para saber si la imagen se subio con exito
+        var state_upload = $("#upload_state").val();
+        if(state_upload){
+            $('#form_usuario_edit').hide(1000);
+            $('#res_msj').show(1000);
+        }
+    });
     
+
     //Ocultar el div al hacer clic en cancelar
-    $('#btn_cancel').click(function (){
+    $('#btn_cancel').click(function () {
         $('#form_registro').hide(1000);
     });
 

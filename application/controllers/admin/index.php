@@ -78,14 +78,14 @@ class Index extends CI_Controller {
     }
 
     function perfil() {
-        $infoPage['titulo'] = 'Administrador';
+        $infoPage['titulo'] = 'Administrador - Perfil';
         $this->load->model('usuario_model');
         //sacamos la imagen
-        $infoPage['data_user'] = $this->usuario_model->get_data($this->user->email);
-
+        $datas['data_user'] = $this->usuario_model->get_data($this->user->email);
+        $data['upload_state'] = FALSE;
         $infoPage['header'] = $this->load->view('login/header_admin', '', TRUE);
-        $infoPage['sidebar'] = $this->load->view('admin/sidebar', $infoPage, TRUE);
-        $infoPage['content'] = $this->load->view('usuarios/edit_adm', $infoPage, TRUE);
+        $infoPage['sidebar'] = $this->load->view('admin/sidebar', $datas, TRUE);
+        $infoPage['content'] = $this->load->view('usuarios/edit_adm', $data, TRUE);
         $infoPage['footer'] = $this->load->view('portal/static/footer');
 
         //Cargamos el dashboard
