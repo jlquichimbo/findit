@@ -5,7 +5,7 @@
         </div>
         <br/><br/>
     </div>
-    <form id="form_usuario_edit" class="form-horizontal" action="<?php echo base_url('usuario/editarADM') ?>" method="post" enctype="multipart/form-data">
+    <form id="form_usuario_edit" class="form-horizontal" action="<?php echo base_url(); ?>usuario/editarADM" method="post" enctype="multipart/form-data">
         <div class="form-group">
             <label for="formGroup" class="col-sm-2 control-label">Cedula:</label>
             <div class="col-sm-2">
@@ -27,7 +27,7 @@
         <div class="form-group">
             <label for="formGroup" class="col-sm-2 control-label">Foto:</label>
             <div class="col-sm-4">
-                <input type="file" name="fileFoto"  >
+                <input type="file" name="userfile" multiple="multiple">
             </div>
         </div>
         
@@ -82,7 +82,7 @@
 </div>
 <script>
     /*Envio del formulario por ajax*/
-    var BASE_URL = "<?php echo base_url(); ?>";
+    /*var BASE_URL = "<?php echo base_url(); ?>";
     $("#form_usuario_edit").submit(function (event) {
 
         event.preventDefault(); //Evitamos que el evento submit siga en ejecución, evitando que se recargue toda la página
@@ -94,7 +94,7 @@
                     $('#form_registro').html(data); //Añadimos la respuesta AJAX a nuestro div de notificación de respuesta
                    // location.reload();
                 });
-    });
+    });*/
     
     //Ocultar el div al hacer clic en cancelar
     $('#btn_cancel').click(function (){

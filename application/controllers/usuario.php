@@ -17,45 +17,44 @@ class Usuario extends CI_Controller {
     public function index() {
         //$this->load->view('registrousuario_view');
     }
- 
-    /*public function insert() {
+
+    /* public function insert() {
       $post= $this->input->post();
       $this->load->model('upload');
       $file_name = $this->upload->UploadImage('uploads/images/users','no es posible cargar imagen... :(');
       $post['file_name']=$file_name; //Asignar una nueva key lamada file_name con el nombre del fichero
       $bool=$this->usuario_model->insert($post);
-      
+
       if($bool){
-         header("Location:".base_url()."portal/vistaloguearUsuario");
-    }else{
-         header("Location:".base_url()."portal");
-    }
-      
-    }*/
-    
-    
+      header("Location:".base_url()."portal/vistaloguearUsuario");
+      }else{
+      header("Location:".base_url()."portal");
+      }
+
+      } */
+
     public function registrar() {
-        
-        
+
+
         $user_cedula = $this->input->post('txtCedula');
         $user_nombres = $this->input->post('txtNombre');
         $user_apellidos = $this->input->post('txtApellido');
         //$userfile = $this->input->post('userfile');
-        $userfile =  $this->input->post('userfile');
+        $userfile = $this->input->post('userfile');
         $user_telefono = $this->input->post('txtTelefono');
         $user_mail = $this->input->post('txtMail');
         $user_password = md5($this->input->post('txtPassword'));
-        
 
 
-        $foto=$userfile;
+
+        $foto = $userfile;
         $this->load->model('file');
-        $foto = $this->file->UploadImage('uploads/images/users','Ocurrio un error al subir la imagen, Comuniquese con el administrador');
-      
+        $foto = $this->file->UploadImage('uploads/images/users', 'Ocurrio un error al subir la imagen, Comuniquese con el administrador');
+
         $this->db->trans_begin(); // inicio de transaccion
-        
+
         $nuevo_id = $this->usuario_model->save_new($user_cedula, $user_nombres, $user_apellidos, $foto, $user_telefono, $user_mail, $user_password);
-        
+
         if ($nuevo_id <= 0) {
             $this->db->trans_rollback();
             $this->res_msj .= error_msg('<br>Ha ocurrido un error al guardar el usuario en la base de datos.');
@@ -68,17 +67,16 @@ class Usuario extends CI_Controller {
             echo $this->res_msj;
 //            echo error_msg('<br>Ha ocurrido un error al guardar el paciente en la base de datos.');
         } else {
-            header("Location:".base_url()."portal/vistaloguearUsuario");
-           /* $this->res_msj .= success_msg('. Usuario Registrado');
-            echo $this->res_msj;*/
-            
-            
-            
-            
-        $this->db->trans_commit(); // finaliza la transaccion de begin
+            header("Location:" . base_url() . "portal/vistaloguearUsuario");
+            /* $this->res_msj .= success_msg('. Usuario Registrado');
+              echo $this->res_msj; */
+
+
+
+
+            $this->db->trans_commit(); // finaliza la transaccion de begin
         }
     }
-    
 
     public function editar_view($user_id) {
         $data['id_user'] = $user_id;
@@ -130,41 +128,26 @@ class Usuario extends CI_Controller {
 
             $this->db->trans_commit(); // finaliza la transaccion de begin
         }
-
     }
 
-        public function editarADM() {
+    function editarADM() {
         $user_id = $this->input->post('id_user');
         $user_cedula = $this->input->post('txtCedula');
         $user_nombres = $this->input->post('txtNombre');
         $user_apellidos = $this->input->post('txtApellido');
-         $userfile =  $this->input->post('userfile');
+        //$userfile = $this->input->post('userfile');
         $user_telefono = $this->input->post('txtTelefono');
         $user_mail = $this->input->post('txtMail');
         $user_password = md5($this->input->post('txtPassword'));
         $user_rol = $this->input->post('rol');
-
-        //Aqui va a ir la ruta de la imagen
-       
-        $foto=$userfile;
         $this->load->model('file');
-        $foto = $this->file->UploadImage('uploads/images/users','Ocurrio un error al subir la imagen, Comuniquese con el administrador');
-
-        //Imprimimos los datos para verificar que los esta extrayendo correctamente:
-//        echo 'Datos a guardar: <br>';
-//        echo 'Cedula:' . $user_cedula . ' <br>';
-//        echo 'Nombre:' . $user_nombres . ' <br>';
-//        echo 'Apellido:' . $user_apellidos . ' <br>';
-//        echo 'Telefono: ' . $user_telefono . '<br>';
-//        echo 'Mail: ' . $user_mail . '<br>';
-//        echo 'PWD: ' . $user_password . '<br>';
-//        die();
+        $anuncio = $this->uploadImg();
+        $anunc_file = $anuncio['upload_data']['file_name'];
         $this->db->trans_begin(); // inicio de transaccion
-
-        $nuevo_id = $this->usuario_model->update($user_id, $user_cedula, $user_nombres, $user_apellidos, $foto, $user_password, $user_mail, $user_telefono, $user_rol=2);
+        $nuevo_id = $this->usuario_model->update($user_id, $user_cedula, $user_nombres, $user_apellidos, $anunc_file, $user_password, $user_mail, $user_telefono, $user_rol = 2);
         if ($nuevo_id <= 0) {
             $this->db->trans_rollback();
-            $this->res_msj .= error_msg('<br>Ha ocurrido un error al actualizar el usuario en la base de datos.');
+            $this->res_msj .= error_msg('<br>Ha ocurrido un error al actualizar los dsatos en la base de datos.');
             echo $this->res_msj;
         }
         // verifico que todo elproceso en si este bien ejecutado
@@ -179,26 +162,47 @@ class Usuario extends CI_Controller {
 
             $this->db->trans_commit(); // finaliza la transaccion de begin
         }
-
     }
-    
+
     public function delete_view($id_user) {
         $data['id_user'] = $id_user;
         $data['usuario'] = $this->usuario_model->get_data_by_id($id_user);
         $view = $this->load->view('usuarios/delete_usuario', $data, TRUE);
         echo $view;
     }
-    
+
     //Comprobar si existe un email registrado en la base de datos
-    public function check_email(){
+    public function check_email() {
         $email = $this->input->post('email');
         $check_email = $this->usuario_model->check_email($email);
-        if(!empty($check_email)){
+        if (!empty($check_email)) {
             echo 'Este correo ya se encuentra registrado, inicie sesion';
-        }else{
+        } else {
             echo '-1';
         }
     }
+
+    //funcion para subir imagen
+    function uploadImg() {
+        $config['upload_path'] = './uploads/images/users/';
+        $config['allowed_types'] = 'gif|jpg|png';
+        $this->load->library('upload', $config);
+        $this->upload->initialize($config);
+        $this->upload->set_allowed_types('*');
+        $data['upload_data'] = '';
+        if (!$this->upload->do_upload('userfile')) {
+            echo '<script>alert('.$this->upload->display_errors().');</script>';
+            $data = array('msg' => $this->upload->display_errors());
+            $data['upload_state'] = false;
+        } else { //else, set the success message
+            $data = array('msg' => "Subida completa!");
+            
+            $data['upload_data'] = $this->upload->data();
+            $data['upload_state'] = true;
+        }
+        return $data;
+    }
+
 }
 
 ?>
