@@ -1,17 +1,9 @@
 <div class="col-md-12">
     <form id="form_horario">
-        <h2>Establecer Horario:</h2>
+        <h2>Horario del local: <?php echo $locales[0]->nombre; ?></h2>
         <hr id ="LineaHorario">
         <div class="row">
             <div class="col-md-9">
-                <div class="row nomLocal">
-                    <div class="col-md-6 etiquetaHora">
-                        <h4><b>Local:</b></h4>
-                    </div>                
-                    <div class="col-md-4">
-                        <input type="text" id="nombreLocal" class="form-control" name="nombreLocal" disabled>
-                    </div>
-                </div>
                 <br>
                 <div class="row">
                     <div class="col-md-6">
@@ -20,7 +12,7 @@
                                 <h4><b>Hora de apertura:</b></h4>
                             </div>
                             <div class="col-md-7">
-                                <input type="text" class="form-control" id="horaInicio" name="horaInicio" value="00 : 00" autofocus onclick="iniciarReloj()">                                
+                                <input type="text" class="form-control" id="horaInicio" name="horaInicio" value="00 : 00" autofocus onclick="iniciarReloj()" readonly="readonly">                                
                                 <div class="row">
                                     <div class="col-md-12" id="relojHoraInicio"></div>
                                 </div>
@@ -33,7 +25,7 @@
                                 <h4><b>Hora de cierre:</b></h4>
                             </div>
                             <div class="col-md-7">
-                                <input type="text" class="form-control" id="horaCierre" name="horaCierre" class="form-control" value="00 : 01" onclick="openReloj2()" disabled>
+                                <input type="text" class="form-control" id="horaCierre" name="horaCierre" class="form-control" value="00 : 01" onclick="openReloj2()" readonly="readonly">
                                 <div class="row">
                                     <div class="col-md-12" id="relojHoraCierre"></div>
                                 </div>
