@@ -44,8 +44,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <a href ="<?= base_url('portal/vistaRegistrarUsuario') ?>" type="button" class="btn btn-primary navbar-btn navbar-right">Registrate</a>
 
                         <form action="#" class="navbar-form navbar-right" role="search">
-                            <div class="form-group"><input type="text" class="form-control" placeholder="Buscar..."></div>
-                            <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search"></span></button>
+                            <div class="form-group"><input type="text" id="e" name="e" class="form-control" placeholder="Buscar..."></div>
+                            <button type="submit" onclick="busca()"  class="btn btn-primary"><span class="glyphicon glyphicon-search"></span></button>
                         </form>
                     </div>
                 </div>

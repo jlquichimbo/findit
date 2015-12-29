@@ -150,7 +150,62 @@ function localIndividual(){
                     infoWindow.open(mapa, marca);
                     lastOpen = infoWindow;
                 });
+                document.getElementById("horai").innerHTML = local.hora_apertura;
+                document.getElementById("horaf").innerHTML = local.hora_cierre;
             });
         }
     });
     }
+    
+    function busca(){
+    
+     var b= $('#e').val();
+    //alert(b);
+    
+    $('#mySelect').find('option').remove();
+    var url = 'portal/search/' + b;
+      
+    var mapOptions = {
+        center: new google.maps.LatLng(-3.996083, -79.205675),
+        zoom: 13,
+        mapTypeId: google.maps.MapTypeId.ROADMAP,
+        mapTypeControl: false,
+        zoomControl: true
+    };
+    mapa = new google.maps.Map(document.getElementById("mapa_content"), mapOptions);
+    
+        $.ajax({
+            type: "POST",
+            url: url, 
+            dataType: 'json',
+             success: function (locales) {
+            $.each(locales, function (id, local) {
+                Lista(local);
+                var latlng = new google.maps.LatLng(local.latitud, local.longitud);
+                
+                var marca = new google.maps.Marker({
+                    position: latlng,
+                    map: mapa,
+                    title: local.nombre
+                });
+                var html = "<h3>" + local.nombre + "</h3>"+"<br/>";
+                var html = getHtmlData(local);
+                var infoWindow = new google.maps.InfoWindow({
+                    content: html,
+                    maxWidth: 500,
+                    maxHeight: 250
+                });
+                google.maps.event.addListener(marca, 'click', function() {
+                    if (lastOpen !== null) {
+                        lastOpen.close();
+                    }
+                    infoWindow.open(mapa, marca);
+                    lastOpen = infoWindow;
+                });
+                document.getElementById("horai").innerHTML = local.hora_apertura;
+                document.getElementById("horaf").innerHTML = local.hora_cierre;
+                
+            });
+        }
+        });
+}

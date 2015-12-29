@@ -70,7 +70,14 @@ class Portal extends CI_Controller {
 //                    echo '{"id":"--","name":"No hay resultados para '.$type.'"}';
         }
     }
-
+    
+    public function search($nombre){
+       $this->load->model("buscador");
+       $local = $this->buscador->search($nombre);
+        if(!empty($local)) {
+                    echo json_encode($local);
+            }   
+    }
     public function getLocalesCercanos() {
         $this->load->model('empresa_model');
         $locales = $this->empresa_model->getMasCercanos();
