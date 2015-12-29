@@ -16,7 +16,7 @@
                     foreach ($anuncios as $anuncio) {
                         //Si es el primer anuncio va con la clase item active  
                         if ($i == 0) {
-                            $item .= '<img src="' . base_url() . '/uploads/images/anuncios/' . $anuncio->img . '" alt="' . $anuncio->titulo . '" style="height: 25em;">'
+                            $item .= '<img src="' . base_url() . '/uploads/images/anuncios/' . $anuncio->img . '" alt="' . $anuncio->titulo . '" style="height: 20em;">'
                                     . '<div class="carousel-caption">'
                                     . '<h4>' . $anuncio->titulo . '</h4>'
                                     . '<p>'
@@ -26,7 +26,7 @@
                                     . '</div>';
                         } else {
                             $item .= '<div class="item" align="center">'
-                                    . '<img src="' . base_url() . '/uploads/images/anuncios/' . $anuncio->img . '" alt="' . $anuncio->titulo . '" style="height: 25em;">'
+                                    . '<img src="' . base_url() . '/uploads/images/anuncios/' . $anuncio->img . '" alt="' . $anuncio->titulo . '" style="height: 20em;">'
                                     . '<div class="carousel-caption">'
                                     . '<h4>' . $anuncio->titulo . '</h4>'
                                     . '<p>'
