@@ -96,6 +96,7 @@ $this->load->view('empresa/horario_form');
 //                console.log(data);
                 $('#content_link').html(data);
             }
+            location.reload();
         });
     });
     

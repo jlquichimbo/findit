@@ -53,7 +53,7 @@
             </div>
         </div>
     </div>
-    <section class="main container">
+    <section class="main container well">
         <div class="row">
             <hr>
         </div>

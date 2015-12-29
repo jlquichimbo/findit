@@ -1,5 +1,6 @@
 <script src="<?php echo base_url(); ?>complementos/js/portal.js"></script>
 
+
 <h2 class="page-header">Subir Anuncio:</h2>
 <div id="res_msj" style="display: none">
     <?php
@@ -22,8 +23,8 @@
         <div class="form-group">
             <label for="formGroup" class="col-sm-4 control-label">Imagen:</label>
             <div class="col-sm-4">     
-                <input type="file" name="userfile" multiple="multiple">
-
+                <!--<input type="file" name="userfile" multiple="multiple">-->
+                <input type="file" class="filestyle" name="userfile" multiple="multiple" data-buttonText="Buscar">
             </div>
         </div>  
         <div class="form-group">
@@ -45,12 +46,10 @@
             </div>
         </div>
         <br>
-        <div id="messages_div">
-
-        </div>
+        <div id="messages_div"></div>
         <div class="form-group">
             <label for="formGroup" class="col-sm-2 control-label"></label>
-            <div class="pull-right">
+         
                 <div class="col-sm-4">
 
                     <button type="submit" class="btn btn-success btn-lg" value="Upload" id="ajaxformbtn" data-target="messages_div">
@@ -58,10 +57,11 @@
                         Crear
                     </button>
                 </div>
-            </div>
+       
         </div>
     </form>
 </div>
+
 
 <script>
     $(document).ready(function () {

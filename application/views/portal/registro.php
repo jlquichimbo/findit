@@ -56,11 +56,6 @@
         </div>
         <div class="form-group">
             <label for="formGroup" class="col-sm-6 control-label" id="msjPassword" style="color: #ff4258; display: none"></label>
-        </div> 
-
-
-
-        <div class="form-group">
             <label for="formGroup" class="col-sm-2 control-label"></label>
             <div class="col-sm-4">
                 <!--<input type="submit" value="Enviar"/>-->
@@ -69,7 +64,11 @@
                     Aceptar
                 </button>
             </div>
-        </div>			
+        </div> 
+
+
+
+
     </form>
     <br><br>
 </div>
@@ -140,38 +139,38 @@
         }
 
     });
-    
+
     /*Validacion si correo ya ha sido registrado*/
-    $('#txtMail').blur(function(){
+    $('#txtMail').blur(function () {
         check_email();
     });
     function check_email() {
-            main_path = "<?php echo base_url(); ?>";
+        main_path = "<?php echo base_url(); ?>";
 
-            var email = $("#txtMail").val();
-            var url = main_path+'usuario/check_email';
-            $.ajax({
-                type: "POST",
-                url: url,
-                data: { email: email},// sitaxis ci: nombre de una variable para acceder desde elcontrolador php datum.ci=> este puede ser el nombre del input o campo html
-                success: function(data){
-                    console.log(data);
-                    if(data != -1){
-                        $('#msjEmail').html(data);
-                        $('#msjEmail').show(1000);
-                        document.getElementById("btnGuardar").disabled = true;
-                    }else{
-                        $('#msjEmail').hide(1000);
-                        document.getElementById("btnGuardar").disabled = false;
-                    }
-                    
-                },
-                error: function(){
-                    //alertaError("Error!! No se pudo alcanzar el archivo de proceso", "Error!!");
-                }              
-            });
-            
-    }   
-    
+        var email = $("#txtMail").val();
+        var url = main_path + 'usuario/check_email';
+        $.ajax({
+            type: "POST",
+            url: url,
+            data: {email: email}, // sitaxis ci: nombre de una variable para acceder desde elcontrolador php datum.ci=> este puede ser el nombre del input o campo html
+            success: function (data) {
+                console.log(data);
+                if (data != -1) {
+                    $('#msjEmail').html(data);
+                    $('#msjEmail').show(1000);
+                    document.getElementById("btnGuardar").disabled = true;
+                } else {
+                    $('#msjEmail').hide(1000);
+                    document.getElementById("btnGuardar").disabled = false;
+                }
+
+            },
+            error: function () {
+                //alertaError("Error!! No se pudo alcanzar el archivo de proceso", "Error!!");
+            }
+        });
+
+    }
+
 
 </script>

@@ -12,7 +12,7 @@
                                 <h4><b>Hora de apertura:</b></h4>
                             </div>
                             <div class="col-md-7">
-                                <input type="text" class="form-control" id="horaInicio" name="horaInicio" value="00 : 00" autofocus onclick="iniciarReloj()" readonly="readonly">                                
+                                <input type="text" class="form-control" id="horaInicio" name="horaInicio" value="00 : 00 : 00" autofocus onclick="iniciarReloj()" readonly="readonly">                                
                                 <div class="row">
                                     <div class="col-md-12" id="relojHoraInicio"></div>
                                 </div>
@@ -25,7 +25,7 @@
                                 <h4><b>Hora de cierre:</b></h4>
                             </div>
                             <div class="col-md-7">
-                                <input type="text" class="form-control" id="horaCierre" name="horaCierre" class="form-control" value="00 : 01" onclick="openReloj2()" readonly="readonly">
+                                <input type="text" class="form-control" id="horaCierre" name="horaCierre" class="form-control" value="00 : 00 : 00" onclick="openReloj2()" readonly="readonly">
                                 <div class="row">
                                     <div class="col-md-12" id="relojHoraCierre"></div>
                                 </div>
@@ -34,22 +34,27 @@
                     </div>
                 </div>
                 <br>
-                <div class="row">
-                    <div class="col-sm-4">
+                <div class="form-group">
+                    <div class="pull-right">
+                     <label for="formGroup" class="col-sm-12 control-label">
+                    <div class="col-sm-7">
                         <button type="submit" class="btn btn-success btn-lg" data-target="messages_div" onclick="guardarHorario()">
-                            <span class="glyphicon glyphicon-fire"></span>
-                            Establecer
+                            <span class="glyphicon glyphicon-floppy-saved"> </span>
+                            Guardar
                         </button>
                     </div>
-                    <div class="col-sm-4">
+                        
+                    <div class="col-sm-2">
                         <button id="btn_cancel" type="submit" class="btn btn-danger btn-lg" onclick="cancelarEstablecerHorario()">
                             <span class="glyphicon glyphicon-remove"></span>
                             Cancelar
                         </button>
                     </div>
+                     </label>
+                </div>
                 </div>
             </div>
-            <div class="col-md-3">
+            <div class="pull-right">
                 <img src="<?php echo base_url(); ?>complementos/img/reloj.gif" class="img-responsive" width="65%" alt="Reloj animado">
             </div>
         </div>          

@@ -27,13 +27,12 @@
                 $eliminar = '<a user_id='.$usuario->id.' class="link_delete"  href="#">'
                         . '<i class= "glyphicon glyphicon-trash"/></a>';
                  
-                $imagen=  base_url();
-                
                 echo Open('tr');
                 echo tagcontent('td', $usuario->nombres);
                 echo tagcontent('td', $usuario->apellidos);
                 echo tagcontent('td', $usuario->cedula_ruc);
-                echo tagcontent('td', "<a><img src= '$imagen.$usuario->usuario' width='50' heigth='60'></a>");
+                $imagen=  base_url()."uploads/images/users/".$usuario->usuario;
+                echo tagcontent('td', "<a><img src= '".$imagen."' width='50' heigth='60'></a>");
                 echo tagcontent('td', $usuario->email);
                 echo tagcontent('td', $usuario->rol);
                 echo tagcontent('td', $usuario->telefono);

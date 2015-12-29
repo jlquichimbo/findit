@@ -12,6 +12,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <link rel="stylesheet" href="<?php echo base_url(); ?>complementos/frameworks/bootstrap3.3.5/css/bootstrap.min.css">
         <link rel="stylesheet" href="<?php echo base_url(); ?>complementos/css/estilosportal.css">
         <script src="jquery-1.11.3.min.js"></script>
+        
+        <script type="text/javascript" src="<?php echo base_url(); ?>complementos/js/bootstrap-filestyle.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>complementos/js/bootstrap-filestyle.min.js"></script>
         <!--GOOGLE MAPS-->
 <!--        <script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js?ver=3.1.2'></script>
         <script type="text/javascript"

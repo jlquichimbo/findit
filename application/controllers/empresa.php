@@ -169,7 +169,7 @@ class Empresa extends CI_Controller {
         $anunc_emp_id = $this->input->post('anuncio_emp_id');
         $anunc_url = $this->input->post('anunc_url');
         $admin_id = $this->user->id;
-        $this->load->model('file');
+        //$this->load->model('file');
         $anuncio = $this->uploadImg();
         $anunc_file = $anuncio['upload_data']['file_name'];
 
@@ -259,5 +259,7 @@ class Empresa extends CI_Controller {
         }
         return $data;
     }
-    
+
 }
+
+?>

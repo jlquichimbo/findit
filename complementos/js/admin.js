@@ -38,6 +38,7 @@ function establecerHorario(id) {
                     //llamar funcion cargarMisLocales() del controlador index
                     document.getElementById("myDataTable").rows[filamodificada].cells[4].innerHTML = "00:00:00";
                     document.getElementById("myDataTable").rows[filamodificada].cells[5].innerHTML = "00:00:00";
+                    javascript:location.reload()
                 } else {
                     alert("No se pudo establecer horario");
                 }
@@ -73,9 +74,11 @@ function guardarHorario() {
         success: function (data) {
             if (data == 1) {
                 idLocales[filamodificada][1] = 1;
+                javascript:location.reload()
             } else {
                 alert("No se pudo establecer horario");
             }
+            
         }
     });
 }

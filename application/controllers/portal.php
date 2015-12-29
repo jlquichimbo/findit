@@ -20,12 +20,10 @@ class Portal extends CI_Controller {
         $data['anuncios'] = $this->anuncio_model->get_ultimos();
 
         $infoPage['titulo'] = 'Inicio';
-        $this->load->view('portal/static/headerAdm', $infoPage);
-        $this->load->view('portal/principal', $data);
-        $this->load->view('portal/static/footer');
+        $infoPage['footer'] = $this->load->view('portal/static/headerAdm', $infoPage);
+        $infoPage['footer'] = $this->load->view('portal/principal', $data);
+        $infoPage['footer'] = $this->load->view('portal/static/footer2');
         //$this->vistaRegistrarUsuario();
-       
-       
     }
 
     public function vistaRegistrarUsuario() {
@@ -39,12 +37,11 @@ class Portal extends CI_Controller {
         $this->load->view('portal/static/dashboard', $infoPage);
         $infoPage['footer'] = $this->load->view('portal/static/footer');
         //Cargamos el dashboard
-        
     }
 
     public function vistaloguearUsuario() {
         $infoPage['titulo'] = 'Ingresar';
-        
+
         $this->load->view('portal/static/header', $infoPage);
         $this->load->view('login/login_view');
 //        $this->load->view('login/login/index');
@@ -70,14 +67,15 @@ class Portal extends CI_Controller {
 //                    echo '{"id":"--","name":"No hay resultados para '.$type.'"}';
         }
     }
-    
-    public function search($nombre){
-       $this->load->model("buscador");
-       $local = $this->buscador->search($nombre);
-        if(!empty($local)) {
-                    echo json_encode($local);
-            }   
+
+    public function search($nombre) {
+        $this->load->model("buscador");
+        $local = $this->buscador->search($nombre);
+        if (!empty($local)) {
+            echo json_encode($local);
+        }
     }
+
     public function getLocalesCercanos() {
         $this->load->model('empresa_model');
         $locales = $this->empresa_model->getMasCercanos();
@@ -122,7 +120,7 @@ class Portal extends CI_Controller {
             if ($this->db->trans_status() === FALSE) {
                 $this->db->trans_rollback();
             } else {
-                 // finaliza la transaccion de begin
+                // finaliza la transaccion de begin
                 $this->db->trans_commit();
                 $fecha = date("d-m-y");
                 $hora = date("h:i:s");
@@ -156,7 +154,7 @@ class Portal extends CI_Controller {
                 $this->email->to($destino);
                 $this->email->subject($asunto);
                 $this->email->message($mensaje);
-                if ($this->email->send()){
+                if ($this->email->send()) {
                     $infoPage['titulo'] = 'Recuperar Password';
                     $infoPage['mensajeEstado'] = 'Estimado usuario, se a enviado un mail a ' . $destino . ' con su nueva password';
                     $this->load->view('portal/static/header', $infoPage);
