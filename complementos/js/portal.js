@@ -150,8 +150,8 @@ function localIndividual(){
                     infoWindow.open(mapa, marca);
                     lastOpen = infoWindow;
                 });
-                document.getElementById("horai").innerHTML = local.hora_apertura;
-                document.getElementById("horaf").innerHTML = local.hora_cierre;
+                document.getElementById("labelHinicio").innerHTML = local.hora_apertura;
+                document.getElementById("labelHCierre").innerHTML = local.hora_cierre;
             });
         }
     });
@@ -202,8 +202,8 @@ function localIndividual(){
                     infoWindow.open(mapa, marca);
                     lastOpen = infoWindow;
                 });
-                document.getElementById("horai").innerHTML = local.hora_apertura;
-                document.getElementById("horaf").innerHTML = local.hora_cierre;
+                document.getElementById("labelHinicio").innerHTML = local.hora_apertura;
+                document.getElementById("labelHCierre").innerHTML = local.hora_cierre;
                 
             });
         }
