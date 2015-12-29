@@ -138,26 +138,12 @@ class Usuario extends CI_Controller {
         $user_mail = $this->input->post('txtMail');
         $user_password = md5($this->input->post('txtPassword'));
         $user_rol = $this->input->post('rol');
-
-        $this->load->model('file');
-        $anuncio = $this->uploadImg();
-        $anunc_file = $anuncio['upload_data']['file_name'];
-
         $fotoperfil = $this->uploadImg();
         $fotoperfil_file = $fotoperfil['upload_data']['file_name'];
-
         $this->db->trans_begin(); // inicio de transaccion
-
-        $nuevo_id = $this->usuario_model->update($user_id, $user_cedula, $user_nombres, $user_apellidos, $anunc_file, $user_password, $user_mail, $user_telefono, $user_rol = 2);
-
         $nuevo_id = $this->usuario_model->update($user_id, $user_cedula, $user_nombres, $user_apellidos, $fotoperfil_file, $user_password, $user_mail, $user_telefono, $user_rol = 2);
-
         if ($nuevo_id <= 0) {
             $this->db->trans_rollback();
-
-            $this->res_msj .= error_msg('<br>Ha ocurrido un error al actualizar los dsatos en la base de datos.');
-            echo $this->res_msj;
-
             $this->res_msj .= error_msg('<br>Ha ocurrido un error al actualizar los dsatos de usuario en la base de datos.');
             //echo $this->res_msj;
         }
@@ -174,7 +160,8 @@ class Usuario extends CI_Controller {
             $this->editar_perfil_view($fotoperfil);
         }
     }
-
+    
+    
     //Volver acargar vistas despues de q se aya actualizado el perfil
     function editar_perfil_view($user_data) {
         $infoPage['titulo'] = 'Administrador - Perfil';
@@ -185,11 +172,10 @@ class Usuario extends CI_Controller {
         $infoPage['sidebar'] = $this->load->view('admin/sidebar', $datas, TRUE);
         $infoPage['content'] = $this->load->view('usuarios/edit_adm', $data, TRUE);
         $infoPage['footer'] = $this->load->view('portal/static/footer');
-
+        
         //Cargamos el dashboard
         $this->load->view('portal/static/dashboard', $infoPage);
     }
-
     public function delete_view($id_user) {
         $data['id_user'] = $id_user;
         $data['usuario'] = $this->usuario_model->get_data_by_id($id_user);
@@ -209,7 +195,7 @@ class Usuario extends CI_Controller {
     }
 
     //funcion para subir imagen
-       function uploadImg() {
+    function uploadImg() {
         $config['upload_path'] = './uploads/images/users/';
         $config['allowed_types'] = 'gif|jpg|png';
         $this->load->library('upload', $config);
@@ -222,6 +208,7 @@ class Usuario extends CI_Controller {
             $data['upload_state'] = false;
         } else { //else, set the success message
             $data = array('msg' => ".<br>Edición de perfil completo!");
+
             $data['upload_data'] = $this->upload->data();
             $data['upload_state'] = true;
         }

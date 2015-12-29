@@ -89,6 +89,7 @@
         }
     });
     
+
     //Ocultar el div al hacer clic en cancelar
     $('#btn_cancel').click(function () {
         $('#form_registro').hide(1000);
