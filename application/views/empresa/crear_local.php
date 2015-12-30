@@ -33,8 +33,10 @@
         </div>
         <div class="form-group">
             <label for="formGroup" class="col-sm-4 control-label">Seleccione ubicaci&oacute;n:</label>
+            </div>
+        <div class="form-group">
             <div class="col-sm-8">
-                <div id="googleMap" style="width:100%;height:20em;"></div>
+                <div id="googleMap" style="width: 1100px; height: 400px;"></div>
             </div>
             <br>
             <input type="hidden" id="emp_lat" name="emp_lat" class="campos">
@@ -102,7 +104,7 @@
         navigator.geolocation.getCurrentPosition(lecturaGPS, errorGPS, {enableHighAccuracy: true});
         var latlng = new google.maps.LatLng(-3.989509, -79.204280);
         var myOptions = {
-            zoom: 13,
+            zoom: 15,
             center: latlng,
             mapTypeId: google.maps.MapTypeId.ROADMAP
         };

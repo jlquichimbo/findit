@@ -55,6 +55,7 @@ function establecerHorario(id) {
                 $.each(local, function (id, nomlocal) {
                     var nombreLocal = nomlocal.nombre;
                     document.getElementById('nombreLocal').value = nombreLocal;
+                    
                 });
             }
         });
@@ -78,7 +79,7 @@ function guardarHorario() {
             } else {
                 alert("No se pudo establecer horario");
             }
-            
+            javascript:location.reload()
         }
     });
 }

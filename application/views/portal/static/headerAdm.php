@@ -9,8 +9,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <meta name="author" content="Grupo 2">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1"><!--Meta para dispositivos moviles-->
-        <link rel="stylesheet" href="<?=base_url()?>complementos/frameworks/bootstrap3.3.5/css/bootstrap.min.css">
-        <link rel="stylesheet" href="<?=base_url()?>complementos/css/estilosportal.css">
+        <link rel="stylesheet" href="<?= base_url() ?>complementos/frameworks/bootstrap3.3.5/css/bootstrap.min.css">
+        <link rel="stylesheet" href="<?= base_url() ?>complementos/css/estilosportal.css">
         <!--GOOGLE MAPS-->
         <script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js?ver=3.1.2'></script>
         <script type="text/javascript"
@@ -22,6 +22,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 height: 20em;
             }
         </style>
+        <script type="text/javascript">
+     function anular(e) {
+          tecla = (document.all) ? e.keyCode : e.which;
+          return (tecla != 13);
+     }
+        </script>
     </head>
     <body onLoad="inicializar()">
         <header>
@@ -43,7 +49,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                         <a href ="<?= base_url('portal/vistaRegistrarUsuario') ?>" type="button" class="btn btn-primary navbar-btn navbar-right">Registrate</a>
 
-                        <form action="#" class="navbar-form navbar-right" role="search">
+                        <form action="#" class="navbar-form navbar-right" role="search" onkeypress="return anular(event)">
                             <div class="form-group"><input type="text" id="e" name="e" class="form-control" placeholder="Buscar..." onkeyup="busca()"></div>
                            <!-- <button type="submit" onclick="busca()"  class="btn btn-primary"><span class="glyphicon glyphicon-search"></span></button>-->
                         </form>

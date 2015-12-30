@@ -129,7 +129,7 @@
     $('#txtTelefono').blur(function () {
         cedula_length = $(this).val().length;
         console.log(cedula_length);
-        if (cedula_length !== 10) {
+        if (cedula_length !== 7 ) {
             $("#msjTelefono").html("Digite un numero de telefono de 10 digitos").show(1000);
             document.getElementById("btnGuardar").disabled = true;
         }
