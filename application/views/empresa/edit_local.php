@@ -1,11 +1,3 @@
-
-<!--<script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js?ver=3.1.2'></script>-->
-<!--<script async="" type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDjSP5qZdefYhf1lI6iuBh0gT5BUgYQUWw&amp;sensor=true&callback=initialize"></script>-->
-<!--<script type="text/javascript" src='https://www.google.com/jsapi'></script>-->
-<!--<script src="<?php echo base_url(); ?>complementos/js/portal.js"></script>-->
-
-
-
 <br>
 <div class="well" id="form_registro">
     <h2 class="page-header">Editar Local:</h2>
@@ -36,16 +28,13 @@
             </div>  
         </div>
         <!--Se desabilita el mapa por ahora-->
-        <!--        <div class="form-group">
-                    <label for="formGroup" class="col-sm-4 control-label">Seleccione ubicaci&oacute;n:</label>
-                    <div class="col-sm-8">
-                        <div id="googleMap" style="width:100%;height:20em;"></div>
-                        <br>
-                        <label id="txtLatitud"></label>
-                    </div>
-                </div>
-                <br>
-        -->           
+        <div class="form-group">
+            <label for="formGroup" class="col-sm-2 control-label">Seleccione ubicaci&oacute;n:</label>
+            <div class="col-sm-8">
+                <div id="googleMap" style="width:100%;height:20em;"></div>
+            </div>
+        </div>
+        <br>        
         <input value="<?php echo $empresa[0]->latitud ?>"  type="hidden" id="emp_lat" name="emp_lat" class="campos">
         <input value="<?php echo $empresa[0]->longitud ?>"  type="hidden" id="emp_lng" name="emp_lng" class="campos">
         <input value="<?php echo $id_emp ?>" type="hidden" id="id_emp" name="id_emp" class="campos" >
@@ -53,21 +42,21 @@
 
         <div class="form-group">
             <label for="formGroup" class="col-sm-12 control-label">
-            <div class="col-sm-9">
-                <button type="submit" class="btn btn-success btn-lg" id="ajaxformbtn" data-target="messages_div">
-                    <span class="glyphicon glyphicon-floppy-disk"></span>
-                    Guardar
-                </button>
-            </div>
-            <div class="col-sm-2">
-                <button id="btn_cancel" type="reset" class="btn btn-danger btn-lg">
-                    <span class="glyphicon glyphicon-remove"></span>
-                    Cancelar
-                </button>
-            </div>
-                </label>
+                <div class="col-sm-9">
+                    <button type="submit" class="btn btn-success btn-lg" id="ajaxformbtn" data-target="messages_div">
+                        <span class="glyphicon glyphicon-floppy-disk"></span>
+                        Guardar
+                    </button>
+                </div>
+                <div class="col-sm-2">
+                    <button id="btn_cancel" type="reset" class="btn btn-danger btn-lg">
+                        <span class="glyphicon glyphicon-remove"></span>
+                        Cancelar
+                    </button>
+                </div>
+            </label>
         </div>
-</div>	
+</div>  
 </form>
 </div>
 
@@ -80,7 +69,7 @@
                 $("#form_empresa_edit").serialize(), //Codificamos todo el formulario en formato de URL por medio de la receta
                 function (data) {
                     $("#form_registro").html(data);
-                     location.reload();
+                    location.reload();
                 });
     });
 
@@ -88,32 +77,6 @@
     $('#btn_cancel').click(function () {
         $('#form_registro').hide(1000);
     });
-
-
-//    var center = new google.maps.LatLng(-3.99313, -79.20422);
-//    var map;
-//    function initialize() {
-//        // Create the map.
-//        var mapOptions = {
-//            zoom: 17,
-//            center: center,
-//            mapTypeId: google.maps.MapTypeId.TERRAIN
-//        };
-//        map = new google.maps.Map(document.getElementById('googleMap'), mapOptions);
-//        google.maps.event.addListener(map, 'click', function (event) {
-//            marca(event.latLng);
-//        });
-//    }
-//    google.maps.event.addDomListener(window, 'load', initialize);
-//    function marca(location) {
-//        $("#emp_lat").val(location.lat());
-//        $("#emp_lng").val(location.lng());
-//        var marker = new google.maps.Marker({
-//            position: location,
-//            map: map
-//        });
-//    }
-
 </script>
 <?php
 
