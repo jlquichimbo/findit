@@ -14,7 +14,8 @@ function inicializar() {
         position: latlng,
         map:mapa,
         title: 'Tu ubicación',
-        icon: "http://google-maps-utility-library-v3.googlecode.com/svn/trunk/markerclusterer/images/people35.png"
+        icon: "http://google-maps-utility-library-v3.googlecode.com/svn/trunk/markerclusterer/images/people35.png",
+        animation: google.maps.Animation.DROP
     });
     $.ajax({
         url: 'portal/getLocalesCercanos/',
@@ -40,7 +41,8 @@ function addMarca(dataLocal) {
     var marca = new google.maps.Marker({
         position: latlng,
         map: mapa,
-        title: dataLocal.nombre
+        title: dataLocal.nombre,
+        animation: google.maps.Animation.DROP
     });
     addInfoWindow(marca, dataLocal);
     if(dataLocal.latitud!=""){
@@ -134,7 +136,8 @@ function localIndividual(){
                 var marca = new google.maps.Marker({
                     position: latlng,
                     map: mapa,
-                    title: local.nombre
+                    title: local.nombre,
+                    animation: google.maps.Animation.DROP
                 });
                 document.getElementById("labelHinicio").innerHTML = local.hora_apertura;
                 document.getElementById("labelHCierre").innerHTML = local.hora_cierre;                
