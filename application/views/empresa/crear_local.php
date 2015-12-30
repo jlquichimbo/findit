@@ -35,8 +35,8 @@
             <label for="formGroup" class="col-sm-4 control-label">Seleccione ubicaci&oacute;n:</label>
             </div>
         <div class="form-group">
-            <div class="col-sm-8">
-                <div id="googleMap" style="width: 1100px; height: 400px;"></div>
+            <div class="col-sm-20">
+                <div id="googleMap" style="width: 1100px; height: 400px;" class="img-responsive"></div>
             </div>
             <br>
             <input type="hidden" id="emp_lat" name="emp_lat" class="campos">

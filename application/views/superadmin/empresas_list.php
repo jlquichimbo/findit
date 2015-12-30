@@ -8,8 +8,8 @@
                 <th>Dirección</th>
                 <th>Administrador</th>
                 <th>Tipo</th>
-                <th>Editar</th>
-                <th>Eliminar</th>
+                <th> </th>
+                <th> </th>
             </tr>
         </thead>
         <tbody>
@@ -38,16 +38,16 @@
 
     var BASE_URL = "<?php echo base_url(); ?>";
     //FUNCION PARA EDITAR CADA LOCAL
-    $('.link_edit').click(function (event){
+    $('.link_edit').click(function (event) {
 //    $(document).on("click", ".link_edit", function (event) {
         // Obtener id del local clickeado
-        var id = $(this).attr("emp_id");	
+        var id = $(this).attr("emp_id");
 
         console.log(id);
         event.preventDefault();//Para que no redirecciones a otro lado
         //variable que almacena el id de la empresa
         $.ajax({
-            url: BASE_URL + 'empresa/editar_local_view/'+id,
+            url: BASE_URL + 'empresa/editar_local_view/' + id,
             type: 'GET',
 //            dataType: "html",
             success: function (data) {
@@ -56,18 +56,18 @@
             }
         });
     });
-    
+
     //FUNCION PARA ELIMINAR CADA LOCAL
-    $('.link_delete').click(function (event){
+    $('.link_delete').click(function (event) {
 //    $(document).on("click", ".link_edit", function (event) {
         // Obtener id del local clickeado
-        var id = $(this).attr("emp_id");	
+        var id = $(this).attr("emp_id");
 
         console.log(id);
         event.preventDefault();//Para que no redirecciones a otro lado
         //variable que almacena el id de la empresa
         $.ajax({
-            url: BASE_URL + 'empresa/delete_local_view/'+id,
+            url: BASE_URL + 'empresa/delete_local_view/' + id,
             type: 'GET',
 //            dataType: "html",
             success: function (data) {
@@ -76,22 +76,22 @@
             }
         });
     });
-    
-    
+
+
 </script>
 
 <script type="text/javascript" language="javascript" src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <script type="text/javascript" language="javascript" src="//cdn.datatables.net/1.10.4/js/jquery.dataTables.min.js"></script>
 <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.4/css/jquery.dataTables.css">
 
-<script type="text/javascript" charset="utf-8"> 
-	
-		$('#myDataTable').dataTable( {
-			"bPaginate": true,
-			"bLengthChange": true,
-			"bFilter": true,
-			"bSort": true,
-			"bInfo": true,
-			"bAutoWidth": true } );
+<script type="text/javascript" charset="utf-8">
+
+    $('#myDataTable').dataTable({
+        "bPaginate": true,
+        "bLengthChange": true,
+        "bFilter": true,
+        "bSort": true,
+        "bInfo": true,
+        "bAutoWidth": true});
 
 </script> 

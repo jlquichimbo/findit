@@ -11,8 +11,8 @@
                 <th>Email</th>
                 <th>Rol</th>
                 <th>Telefono</th>
-                <th>Editar</th>
-                <th>Eliminar</th>
+                <th> </th>
+                <th> </th>
             </tr>
         </thead>
         <tbody>

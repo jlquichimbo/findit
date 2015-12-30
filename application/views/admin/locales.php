@@ -2,9 +2,9 @@
 <script type="text/javascript" src='https://www.google.com/jsapi'></script>
 <div id="content_link"></div>
 <div class="row formContEstablecer" id="formContenedor">  
-<?php
-$this->load->view('empresa/horario_form');
-?>
+    <?php
+    $this->load->view('empresa/horario_form');
+    ?>
 </div>
 <br>
 <div class="well" id ="contTabla">  
@@ -19,8 +19,8 @@ $this->load->view('empresa/horario_form');
                     <th>Disponibilidad</th>
                     <th>Apertura</th>
                     <th>Cierre</th>
-                    <th>Editar</th>
-                    <th>Eliminar</th>
+                    <th> </th>
+                    <th> </th>
                 </tr>
             </thead>
             <tbody>
@@ -59,8 +59,8 @@ $this->load->view('empresa/horario_form');
 <!--<div class='onoffswitch'><input type='checkbox' name='onoffswitch12345' class='onoffswitch-checkbox' id='myonoffswitch12345'><label class='onoffswitch-label' for='myonoffswitch12345'><span class='onoffswitch-inner'></span><span class='onoffswitch-switch'></span></label></div>-->
 <script src='<?php echo base_url(); ?>complementos/js/admin.js'></script>
 <script>
-                                var estad =<?php echo json_encode($estados); ?>;
-                                crearBoton(estad);
+    var estad =<?php echo json_encode($estados); ?>;
+    crearBoton(estad);
 </script>
 <script type="text/javascript" language="javascript" src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <script type="text/javascript" language="javascript" src="//cdn.datatables.net/1.10.4/js/jquery.dataTables.min.js"></script>
@@ -68,13 +68,13 @@ $this->load->view('empresa/horario_form');
 
 <script type="text/javascript" charset="utf-8">
 
-                                $('#myDataTable').dataTable({
-                                    "bPaginate": true,
-                                    "bLengthChange": true,
-                                    "bFilter": true,
-                                    "bSort": true,
-                                    "bInfo": true,
-                                    "bAutoWidth": true});
+    $('#myDataTable').dataTable({
+        "bPaginate": true,
+        "bLengthChange": true,
+        "bFilter": true,
+        "bSort": true,
+        "bInfo": true,
+        "bAutoWidth": true});
 
 </script> 
 <script>
@@ -121,19 +121,19 @@ $this->load->view('empresa/horario_form');
         });
     }
     google.maps.event.addDomListener(window, 'load', initialize);
-    
-    
+
+
     //FUNCION PARA ELIMINAR CADA LOCAL
-    $('.link_delete').click(function (event){
+    $('.link_delete').click(function (event) {
 //    $(document).on("click", ".link_edit", function (event) {
         // Obtener id del local clickeado
-        var id = $(this).attr("emp_id");	
+        var id = $(this).attr("emp_id");
 
         console.log(id);
         event.preventDefault();//Para que no redirecciones a otro lado
         //variable que almacena el id de la empresa
         $.ajax({
-            url: BASE_URL + 'empresa/delete_local_view/'+id,
+            url: BASE_URL + 'empresa/delete_local_view/' + id,
             type: 'GET',
 //            dataType: "html",
             success: function (data) {
@@ -142,7 +142,7 @@ $this->load->view('empresa/horario_form');
             }
         });
     });
-    
+
     function marca(location) {
         $("#emp_lat").val(location.lat());
         $("#emp_lng").val(location.lng());

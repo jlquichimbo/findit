@@ -21,7 +21,6 @@ class Index extends CI_Controller {
         $infoPage['header'] = $this->load->view('login/header_login', '', TRUE);
         $infoPage['sidebar'] = $this->load->view('superadmin/sidebar', $infoPage, TRUE);
         $infoPage['content'] = $this->load->view('usuarios/datos_registro', $infoPage, TRUE);
-        $infoPage['footer'] = $this->load->view('portal/static/footer');
 
         //Cargamos el dashboard
         $this->load->view('portal/static/dashboard', $infoPage);

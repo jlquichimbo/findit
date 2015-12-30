@@ -88,12 +88,11 @@
     text-align: center;
     color: #000;
     background: white;
-    margin: 0.1em;
+   
     
 }
 .filaReloj{
     background: #fff;
-    border:0.1em solid #85A6C4;
     border-right-color: #85A6C4;
 }
 .colMandoIz, .colMandoDer{

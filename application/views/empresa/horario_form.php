@@ -3,12 +3,12 @@
         <h2>Horario del local: <?php echo $locales[0]->nombre; ?></h2>
         <hr id ="LineaHorario">
         <div class="row">
+            
             <div class="col-md-9">
-                <br>
                 <div class="row">
                     <div class="col-md-6">
                         <div class="row">
-                            <div class="col-md-5 etiquetaHora">
+                            <div class="col-md-5 pull-left etiquetaHora">
                                 <h4><b>Hora de apertura:</b></h4>
                             </div>
                             <div class="col-md-7">
@@ -21,7 +21,7 @@
                     </div>
                     <div class="col-md-6">
                         <div class="row">
-                            <div class="col-md-5 etiquetaHora">
+                            <div class=" col-md-5 pull-left etiquetaHora">
                                 <h4><b>Hora de cierre:</b></h4>
                             </div>
                             <div class="col-md-7">
@@ -32,6 +32,7 @@
                             </div>
                         </div>
                     </div>
+                    
                 </div>
                 <br>
                 <div class="form-group">
@@ -54,8 +55,8 @@
                 </div>
                 </div>
             </div>
-            <div class="pull-right">
-                <img src="<?php echo base_url(); ?>complementos/img/reloj.gif" class="img-responsive" width="65%" alt="Reloj animado">
+            <div class="pull-left relogif">
+                <center><img src="<?php echo base_url(); ?>complementos/img/reloj.gif" class="img-responsive" width="65%" alt="Reloj animado"></center>
             </div>
         </div>          
     </form>
