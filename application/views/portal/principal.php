@@ -101,8 +101,7 @@
             </aside>
             <section class="col-md-8">
                <!-- <p>class="col-md-8"</p>-->
-                <br>
-                <div id="mapa_content"></div>
+                <div id="mapa_content"style="width: 750px; height: 400px;"></div>
                 <br>
             </section>
         </div>

@@ -4,7 +4,7 @@ function inicializar() {
     navigator.geolocation.getCurrentPosition( lecturaGPS , errorGPS , {enableHighAccuracy:true} );
     var latlng = new google.maps.LatLng(-3.989509, -79.204280);
     var myOptions = {
-        zoom: 13,
+        zoom: 15,
         center: latlng,
         mapTypeId: google.maps.MapTypeId.ROADMAP
     };
@@ -117,7 +117,7 @@ function localIndividual(){
     var url = 'portal/getLocalSeleccionado/' + local_seleccionado;
     var mapOptions = {
         center: new google.maps.LatLng(-3.996083, -79.205675),
-        zoom: 13,
+        zoom: 15,
         mapTypeId: google.maps.MapTypeId.ROADMAP,
         mapTypeControl: false,
         zoomControl: true
@@ -167,7 +167,7 @@ function localIndividual(){
       
     var mapOptions = {
         center: new google.maps.LatLng(-3.996083, -79.205675),
-        zoom: 13,
+        zoom: 15,
         mapTypeId: google.maps.MapTypeId.ROADMAP,
         mapTypeControl: false,
         zoomControl: true
