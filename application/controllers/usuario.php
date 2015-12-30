@@ -137,7 +137,6 @@ class Usuario extends CI_Controller {
         $user_telefono = $this->input->post('txtTelefono');
         $user_mail = $this->input->post('txtMail');
         $user_password = md5($this->input->post('txtPassword'));
-        $user_rol = $this->input->post('rol');
         $fotoperfil = $this->uploadImg();
         $fotoperfil_file = $fotoperfil['upload_data']['file_name'];
         $this->db->trans_begin(); // inicio de transaccion
