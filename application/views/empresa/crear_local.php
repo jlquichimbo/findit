@@ -33,14 +33,10 @@
         </div>
         <div class="form-group">
             <label for="formGroup" class="col-sm-4 control-label">Seleccione ubicaci&oacute;n:</label>
-            <div class="col-sm-4">
-                <input type="text" id="emp_address" name="emp_address" class="form-control campos" placeholder="Pinche en el mapa la ubicación de su local" required  disabled="disabled" >
-                <br>
+            <div class="col-sm-8">
+                <div id="googleMap" style="width:100%;height:20em;"></div>
             </div>
-
-            <div id="googleMap" style="width:100%;height:20em;"></div>
             <br>
-            <label id="txtLatitud"></label>
             <input type="hidden" id="emp_lat" name="emp_lat" class="campos">
             <input type="hidden" id="emp_lng" name="emp_lng" class="campos">
             <!--<div class="row">
@@ -133,7 +129,6 @@
     function lecturaGPS(ubicacion) {
         var miubicacion = new google.maps.LatLng(ubicacion.coords.latitude, ubicacion.coords.longitude);
         map.setCenter(miubicacion);
-        marcador.setPosition(miubicacion);
     }
     function errorGPS() {
         alerta("No se puede localizar :(");

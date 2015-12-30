@@ -1,5 +1,6 @@
 var mapa;
 var lastOpen = null;
+var marcador = null;
 function inicializar() {
     navigator.geolocation.getCurrentPosition( lecturaGPS , errorGPS , {enableHighAccuracy:true} );
     var latlng = new google.maps.LatLng(-3.989509, -79.204280);

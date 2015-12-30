@@ -268,8 +268,8 @@ Class Empresa_model extends CI_Model {
             'direccion' => $direccion,
             'tipo_id' => $tipo_id,
             'admin_id' => $admin_id,
-//            'latitud' => $lat,
-//            'longitud' => $lng,
+            'latitud' => $lat,
+            'longitud' => $lng,
             'hora_apertura' => $open_hour,
             'hora_cierre' => $close_hour,
         );
