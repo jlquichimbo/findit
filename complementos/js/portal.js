@@ -1,18 +1,23 @@
 var mapa;
 var lastOpen = null;
 var marcador = null;
+var directionsDisplay = new google.maps.DirectionsRenderer();
+var directionsService = new google.maps.DirectionsService();
+var request = null;
+var origen;
+var destino;
 function inicializar() {
-    navigator.geolocation.getCurrentPosition( lecturaGPS , errorGPS , {enableHighAccuracy:true} );
+    navigator.geolocation.getCurrentPosition(lecturaGPS, errorGPS, {enableHighAccuracy: true});
     var latlng = new google.maps.LatLng(-3.989509, -79.204280);
     var myOptions = {
         zoom: 15,
         center: latlng,
         mapTypeId: google.maps.MapTypeId.ROADMAP
     };
-    mapa = new google.maps.Map(document.getElementById("mapa_content"),myOptions);
-    marcador = new google.maps.Marker( {
-        position: latlng,
-        map:mapa,
+    mapa = new google.maps.Map(document.getElementById("mapa_content"), myOptions);
+    marcador = new google.maps.Marker({
+        
+        map: mapa,
         title: 'Tu ubicación',
         icon: "http://google-maps-utility-library-v3.googlecode.com/svn/trunk/markerclusterer/images/people35.png",
         animation: google.maps.Animation.DROP
@@ -20,20 +25,21 @@ function inicializar() {
     $.ajax({
         url: 'portal/getLocalesCercanos/',
         dataType: 'json',
-        success: function(locales, textStatus) {
-            $.each(locales, function(id, local) {
+        success: function (locales, textStatus) {
+            $.each(locales, function (id, local) {
                 addMarca(local);
             });
         }
     });
 }
 
-function lecturaGPS(ubicacion){
+function lecturaGPS(ubicacion) {
     var miubicacion = new google.maps.LatLng(ubicacion.coords.latitude, ubicacion.coords.longitude);
+    origen = miubicacion;
     mapa.setCenter(miubicacion);
-    marcador.setPosition(miubicacion);                      
+    marcador.setPosition(miubicacion);
 }
-function errorGPS(){
+function errorGPS() {
     alerta("No se puede localizar :(");
 }
 function addMarca(dataLocal) {
@@ -45,7 +51,7 @@ function addMarca(dataLocal) {
         animation: google.maps.Animation.DROP
     });
     addInfoWindow(marca, dataLocal);
-    if(dataLocal.latitud!=""){
+    if (dataLocal.latitud != "") {
         Lista(dataLocal);
     }
 }
@@ -56,7 +62,7 @@ function addInfoWindow(marca, dataLocal) {
         maxWidth: 500,
         maxHeight: 250
     });
-    google.maps.event.addListener(marca, 'click', function() {
+    google.maps.event.addListener(marca, 'click', function () {
         if (lastOpen !== null) {
             lastOpen.close();
         }
@@ -66,14 +72,14 @@ function addInfoWindow(marca, dataLocal) {
 }
 function getHtmlData(dataLocal) {
     var html = "";
-    html += "<h4>" + dataLocal.nombre + "</h4>"+"<br/>";
+    html += "<h4>" + dataLocal.nombre + "</h4>" + "<br/>";
     html += "<b>Direcci&oacute;n:</b>&nbsp" + dataLocal.direccion + "<br/>";
-    html += "<b>Hora inicio:</b>&nbsp" +dataLocal.hora_apertura + "<br/>";
-    html += "<b>Hora cierre:</b>&nbsp" +dataLocal.hora_cierre + "<br/>";
+    html += "<b>Hora inicio:</b>&nbsp" + dataLocal.hora_apertura + "<br/>";
+    html += "<b>Hora cierre:</b>&nbsp" + dataLocal.hora_cierre + "<br/>";
     html += "<hr/>";
     return html;
 }
-function Lista(dataLocal){
+function Lista(dataLocal) {
     var option = document.createElement("option");
     option.text = dataLocal.nombre;
     option.value = dataLocal.identificador;
@@ -96,10 +102,10 @@ $('#local_id').change(function () {
     };
     mapa = new google.maps.Map(document.getElementById("mapa_content"), mapOptions);
     $('#mySelect').find('option').remove();
-    if (local_tipo!=='-1') {
+    if (local_tipo !== '-1') {
         $.ajax({
             type: "POST",
-            url: url, 
+            url: url,
             dataType: 'json',
             success: function (locales) {
                 console.log(locales);
@@ -108,14 +114,14 @@ $('#local_id').change(function () {
                 });
             }
         });
-    }else{
+    } else {
         inicializar();
     }
 });
 
 
 //jquery de local seleccionado
-function localIndividual(){
+function localIndividual() {
     var local_seleccionado = $('#mySelect').val();
     var url = 'portal/getLocalSeleccionado/' + local_seleccionado;
     var mapOptions = {
@@ -128,26 +134,44 @@ function localIndividual(){
     mapa = new google.maps.Map(document.getElementById("mapa_content"), mapOptions);
     $.ajax({
         type: "POST",
-        url: url, 
+        url: url,
         dataType: 'json',
         success: function (locales) {
             $.each(locales, function (id, local) {
                 var latlng = new google.maps.LatLng(local.latitud, local.longitud);
+                destino = latlng;
                 var marca = new google.maps.Marker({
                     position: latlng,
                     map: mapa,
                     title: local.nombre,
                     animation: google.maps.Animation.DROP
                 });
+                //marcador;
+                request = {
+                    origin: origen,
+                    destination: destino,
+                    travelMode: google.maps.TravelMode.DRIVING,
+                    provideRouteAlternatives: true
+                };
+                directionsService.route(request, function (response, status) {
+                    if (status == google.maps.DirectionsStatus.OK) {
+                        directionsDisplay.setMap(mapa);
+                        directionsDisplay.setDirections(response);
+                    } else {
+                        alert("No existen rutas entre ambos puntos");
+                    }
+                });
+
+
                 document.getElementById("labelHinicio").innerHTML = local.hora_apertura;
-                document.getElementById("labelHCierre").innerHTML = local.hora_cierre;                
+                document.getElementById("labelHCierre").innerHTML = local.hora_cierre;
                 var html = getHtmlData(local);
                 var infoWindow = new google.maps.InfoWindow({
                     content: html,
                     maxWidth: 500,
                     maxHeight: 250
                 });
-                google.maps.event.addListener(marca, 'click', function() {
+                google.maps.event.addListener(marca, 'click', function () {
                     if (lastOpen !== null) {
                         lastOpen.close();
                     }
@@ -159,16 +183,16 @@ function localIndividual(){
             });
         }
     });
-    }
-    
-    function busca(){
-    
-     var b= $('#e').val();
+}
+
+function busca() {
+
+    var b = $('#e').val();
     //alert(b);
-    
+
     $('#mySelect').find('option').remove();
     var url = 'portal/search/' + b;
-      
+
     var mapOptions = {
         center: new google.maps.LatLng(-3.996083, -79.205675),
         zoom: 15,
@@ -177,29 +201,29 @@ function localIndividual(){
         zoomControl: true
     };
     mapa = new google.maps.Map(document.getElementById("mapa_content"), mapOptions);
-    
-        $.ajax({
-            type: "POST",
-            url: url, 
-            dataType: 'json',
-             success: function (locales) {
+
+    $.ajax({
+        type: "POST",
+        url: url,
+        dataType: 'json',
+        success: function (locales) {
             $.each(locales, function (id, local) {
                 Lista(local);
                 var latlng = new google.maps.LatLng(local.latitud, local.longitud);
-                
+
                 var marca = new google.maps.Marker({
                     position: latlng,
                     map: mapa,
                     title: local.nombre
                 });
-                var html = "<h3>" + local.nombre + "</h3>"+"<br/>";
+                var html = "<h3>" + local.nombre + "</h3>" + "<br/>";
                 var html = getHtmlData(local);
                 var infoWindow = new google.maps.InfoWindow({
                     content: html,
                     maxWidth: 500,
                     maxHeight: 250
                 });
-                google.maps.event.addListener(marca, 'click', function() {
+                google.maps.event.addListener(marca, 'click', function () {
                     if (lastOpen !== null) {
                         lastOpen.close();
                     }
@@ -208,8 +232,8 @@ function localIndividual(){
                 });
                 document.getElementById("labelHinicio").innerHTML = local.hora_apertura;
                 document.getElementById("labelHCierre").innerHTML = local.hora_cierre;
-                
+
             });
         }
-        });
+    });
 }
