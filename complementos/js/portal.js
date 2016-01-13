@@ -123,6 +123,7 @@ $('#local_id').change(function () {
 //jquery de local seleccionado
 function localIndividual() {
     var local_seleccionado = $('#mySelect').val();
+    
     var url = 'portal/getLocalSeleccionado/' + local_seleccionado;
     var mapOptions = {
         center: new google.maps.LatLng(-3.996083, -79.205675),

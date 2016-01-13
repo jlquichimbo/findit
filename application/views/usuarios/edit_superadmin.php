@@ -13,7 +13,7 @@
         </div>
         <br/><br/>
     </div>
-    <input type="hidden" name="upload_state" id="upload_state" value="<?php echo $upload_state?>">
+    <input type="hidden" name="upload_state" id="upload_state" value="<?php echo $upload_state ?>">
     <form id="form_usuario_edit" class="form-horizontal" action="<?php echo base_url(); ?>superadmin/index/editarSUPERADM" method="post" enctype="multipart/form-data">
         <div class="form-group">
             <label for="formGroup" class="col-sm-2 control-label">Cedula:</label>
@@ -33,10 +33,11 @@
                 <input type="text" id="formGroup" name="txtApellido" value="<?php echo $data_user[0]->apellidos ?>" class="form-control" required>
             </div>
         </div>
+
         <div class="form-group">
             <label for="formGroup" class="col-sm-2 control-label">Foto:</label>
             <div class="col-sm-4">
-                <input type="file" name="userfile" required>
+                <input type="file" id="formGroup" class="filestyle" name="userfile"  class="form-control">
             </div>
         </div>
         <div class="form-group">
@@ -79,16 +80,17 @@
         </div>			
     </form>
 </div>
+
 <script>
     $(document).ready(function () {
         //Variable para saber si la imagen se subio con exito
         var state_upload = $("#upload_state").val();
-        if(state_upload){
+        if (state_upload) {
             $('#form_usuario_edit').hide(1000);
             $('#res_msj').show(1000);
         }
     });
-    
+
 
     //Ocultar el div al hacer clic en cancelar
     $('#btn_cancel').click(function () {
@@ -115,9 +117,3 @@
 //    password.onchange = validatePassword;
 //    confirm_password.onkeyup = validatePassword;
 </script>
-
-    Status API Training Shop Blog About Pricing 
-
-    © 2015 GitHub, Inc. Terms Privacy
-
-

@@ -36,7 +36,7 @@
         <div class="form-group">
             <label for="formGroup" class="col-sm-2 control-label">Foto:</label>
             <div class="col-sm-4">
-                <input type="file" name="userfile" required>
+                <input type="file" class="filestyle" name="userfile" required>
             </div>
         </div>
         <div class="form-group">
@@ -115,7 +115,3 @@
 //    password.onchange = validatePassword;
 //    confirm_password.onkeyup = validatePassword;
 </script>
-
-    Status API Training Shop Blog About Pricing 
-
-    © 2015 GitHub, Inc. Terms Privacy
