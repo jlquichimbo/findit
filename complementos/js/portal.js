@@ -1,7 +1,7 @@
 var mapa;
 var lastOpen = null;
 var marcador = null;
-var directionsDisplay = new google.maps.DirectionsRenderer();
+var directionsDisplay = new google.maps.DirectionsRenderer({suppressMarkers: true});
 var directionsService = new google.maps.DirectionsService();
 var request = null;
 var origen;
@@ -16,7 +16,6 @@ function inicializar() {
     };
     mapa = new google.maps.Map(document.getElementById("mapa_content"), myOptions);
     marcador = new google.maps.Marker({
-        
         map: mapa,
         title: 'Tu ubicación',
         icon: "http://google-maps-utility-library-v3.googlecode.com/svn/trunk/markerclusterer/images/people35.png",
@@ -123,7 +122,7 @@ $('#local_id').change(function () {
 //jquery de local seleccionado
 function localIndividual() {
     var local_seleccionado = $('#mySelect').val();
-    
+
     var url = 'portal/getLocalSeleccionado/' + local_seleccionado;
     var mapOptions = {
         center: new google.maps.LatLng(-3.996083, -79.205675),
@@ -141,12 +140,6 @@ function localIndividual() {
             $.each(locales, function (id, local) {
                 var latlng = new google.maps.LatLng(local.latitud, local.longitud);
                 destino = latlng;
-                var marca = new google.maps.Marker({
-                    position: latlng,
-                    map: mapa,
-                    title: local.nombre,
-                    animation: google.maps.Animation.DROP
-                });
                 //marcador;
                 request = {
                     origin: origen,
@@ -162,10 +155,20 @@ function localIndividual() {
                         alert("No existen rutas entre ambos puntos");
                     }
                 });
-
-
-                document.getElementById("labelHinicio").innerHTML = local.hora_apertura;
-                document.getElementById("labelHCierre").innerHTML = local.hora_cierre;
+                marcador = new google.maps.Marker({
+                    position: origen,
+                    map: mapa,
+                    title: 'Tu ubicación',
+                    icon: "http://google-maps-utility-library-v3.googlecode.com/svn/trunk/markerclusterer/images/people35.png",
+                })
+                var marca = new google.maps.Marker({
+                    position: latlng,
+                    map: mapa,
+                    title: local.nombre,
+                    animation: google.maps.Animation.DROP
+                });
+                //document.getElementById("labelHinicio").innerHTML = local.hora_apertura;
+                //document.getElementById("labelHCierre").innerHTML = local.hora_cierre;
                 var html = getHtmlData(local);
                 var infoWindow = new google.maps.InfoWindow({
                     content: html,
