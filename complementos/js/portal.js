@@ -6,7 +6,10 @@ var directionsService = new google.maps.DirectionsService();
 var request = null;
 var origen;
 var destino;
+var actualizar;
 function inicializar() {
+    $('#mySelect').find('option').remove();
+    actualizar=1;
     navigator.geolocation.getCurrentPosition(lecturaGPS, errorGPS, {enableHighAccuracy: true});
     var latlng = new google.maps.LatLng(-3.989509, -79.204280);
     var myOptions = {
@@ -92,7 +95,8 @@ function Lista(dataLocal) {
 //a.appendChild(document.createTextNode('Click Me'));
 }
 //Jquery del selector de categorias de locales       
-$('#local_id').change(function () {
+$('#local_id').change(function locCategoria() {
+    actualizar=2;
     document.getElementById("labelHinicio").innerHTML = "_ _:_ _:_ _";
     document.getElementById("labelHCierre").innerHTML = "_ _:_ _:_ _";
     $('#tipo_local').val($(this).val());
@@ -245,3 +249,13 @@ function busca() {
         }
     });
 }
+
+//Funcion que actualiza los estados
+function actEstado(){
+    if (actualizar==1){
+        icializar();
+    }else{
+        locCategoria();
+    }
+}
+setInterval(actEstado, 60000);
