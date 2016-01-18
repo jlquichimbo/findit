@@ -80,10 +80,16 @@ function getHtmlData(dataLocal) {
 }
 function Lista(dataLocal) {
     var option = document.createElement("option");
+    
     option.text = dataLocal.nombre;
     option.value = dataLocal.identificador;
+    option.setAttribute('href', '#');
     var select = document.getElementById("mySelect");
     select.appendChild(option);
+    
+   
+
+//a.appendChild(document.createTextNode('Click Me'));
 }
 //Jquery del selector de categorias de locales       
 $('#local_id').change(function () {
@@ -117,8 +123,6 @@ $('#local_id').change(function () {
         inicializar();
     }
 });
-
-
 //jquery de local seleccionado
 function localIndividual() {
     var local_seleccionado = $('#mySelect').val();
