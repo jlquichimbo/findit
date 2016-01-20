@@ -106,7 +106,7 @@
             </section>
         </div>
     </section>
-<li><a href="#faq">FAQ</a></li>
+<center><a href="#faq">Visualiza en el mapa</a></center>
 <br>
 <br>
 

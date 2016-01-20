@@ -80,10 +80,10 @@ function getHtmlData(dataLocal) {
 }
 function Lista(dataLocal) {
     var option = document.createElement("option");
-    
+    var a ="<a href='#faq' ></a> ";
     option.text = dataLocal.nombre;
     option.value = dataLocal.identificador;
-    option.setAttribute('href', '#');
+   // option.setAttribute('href', '#faq');
     var select = document.getElementById("mySelect");
     select.appendChild(option);
     
