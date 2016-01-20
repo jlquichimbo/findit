@@ -84,14 +84,14 @@ function getHtmlData(dataLocal) {
 }
 function Lista(dataLocal) {
     var option = document.createElement("option");
-    var a ="<a href='#faq' ></a> ";
+    var a = "<a href='#faq' ></a> ";
     option.text = dataLocal.nombre;
     option.value = dataLocal.identificador;
-   // option.setAttribute('href', '#faq');
+    // option.setAttribute('href', '#faq');
     var select = document.getElementById("mySelect");
     select.appendChild(option);
-    
-   
+
+
 
 //a.appendChild(document.createTextNode('Click Me'));
 }
@@ -141,6 +141,7 @@ function localIndividual() {
         mapTypeControl: false,
         zoomControl: true
     };
+    
     mapa = new google.maps.Map(document.getElementById("mapa_content"), mapOptions);
     $.ajax({
         type: "POST",
@@ -194,10 +195,47 @@ function localIndividual() {
                 });
                 document.getElementById("labelHinicio").innerHTML = local.hora_apertura;
                 document.getElementById("labelHCierre").innerHTML = local.hora_cierre;
+                mapaubicacion();
             });
         }
     });
 }
+
+function mapaubicacion() {
+    console.log("Ubicando mapa");
+  
+        var disqus_loaded = false;
+        var top = $("faq").offset().top;
+        var owldomain = window.location.hostname.indexOf("owlgraphic");
+        var comments = window.location.href.indexOf("comment");
+
+        if (owldomain !== -1) {
+            function check() {
+                if ((!disqus_loaded && $(window).scrollTop() + $(window).height() > top) || (comments !== -1)) {
+                    $(window).off("scroll")
+                    disqus_loaded = true;
+                    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+                    var disqus_shortname = 'owlcarousel'; // required: replace example with your forum shortname
+                    var disqus_identifier = 'OWL Carousel';
+                    //var disqus_url = 'http://owlgraphic.com/owlcarousel/';
+                    /* * * DON'T EDIT BELOW THIS LINE * * */
+                    (function () {
+                        var dsq = document.createElement('script');
+                        dsq.type = 'text/javascript';
+                        dsq.async = true;
+                        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                    })();
+                }
+            }
+            $(window).on("scroll", check)
+            check();
+        } else {
+            $('.disqus').hide();
+        }
+   
+}
+
 
 function busca() {
 
@@ -259,15 +297,15 @@ function actualizarEstados() {
     var h = fecha.getHours();
     var m = fecha.getMinutes();
     var s = fecha.getSeconds();
-    var hora=h+":"+m+":"+s;
-    var url = 'portal/actualizarEstados/'+hora;
+    var hora = h + ":" + m + ":" + s;
+    var url = 'portal/actualizarEstados/' + hora;
     //var url = 'portal/getLocalSeleccionado/' + local_seleccionado;
     $.ajax({
         type: "POST",
         url: url,
         dataType: 'json',
         success: function (estado) {
-            $.each(estado, function (id, est) {                
+            $.each(estado, function (id, est) {
             });
         }
     });
@@ -276,11 +314,11 @@ function actualizarEstados() {
 
 //Funcion que actualiza los estados
 /*function actEstado(){
-    if (actualizar==1){
-        icializar();
-    }else{
-        locCategoria();
-    }
-}
-setInterval(actEstado, 60000);
-*/
+ if (actualizar==1){
+ icializar();
+ }else{
+ locCategoria();
+ }
+ }
+ setInterval(actEstado, 60000);
+ */
