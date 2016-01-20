@@ -6,7 +6,11 @@ var directionsService = new google.maps.DirectionsService();
 var request = null;
 var origen;
 var destino;
+var actualizar;
 function inicializar() {
+    $('#mySelect').find('option').remove();
+    //actualizar=1;
+    actualizarEstados();
     navigator.geolocation.getCurrentPosition(lecturaGPS, errorGPS, {enableHighAccuracy: true});
     var latlng = new google.maps.LatLng(-3.989509, -79.204280);
     var myOptions = {
@@ -92,7 +96,8 @@ function Lista(dataLocal) {
 //a.appendChild(document.createTextNode('Click Me'));
 }
 //Jquery del selector de categorias de locales       
-$('#local_id').change(function () {
+$('#local_id').change(function locCategoria() {
+    //actualizar=2;
     document.getElementById("labelHinicio").innerHTML = "_ _:_ _:_ _";
     document.getElementById("labelHCierre").innerHTML = "_ _:_ _:_ _";
     $('#tipo_local').val($(this).val());
@@ -108,6 +113,7 @@ $('#local_id').change(function () {
     mapa = new google.maps.Map(document.getElementById("mapa_content"), mapOptions);
     $('#mySelect').find('option').remove();
     if (local_tipo !== '-1') {
+        actualizarEstados();
         $.ajax({
             type: "POST",
             url: url,
@@ -245,3 +251,36 @@ function busca() {
         }
     });
 }
+
+
+
+function actualizarEstados() {
+    var fecha = new Date();
+    var h = fecha.getHours();
+    var m = fecha.getMinutes();
+    var s = fecha.getSeconds();
+    var hora=h+":"+m+":"+s;
+    var url = 'portal/actualizarEstados/'+hora;
+    //var url = 'portal/getLocalSeleccionado/' + local_seleccionado;
+    $.ajax({
+        type: "POST",
+        url: url,
+        dataType: 'json',
+        success: function (estado) {
+            $.each(estado, function (id, est) {                
+            });
+        }
+    });
+}
+
+
+//Funcion que actualiza los estados
+/*function actEstado(){
+    if (actualizar==1){
+        icializar();
+    }else{
+        locCategoria();
+    }
+}
+setInterval(actEstado, 60000);
+*/

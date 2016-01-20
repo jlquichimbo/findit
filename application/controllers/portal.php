@@ -170,5 +170,23 @@ class Portal extends CI_Controller {
             $this->load->view('portal/static/footer');
         }
     }
+    
+    //Funcion para actualizar los estados segun la hora
+    
+    public function actualizarEstados($hora) {
+        $respuesta="";
+        $this->load->model('empresa_model');
+        $this->db->trans_begin(); // inicio de transaccion
+        $nuevo_id = $this->empresa_model->updateEstados($hora);
+        // verifico que todo elproceso en si este bien ejecutado
+        if ($this->db->trans_status() === FALSE) {
+            $this->db->trans_rollback();
+//            echo error_msg('<br>Ha ocurrido un error al guardar el paciente en la base de datos.');
+        } else {
+            $this->db->trans_commit(); // finaliza la transaccion de begin
+            $respuesta="Correcto";
+            echo json_encode($respuesta);
+        }
+    }
 
 }
