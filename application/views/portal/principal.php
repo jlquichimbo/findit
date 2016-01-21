@@ -38,7 +38,7 @@
                 </div>
                 <div class="row">
                     <div class="col-md-12"><br>
-                        <select id="mySelect" size="8" onchange="localIndividual()" placeholder="Buscar..."></select>
+                        <select id="mySelect" size="8" onchange="localIndividual(); window.location.href='#faq'" placeholder="Buscar..."></select>
                     </div>
                 </div>
                 <div class="row">
@@ -106,7 +106,6 @@
             </section>
         </div>
     </section>
-<center><a href="#faq">Visualiza en el mapa</a></center>
 <br>
 <br>
 
