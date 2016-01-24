@@ -29,7 +29,7 @@
                 </div>
                 <div class="row">
                     <div class="col-md-12"><br>
-                        <select id="mySelect" size="18" onchange="localIndividual()"></select>
+                        <select id="mySelect" size="16" onchange="localIndividual()"></select>
                     </div>
                 </div>
                 <div class="row">
