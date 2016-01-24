@@ -195,45 +195,9 @@ function localIndividual() {
                 });
                 document.getElementById("labelHinicio").innerHTML = local.hora_apertura;
                 document.getElementById("labelHCierre").innerHTML = local.hora_cierre;
-                mapaubicacion();
             });
         }
     });
-}
-
-function mapaubicacion() {
-    console.log("Ubicando mapa");
-  
-        var disqus_loaded = false;
-        var top = $("faq").offset().top;
-        var owldomain = window.location.hostname.indexOf("owlgraphic");
-        var comments = window.location.href.indexOf("comment");
-
-        if (owldomain !== -1) {
-            function check() {
-                if ((!disqus_loaded && $(window).scrollTop() + $(window).height() > top) || (comments !== -1)) {
-                    $(window).off("scroll")
-                    disqus_loaded = true;
-                    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-                    var disqus_shortname = 'owlcarousel'; // required: replace example with your forum shortname
-                    var disqus_identifier = 'OWL Carousel';
-                    //var disqus_url = 'http://owlgraphic.com/owlcarousel/';
-                    /* * * DON'T EDIT BELOW THIS LINE * * */
-                    (function () {
-                        var dsq = document.createElement('script');
-                        dsq.type = 'text/javascript';
-                        dsq.async = true;
-                        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-                        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-                    })();
-                }
-            }
-            $(window).on("scroll", check)
-            check();
-        } else {
-            $('.disqus').hide();
-        }
-   
 }
 
 
