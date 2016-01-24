@@ -39,7 +39,7 @@
         <div class="form-group">
             <label for="formGroup" class="col-sm-2 control-label">Foto:</label>
             <div class="col-sm-4">
-                <input type="file" id="formGroup" name="fileFoto"  class="form-control">
+                <input type="file" id="formGroup" class="filestyle" name="fileFoto"  class="form-control">
             </div>
         </div>
         <!--			<div class="form-group">

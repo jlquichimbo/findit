@@ -3,9 +3,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Index extends CI_Controller {
-
     private $res_msj = '';
-
     function __construct() {
         parent::__construct();
 

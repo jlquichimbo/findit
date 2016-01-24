@@ -1,12 +1,16 @@
 var mapa;
 var lastOpen = null;
 var marcador = null;
-var directionsDisplay = new google.maps.DirectionsRenderer();
+var directionsDisplay = new google.maps.DirectionsRenderer({suppressMarkers: true});
 var directionsService = new google.maps.DirectionsService();
 var request = null;
 var origen;
 var destino;
+var actualizar;
 function inicializar() {
+    $('#mySelect').find('option').remove();
+    //actualizar=1;
+    actualizarEstados();
     navigator.geolocation.getCurrentPosition(lecturaGPS, errorGPS, {enableHighAccuracy: true});
     var latlng = new google.maps.LatLng(-3.989509, -79.204280);
     var myOptions = {
@@ -16,7 +20,6 @@ function inicializar() {
     };
     mapa = new google.maps.Map(document.getElementById("mapa_content"), myOptions);
     marcador = new google.maps.Marker({
-        
         map: mapa,
         title: 'Tu ubicación',
         icon: "http://google-maps-utility-library-v3.googlecode.com/svn/trunk/markerclusterer/images/people35.png",
@@ -81,13 +84,20 @@ function getHtmlData(dataLocal) {
 }
 function Lista(dataLocal) {
     var option = document.createElement("option");
-    option.text = dataLocal.nombre;
+    //var a = "<a href='#faq' ></a> ";
+    option.text =dataLocal.nombre;
     option.value = dataLocal.identificador;
+    // option.setAttribute('href', '#faq');
     var select = document.getElementById("mySelect");
     select.appendChild(option);
+
+
+
+//a.appendChild(document.createTextNode('Click Me'));
 }
 //Jquery del selector de categorias de locales       
-$('#local_id').change(function () {
+$('#local_id').change(function locCategoria() {
+    //actualizar=2;
     document.getElementById("labelHinicio").innerHTML = "_ _:_ _:_ _";
     document.getElementById("labelHCierre").innerHTML = "_ _:_ _:_ _";
     $('#tipo_local').val($(this).val());
@@ -103,6 +113,7 @@ $('#local_id').change(function () {
     mapa = new google.maps.Map(document.getElementById("mapa_content"), mapOptions);
     $('#mySelect').find('option').remove();
     if (local_tipo !== '-1') {
+        actualizarEstados();
         $.ajax({
             type: "POST",
             url: url,
@@ -118,11 +129,10 @@ $('#local_id').change(function () {
         inicializar();
     }
 });
-
-
 //jquery de local seleccionado
 function localIndividual() {
     var local_seleccionado = $('#mySelect').val();
+
     var url = 'portal/getLocalSeleccionado/' + local_seleccionado;
     var mapOptions = {
         center: new google.maps.LatLng(-3.996083, -79.205675),
@@ -131,6 +141,7 @@ function localIndividual() {
         mapTypeControl: false,
         zoomControl: true
     };
+    
     mapa = new google.maps.Map(document.getElementById("mapa_content"), mapOptions);
     $.ajax({
         type: "POST",
@@ -140,12 +151,6 @@ function localIndividual() {
             $.each(locales, function (id, local) {
                 var latlng = new google.maps.LatLng(local.latitud, local.longitud);
                 destino = latlng;
-                var marca = new google.maps.Marker({
-                    position: latlng,
-                    map: mapa,
-                    title: local.nombre,
-                    animation: google.maps.Animation.DROP
-                });
                 //marcador;
                 request = {
                     origin: origen,
@@ -161,10 +166,20 @@ function localIndividual() {
                         alert("No existen rutas entre ambos puntos");
                     }
                 });
-
-
-                document.getElementById("labelHinicio").innerHTML = local.hora_apertura;
-                document.getElementById("labelHCierre").innerHTML = local.hora_cierre;
+                marcador = new google.maps.Marker({
+                    position: origen,
+                    map: mapa,
+                    title: 'Tu ubicación',
+                    icon: "http://google-maps-utility-library-v3.googlecode.com/svn/trunk/markerclusterer/images/people35.png",
+                })
+                var marca = new google.maps.Marker({
+                    position: latlng,
+                    map: mapa,
+                    title: local.nombre,
+                    animation: google.maps.Animation.DROP
+                });
+                //document.getElementById("labelHinicio").innerHTML = local.hora_apertura;
+                //document.getElementById("labelHCierre").innerHTML = local.hora_cierre;
                 var html = getHtmlData(local);
                 var infoWindow = new google.maps.InfoWindow({
                     content: html,
@@ -180,10 +195,47 @@ function localIndividual() {
                 });
                 document.getElementById("labelHinicio").innerHTML = local.hora_apertura;
                 document.getElementById("labelHCierre").innerHTML = local.hora_cierre;
+                mapaubicacion();
             });
         }
     });
 }
+
+function mapaubicacion() {
+    console.log("Ubicando mapa");
+  
+        var disqus_loaded = false;
+        var top = $("faq").offset().top;
+        var owldomain = window.location.hostname.indexOf("owlgraphic");
+        var comments = window.location.href.indexOf("comment");
+
+        if (owldomain !== -1) {
+            function check() {
+                if ((!disqus_loaded && $(window).scrollTop() + $(window).height() > top) || (comments !== -1)) {
+                    $(window).off("scroll")
+                    disqus_loaded = true;
+                    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+                    var disqus_shortname = 'owlcarousel'; // required: replace example with your forum shortname
+                    var disqus_identifier = 'OWL Carousel';
+                    //var disqus_url = 'http://owlgraphic.com/owlcarousel/';
+                    /* * * DON'T EDIT BELOW THIS LINE * * */
+                    (function () {
+                        var dsq = document.createElement('script');
+                        dsq.type = 'text/javascript';
+                        dsq.async = true;
+                        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                    })();
+                }
+            }
+            $(window).on("scroll", check)
+            check();
+        } else {
+            $('.disqus').hide();
+        }
+   
+}
+
 
 function busca() {
 
@@ -237,3 +289,36 @@ function busca() {
         }
     });
 }
+
+
+
+function actualizarEstados() {
+    var fecha = new Date();
+    var h = fecha.getHours();
+    var m = fecha.getMinutes();
+    var s = fecha.getSeconds();
+    var hora = h + ":" + m + ":" + s;
+    var url = 'portal/actualizarEstados/' + hora;
+    //var url = 'portal/getLocalSeleccionado/' + local_seleccionado;
+    $.ajax({
+        type: "POST",
+        url: url,
+        dataType: 'json',
+        success: function (estado) {
+            $.each(estado, function (id, est) {
+            });
+        }
+    });
+}
+
+
+//Funcion que actualiza los estados
+/*function actEstado(){
+ if (actualizar==1){
+ icializar();
+ }else{
+ locCategoria();
+ }
+ }
+ setInterval(actEstado, 60000);
+ */

@@ -324,5 +324,20 @@ Class Empresa_model extends CI_Model {
 
         return $afected_row;
     }
+    
+    
+    /* Actualiza los datos de un tipo de empresa/local */
+    function updateEstados($hora) {
+        //Se deja comentado latitud y longitud para que no se actualizen esos campos
+        $data_set = array(
+            'disponible' => 0,
+            'hora_apertura' => '00:00:00',
+            'hora_cierre' => '00:00:00'
+        );
+        $table_name = 'empresa';
+        $where_data = array('hora_cierre <=' => $hora);
+        $this->db->update($table_name, $data_set, $where_data);
+        return $this->db->affected_rows();
+    }
 
 }
