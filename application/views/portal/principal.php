@@ -1,11 +1,11 @@
 <body onLoad="inicializar()">
 
     <br>
-    <section class="main container well">
-        <div class="row">
-            <aside class="col-md-4 filtrador well">
-                <div class="row">         
-                    <div class="col-md-9">
+    <section class="main container">
+        <div class="row well">
+            <aside class="col-md-4 filtrador well"><br>
+                <div class="col-md-10 row-sm">         
+                  
                         <!--<select id="selectCategoria" name="selectCategoria" class="form-control">-->
                         <?php
                         //Lista de tipos
@@ -13,7 +13,7 @@
                                 $tipos_empresa, array('label' => 'nombre', 'value' => 'id', 'nombre' => 'tipo_local'), array('name' => 'local_id', 'id' => 'local_id', 'class' => 'form-control'), true);
                         echo get_combo_group('Categorias', $combo_tipos, 'col-md-12 form-group');
                         ?>
-                    </div>
+                    
                 </div>
                 <div class="row">
                     <div class="col-md-12 well-sm">
@@ -28,8 +28,8 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-12"><br>
-                        <select id="mySelect" size="16" onchange="localIndividual()"></select>
+                    <div class="col-md-12"><center><p style="text-decoration-color: #cccccc">Locales Abiertos</p></center>
+                        <select id="mySelect" size="10" onchange="localIndividual()"></select>
                     </div>
                 </div>
                 <div class="row">
@@ -96,7 +96,7 @@
                         </div>
                     </div>
                 </div>
-                <div id="mapa_content"style="width: 750px; height: 400px;" class="img-responsive"></div>
+                <div id="mapa_content"style="width: 750px; height: 330px;" class="img-responsive"></div>
             </section>
         </div>
     </section>
